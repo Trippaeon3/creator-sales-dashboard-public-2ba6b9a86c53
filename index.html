@@ -735,6 +735,59 @@
       opacity: .55;
     }
     .period-block + .period-block { margin-top: 30px; }
+    .release-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .release-stat {
+      min-height: 118px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(255,255,255,.76), rgba(248,250,255,.56));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.68);
+    }
+    .release-stat span,
+    .release-stat strong,
+    .release-stat em { display: block; }
+    .release-stat span {
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 820;
+      text-transform: uppercase;
+    }
+    .release-stat strong {
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      line-height: 1;
+    }
+    .release-stat em {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: .86rem;
+      font-style: normal;
+    }
+    .release-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: 18px;
+      align-items: start;
+      margin-top: 18px;
+    }
+    .release-grid h3 { margin-top: 0; }
+    .release-empty {
+      min-height: 110px;
+      display: grid;
+      place-items: center start;
+      padding: 18px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 24px;
+      background: rgba(255,255,255,.34);
+    }
+    .release-table td:nth-child(2) { min-width: 240px; }
     .chart-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -876,7 +929,7 @@
     }
     .mobile-tabbar nav {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 6px;
     }
     .tab-item {
@@ -923,6 +976,8 @@
       .metric-card,
       .priority-list li,
       .mini-chart-card,
+      .release-stat,
+      .release-empty,
       .data-card,
       .table-wrap,
       .report-details summary::after {
@@ -939,6 +994,7 @@
       }
       .priority-list li,
       .mini-chart-card,
+      .release-stat,
       .data-card,
       .table-wrap { box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
       th { background: rgba(211,229,255,.07); }
@@ -1001,6 +1057,8 @@
       .hero-inner { grid-template-columns: 1fr; }
       .hero-side { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .release-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .release-grid { grid-template-columns: 1fr; }
       .readout-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 760px) {
@@ -1029,6 +1087,7 @@
       .hero-inner { padding: 26px; gap: 22px; }
       .hero-side,
       .metric-grid,
+      .release-summary-grid,
       .priority-list,
       .chart-grid { grid-template-columns: 1fr; }
       .signal-card { min-height: 104px; }
@@ -1135,7 +1194,7 @@
           tab.toggleAttribute("aria-current", tab.getAttribute("href") === "#" + id);
         });
       }, { threshold: [0.22, 0.42, 0.62] });
-      ["overview", "priorities", "content", "data", "audit"].forEach(function(id) {
+      ["overview", "priorities", "content", "calendar", "data", "audit"].forEach(function(id) {
         var element = document.getElementById(id);
         if (element) observer.observe(element);
       });
@@ -1181,6 +1240,7 @@
       <a class="icon-button liquid" data-liquid href="#overview" aria-label="Overview"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></a>
       <a class="icon-button liquid" data-liquid href="#priorities" aria-label="Priorities"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></a>
       <a class="icon-button liquid" data-liquid href="#content" aria-label="Content"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></a>
+      <a class="icon-button liquid" data-liquid href="#calendar" aria-label="Release calendar"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg></a>
       <div class="rail-divider" aria-hidden="true"></div>
       <a class="icon-button liquid" data-liquid href="#charts" aria-label="Charts"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></a>
       <a class="icon-button liquid" data-liquid href="#data" aria-label="Data explorer"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></a>
@@ -1193,7 +1253,7 @@
           <div>
             <div class="eyebrow-row">
               <span class="eyebrow">Creator intelligence dashboard</span>
-              <span class="updated-chip mono">Generated Jun 30, 2026 · 11:47 local</span>
+              <span class="updated-chip mono">Generated Jun 30, 2026 · 12:13 local</span>
             </div>
             <h1>Creator Sales Analytics Report</h1>
             <p class="hero-subcopy">A premium control layer floats above stable sales intelligence: recent movement, platform drivers, and content winners without turning the whole report into frosted glass.</p>
@@ -1968,6 +2028,219 @@
 <td>2026-06-21</td>
 </tr>
 </tbody></table></div></section>
+
+      <section id="calendar" class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Planning</div><h2>Release Calendar</h2></div></div><div class="release-summary-grid"><article class="release-stat"><span>Released videos</span><strong class="mono">219</strong><em>with first-offered dates</em></article><article class="release-stat"><span>Last release</span><strong class="mono">2026-06-27</strong><em>from mapped/platform dates</em></article><article class="release-stat"><span>Upcoming planned</span><strong class="mono">0</strong><em>from planned_releases.csv</em></article><article class="release-stat"><span>Next planned date</span><strong class="mono">n/a</strong><em>editable before refresh</em></article></div><p class="muted">Historical release dates use First Offered from the content layer: reviewed master release date first, then platform offer dates such as C4S date added, then first observed sale/stat dates as lower-confidence fallbacks. Upcoming films come from the editable planned_releases.csv file in the shared dashboard folder and join this section on the next refresh.</p><div class="release-grid"><div><h3>Upcoming Schedule</h3><p class="release-empty muted">No upcoming rows are scheduled yet. Add rows to planned_releases.csv, then rerun the dashboard refresh.</p></div><div><h3>Recent Historical Releases</h3><div class="table-wrap"><table class="wide release-table">
+<thead><tr>
+<th>First Offered</th>
+<th>Content</th>
+<th>Platforms</th>
+<th>Sales</th>
+<th>Lifetime Net</th>
+<th>Latest 7 Net</th>
+<th>MTD Net</th>
+<th>YTD Net</th>
+<th>Net/Day</th>
+<th>Days Live</th>
+<th>Basis</th>
+<th>Confidence</th>
+</tr></thead><tbody>
+<tr>
+<td>2026-06-27</td>
+<td>Greedy SSBBW Devours Roommates Leftovers</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>72</td>
+<td>$1,801</td>
+<td>$1,091</td>
+<td>$1,801</td>
+<td>$1,801</td>
+<td>$450.25</td>
+<td>4</td>
+<td>C4S date added</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>2026-06-11</td>
+<td>Fucking Your Stuffed SSBBW Girlfriend POV</td>
+<td>Clips4Sale, ManyVids, OnlyFans</td>
+<td>98</td>
+<td>$1,343</td>
+<td>$13</td>
+<td>$923</td>
+<td>$923</td>
+<td>$67.15</td>
+<td>20</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-05-21</td>
+<td>Best Friend&#x27;s Mom Teases You</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>342</td>
+<td>$5,956</td>
+<td>$120</td>
+<td>$1,501</td>
+<td>$4,433</td>
+<td>$145.26</td>
+<td>41</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-05-04</td>
+<td>Gaining SSBBW Wants to Reach 600lbs</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>153</td>
+<td>$2,164</td>
+<td>$30</td>
+<td>$304</td>
+<td>$1,700</td>
+<td>$37.31</td>
+<td>58</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-04-27</td>
+<td>The Diet of a Gaining SSBBW</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>80</td>
+<td>$1,545</td>
+<td>n/a</td>
+<td>$34</td>
+<td>$1,232</td>
+<td>$23.77</td>
+<td>65</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-04-20</td>
+<td>Stuffed and Horny</td>
+<td>Clips4Sale, ManyVids</td>
+<td>56</td>
+<td>$1,243</td>
+<td>n/a</td>
+<td>$111</td>
+<td>$1,243</td>
+<td>$17.26</td>
+<td>72</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-04-17</td>
+<td>BBW Covered in Oil - Full Nude Version</td>
+<td>ManyVids</td>
+<td>2</td>
+<td>$10</td>
+<td>n/a</td>
+<td>$5</td>
+<td>$10</td>
+<td>$0.13</td>
+<td>75</td>
+<td>sale date</td>
+<td>low</td>
+</tr>
+<tr>
+<td>2026-04-06</td>
+<td>Room Service Stuffing</td>
+<td>OnlyFans</td>
+<td>1</td>
+<td>$24</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$0.28</td>
+<td>86</td>
+<td>OF message sent date</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>2026-04-06</td>
+<td>Exercise After Gaining</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>107</td>
+<td>$2,162</td>
+<td>n/a</td>
+<td>$127</td>
+<td>$1,803</td>
+<td>$25.14</td>
+<td>86</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-03-11</td>
+<td>Stuffed Girlfriend Gets Gassy</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>203</td>
+<td>$2,812</td>
+<td>$30</td>
+<td>$165</td>
+<td>$2,492</td>
+<td>$25.11</td>
+<td>112</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-03-04</td>
+<td>HR Fatty Makes You Her Feeder POV</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>234</td>
+<td>$2,577</td>
+<td>$9</td>
+<td>$71</td>
+<td>$2,001</td>
+<td>$21.65</td>
+<td>119</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-02-28</td>
+<td>1 Month Club Renewal</td>
+<td>ManyVids</td>
+<td>4</td>
+<td>$32</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$32</td>
+<td>$0.26</td>
+<td>123</td>
+<td>sale date</td>
+<td>low</td>
+</tr>
+<tr>
+<td>2026-02-22</td>
+<td>Diet Pills Gone Wrong</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>331</td>
+<td>$3,588</td>
+<td>$33</td>
+<td>$111</td>
+<td>$3,036</td>
+<td>$27.81</td>
+<td>129</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-02-07</td>
+<td>Messy piggy stuffs chocolate cake!</td>
+<td>Curvage</td>
+<td>4</td>
+<td>$38</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$38</td>
+<td>$0.27</td>
+<td>144</td>
+<td>sale date</td>
+<td>low</td>
+</tr>
+</tbody></table></div></div></div></section>
 
       <section class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Drivers</div><h2>What Caused the Change?</h2></div></div><p class="muted">Platforms are sorted by complete-day 7-day net delta, with the biggest negative driver first.</p><div class="table-wrap"><table>
 <thead><tr>
@@ -7750,6 +8023,1422 @@
 <td>mapped</td>
 <td>2026-06-09_18-40-33_manyvids_clipboard.txt</td>
 </tr>
+</tbody></table></div></details></article><article class="data-card"><h3>Release Calendar</h3><p class="muted">Historical and planned release rows. Historical dates use First Offered confidence; planned rows come from the editable schedule CSV.</p><details id="release-calendar-table" class="data-preview"><summary>Preview table (219 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/release_calendar.csv">Open CSV</a></div><p class="muted preview-note">Showing 60 of 219 rows here; open the CSV for the remaining 159 rows.</p><div class="table-wrap"><table class="wide">
+<thead><tr>
+<th>Type</th>
+<th>Date</th>
+<th>Title</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Group</th>
+<th>Platforms</th>
+<th>Sales</th>
+<th>Lifetime Gross</th>
+<th>Lifetime Net</th>
+<th>Latest 7 Net</th>
+<th>MTD Net</th>
+<th>YTD Net</th>
+<th>Days Live</th>
+<th>Net/Day</th>
+<th>Basis</th>
+<th>Confidence</th>
+<th>Promo Angle</th>
+<th>Price Plan</th>
+<th>Notes</th>
+<th>Source</th>
+</tr></thead><tbody>
+<tr>
+<td>Released</td>
+<td>2018-01-10</td>
+<td>Squirting and Fishnets</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3094</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2018-03-02</td>
+<td>Squeaky Chair Big Girl</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td>$3</td>
+<td></td>
+<td>3043</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2018-06-20</td>
+<td>Hitachi Makes Me Squirt</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>2</td>
+<td>$10</td>
+<td>$6</td>
+<td></td>
+<td></td>
+<td>$6</td>
+<td>2933</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2018-10-11</td>
+<td>Big Horny Housewife</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>6</td>
+<td>$30</td>
+<td>$18</td>
+<td></td>
+<td>$3</td>
+<td>$18</td>
+<td>2820</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2018-11-19</td>
+<td>Fat Goddess Fucks Pussy</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>3</td>
+<td>$15</td>
+<td>$9</td>
+<td></td>
+<td></td>
+<td>$9</td>
+<td>2781</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2018-12-01</td>
+<td>Lady Needs Your Cum</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td>$3</td>
+<td></td>
+<td>2769</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-02-18</td>
+<td>I Need V-day Dick</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>2</td>
+<td>$10</td>
+<td>$6</td>
+<td></td>
+<td>$3</td>
+<td>$6</td>
+<td>2690</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-03-21</td>
+<td>Lady in Black</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>3</td>
+<td>$15</td>
+<td>$9</td>
+<td></td>
+<td>$3</td>
+<td>$9</td>
+<td>2659</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-04-30</td>
+<td>Lady Loves to Play</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2619</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-05-28</td>
+<td>Fat Girl in Skimpy Lingerie</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>3</td>
+<td>$15</td>
+<td>$9</td>
+<td></td>
+<td></td>
+<td>$9</td>
+<td>2591</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-07-26</td>
+<td>Sexy Soft Curves</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>2</td>
+<td>$10</td>
+<td>$6</td>
+<td></td>
+<td>$3</td>
+<td>$6</td>
+<td>2532</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-08-07</td>
+<td>Jack Off To My Fat</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2520</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-09-03</td>
+<td>Bouncing Twerking and Grinding</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2493</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-09-13</td>
+<td>Weight on Your Chest</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>3</td>
+<td>$36</td>
+<td>$22</td>
+<td></td>
+<td>$7</td>
+<td>$22</td>
+<td>2483</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-09-20</td>
+<td>Devouring Powdered Donuts</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td></td>
+<td>$3</td>
+<td>2476</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-10-05</td>
+<td>65 Inch Ass Worship</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$10</td>
+<td>$6</td>
+<td></td>
+<td></td>
+<td>$6</td>
+<td>2461</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-10-05</td>
+<td>Chubby Squirting Pussy</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>4</td>
+<td>$20</td>
+<td>$12</td>
+<td></td>
+<td></td>
+<td>$12</td>
+<td>2461</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-10-23</td>
+<td>Touring My Fat Jiggly Body</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>3</td>
+<td>$21</td>
+<td>$13</td>
+<td></td>
+<td></td>
+<td>$13</td>
+<td>2443</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-10-24</td>
+<td>Begging for Your Cock</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids, OnlyFans</td>
+<td>2</td>
+<td>$24</td>
+<td>$18</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2442</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-11-01</td>
+<td>Not in Kansas</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>5</td>
+<td>$25</td>
+<td>$15</td>
+<td>$3</td>
+<td>$9</td>
+<td>$15</td>
+<td>2434</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-11-13</td>
+<td>Fuck Me POV</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids, ModelCentro</td>
+<td>2</td>
+<td>$20</td>
+<td>$13</td>
+<td></td>
+<td>$3</td>
+<td>$13</td>
+<td>2422</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-11-19</td>
+<td>50 Wing Binge</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2416</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-11-19</td>
+<td>Juicy Pussy Play</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$5</td>
+<td>$3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2416</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-11-29</td>
+<td>Oiled-Up Bouncing</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>2</td>
+<td>$24</td>
+<td>$14</td>
+<td></td>
+<td>$7</td>
+<td>$14</td>
+<td>2406</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2019-12-30</td>
+<td>BBW Bubble Bath</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$14</td>
+<td>$8</td>
+<td></td>
+<td></td>
+<td>$8</td>
+<td>2375</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-01-14</td>
+<td>Fatty in the Shower</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>2</td>
+<td>$20</td>
+<td>$12</td>
+<td></td>
+<td>$12</td>
+<td>$12</td>
+<td>2360</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-02-16</td>
+<td>Jiggly Catwalk</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$9</td>
+<td>$5</td>
+<td></td>
+<td></td>
+<td>$5</td>
+<td>2327</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-03-15</td>
+<td>Big Ass in Blue Jeans</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$13</td>
+<td>$8</td>
+<td></td>
+<td></td>
+<td>$8</td>
+<td>2299</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-04-01</td>
+<td>BBW Twerks and Fucks With Toy</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ModelCentro</td>
+<td>2</td>
+<td>$26</td>
+<td>$18</td>
+<td></td>
+<td></td>
+<td>$18</td>
+<td>2282</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-04-05</td>
+<td>Fat Stripper Gives You a Lapdance</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>4</td>
+<td>$44</td>
+<td>$26</td>
+<td></td>
+<td>$7</td>
+<td>$26</td>
+<td>2278</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-04-11</td>
+<td>Horny Pillow Grinding</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>5</td>
+<td>$49</td>
+<td>$29</td>
+<td></td>
+<td></td>
+<td>$29</td>
+<td>2272</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-04-19</td>
+<td>Cum in My Hairy Pussy</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids, ModelCentro</td>
+<td>2</td>
+<td>$16</td>
+<td>$10</td>
+<td></td>
+<td></td>
+<td>$10</td>
+<td>2264</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-04-25</td>
+<td>Flopping My Fat Around</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>2</td>
+<td>$16</td>
+<td>$10</td>
+<td></td>
+<td></td>
+<td>$10</td>
+<td>2258</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-06-07</td>
+<td>400lbs Bouncing on Your Cock</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$8</td>
+<td>$5</td>
+<td>$5</td>
+<td>$5</td>
+<td>$5</td>
+<td>2215</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-06-07</td>
+<td>Snack Cake Stuffing</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$16</td>
+<td>$10</td>
+<td></td>
+<td></td>
+<td>$10</td>
+<td>2215</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-06-14</td>
+<td>POV Fucking and Sucking</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>2</td>
+<td>$24</td>
+<td>$14</td>
+<td></td>
+<td></td>
+<td>$14</td>
+<td>2208</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-07-05</td>
+<td>Smoking and Sensual Rubbing</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>4</td>
+<td>$40</td>
+<td>$24</td>
+<td></td>
+<td>$12</td>
+<td>$24</td>
+<td>2187</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-07-13</td>
+<td>Huge Twerking Ass and Dripping Chubby Pussy</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$12</td>
+<td>$7</td>
+<td>$7</td>
+<td>$7</td>
+<td>$7</td>
+<td>2179</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-07-26</td>
+<td>Tight Dress Belly Bouncing</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>5</td>
+<td>$30</td>
+<td>$18</td>
+<td></td>
+<td></td>
+<td>$18</td>
+<td>2166</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-08-02</td>
+<td>Cover You In Cum POV</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>5</td>
+<td>$50</td>
+<td>$30</td>
+<td></td>
+<td>$6</td>
+<td>$30</td>
+<td>2159</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-08-05</td>
+<td>Fattened Up For Master Part II</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$20</td>
+<td>$12</td>
+<td></td>
+<td>$12</td>
+<td>$12</td>
+<td>2156</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-08-09</td>
+<td>Ass Worship in Tights and Heels</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$11</td>
+<td>$7</td>
+<td></td>
+<td></td>
+<td>$7</td>
+<td>2152</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-08-23</td>
+<td>Hot Pink Catwalk and Fat Bouncing</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>3</td>
+<td>$24</td>
+<td>$14</td>
+<td></td>
+<td>$5</td>
+<td>$14</td>
+<td>2138</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-09-14</td>
+<td>Oiled BBW Slides Naked on Air Mattress</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$11</td>
+<td>$7</td>
+<td></td>
+<td></td>
+<td>$7</td>
+<td>2116</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-09-14</td>
+<td>Spying on Your Hot Roommate</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$11</td>
+<td>$7</td>
+<td></td>
+<td></td>
+<td>$7</td>
+<td>2116</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-09-27</td>
+<td>Full Body Measurements</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$9</td>
+<td>$5</td>
+<td></td>
+<td></td>
+<td>$5</td>
+<td>2103</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-10-18</td>
+<td>Solo Shower Sex</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>2</td>
+<td>$22</td>
+<td>$13</td>
+<td></td>
+<td></td>
+<td>$13</td>
+<td>2082</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-10-24</td>
+<td>Stuffing My Face With Pizza</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids, OnlyFans</td>
+<td>23</td>
+<td>$829</td>
+<td>$660</td>
+<td></td>
+<td></td>
+<td>$9</td>
+<td>2076</td>
+<td>0.32</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-11-08</td>
+<td>Sexy Body Bouncing and Jiggling</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$10</td>
+<td>$6</td>
+<td></td>
+<td>$6</td>
+<td>$6</td>
+<td>2061</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-11-17</td>
+<td>Ass Clapping and Dildo Riding</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$11</td>
+<td>$7</td>
+<td></td>
+<td></td>
+<td>$7</td>
+<td>2052</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-11-17</td>
+<td>BBW Shower</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$13</td>
+<td>$8</td>
+<td></td>
+<td></td>
+<td>$8</td>
+<td>2052</td>
+<td>0.0</td>
+<td>C4S date added</td>
+<td>medium</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-11-29</td>
+<td>Red Satin Shorts Fat Booty Worship</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>4</td>
+<td>$28</td>
+<td>$17</td>
+<td></td>
+<td>$4</td>
+<td>$17</td>
+<td>2040</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2020-12-13</td>
+<td>Cozy Winter Pussy Play</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$8</td>
+<td>$5</td>
+<td></td>
+<td></td>
+<td>$5</td>
+<td>2026</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2021-01-03</td>
+<td>Your Cum Makes Me Gain</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale, ManyVids</td>
+<td>6</td>
+<td>$72</td>
+<td>$43</td>
+<td></td>
+<td>$7</td>
+<td>$43</td>
+<td>2005</td>
+<td>0.02</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2021-01-10</td>
+<td>Fat Nut on My Tits</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>1</td>
+<td>$15</td>
+<td>$9</td>
+<td></td>
+<td></td>
+<td>$9</td>
+<td>1998</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2021-01-27</td>
+<td>Smoky BJ and Pussy Vibe</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>2</td>
+<td>$26</td>
+<td>$16</td>
+<td></td>
+<td>$8</td>
+<td>$16</td>
+<td>1981</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2021-01-31</td>
+<td>Persimmon Season - Ripe Series vol. 1</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>1</td>
+<td>$16</td>
+<td>$10</td>
+<td></td>
+<td>$10</td>
+<td>$10</td>
+<td>1977</td>
+<td>0.0</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2021-02-19</td>
+<td>Getting Naughty at the Airbnb</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids</td>
+<td>2</td>
+<td>$24</td>
+<td>$14</td>
+<td></td>
+<td></td>
+<td>$14</td>
+<td>1958</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2021-03-04</td>
+<td>Stroke and Cum Together</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>Clips4Sale</td>
+<td>2</td>
+<td>$26</td>
+<td>$16</td>
+<td></td>
+<td></td>
+<td>$16</td>
+<td>1945</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>2021-03-14</td>
+<td>Underwater Body Jiggle</td>
+<td>released</td>
+<td></td>
+<td>Video</td>
+<td>ManyVids, ModelCentro</td>
+<td>3</td>
+<td>$41</td>
+<td>$26</td>
+<td></td>
+<td>$17</td>
+<td>$26</td>
+<td>1935</td>
+<td>0.01</td>
+<td>master content release date</td>
+<td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td>content_group_summary</td>
+</tr>
+</tbody></table></div></details></article><article class="data-card"><h3>Planned Releases</h3><p class="muted">Editable upcoming schedule rows copied from planned_releases.csv during refresh.</p><details id="planned-releases-table" class="data-preview"><summary>Preview table (0 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/planned_releases.csv">Open CSV</a></div><p class="muted preview-note">Showing 0 of 0 rows here.</p><div class="table-wrap"><table class="wide">
+<thead><tr>
+<th>Date</th>
+<th>Working Title</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Target Platforms</th>
+<th>Promo Angle</th>
+<th>Price Plan</th>
+<th>Notes</th>
+<th>Source</th>
+</tr></thead><tbody>
 </tbody></table></div></details></article></div><h3>Audit Tables</h3><div class="data-explorer-grid"><article class="data-card"><h3>Normalized Rows</h3><p class="muted">Full normalized fact table used by the report. Row hashes support dedupe auditing.</p><details id="normalized-rows-table" class="data-preview"><summary>Preview table (3,576 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/normalized_sales.csv">Open CSV</a></div><p class="muted preview-note">Showing 60 of 3,576 rows here; open the CSV for the remaining 3,516 rows.</p><div class="table-wrap"><table class="wide">
 <thead><tr>
 <th>Platform</th>
@@ -9652,6 +11341,7 @@
     <a class="tab-item focus-ring" aria-current="page" href="#overview"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Home</span></a>
     <a class="tab-item focus-ring" href="#priorities"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg><span>Actions</span></a>
     <a class="tab-item focus-ring" href="#content"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg><span>Content</span></a>
+    <a class="tab-item focus-ring" href="#calendar"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg><span>Cal</span></a>
     <a class="tab-item focus-ring" href="#data"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg><span>Data</span></a>
     <a class="tab-item focus-ring" href="#audit"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Audit</span></a>
   </nav>
