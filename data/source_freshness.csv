@@ -1,6 +1,6 @@
 platform,source_file,report_type,imported_at,rows_seen,rows_inserted,status,notes
-Clips4Sale,2026-06-29_07-32-17_statistics_sales_track-sales-this_month.csv,sales_views,2026-06-29T07:32:45,29,2,,
-Curvage,2026-06-29_07-32-49_curvage_manual_earnings (24).csv,sales,2026-06-29T07:32:49,72,4,ok,
-ManyVids,2026-06-29_07-33-45_manyvids_recent_sales_View-my-earnings_recentSalesBody.csv,recent_sales,2026-06-29T07:33:46,300,1,ok,
-OnlyFans,2026-06-29_11-25-51_onlyfans_native_posts_2026-01-01_to_2026-06-29.json,post_statistics,2026-06-29T11:26:13,11,11,ok,
+Clips4Sale,2026-06-30_07-32-53_statistics_sales_track-sales-this_month.csv,sales_views,2026-06-30T07:34:16,30,2,,
+Curvage,2026-06-30_07-34-22_curvage_manual_earnings (25).csv,sales,2026-06-30T07:35:03,75,9,ok,
+ManyVids,2026-06-30_07-36-22_manyvids_recent_sales_View-my-earnings_recentSalesBody.csv,recent_sales,2026-06-30T07:36:57,300,0,ok,
+OnlyFans,2026-06-30_07-42-18_onlyfans_native_posts_2026-01-01_to_2026-06-30.json,post_statistics,2026-06-30T07:43:14,12,12,ok,
 ModelCentro,2026-06-29_07-39-20_modelcentro_transactions.csv,transactions,2026-06-29T07:39:21,150,5,ok,
