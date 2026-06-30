@@ -1,0 +1,1473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:,">
+  <title>2026 Release Calendar</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      --page-max: 1240px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-top: env(safe-area-inset-top, 0px);
+      --canvas: #f7f9ff;
+      --ink: #0d1526;
+      --ink-2: #25334a;
+      --muted: #5e6c83;
+      --muted-2: #7b879b;
+      --solid: rgba(255, 255, 255, .92);
+      --solid-2: rgba(249, 251, 255, .82);
+      --line: rgba(19, 34, 62, .11);
+      --line-strong: rgba(19, 34, 62, .17);
+      --accent: #315eea;
+      --accent-2: #8b5cf6;
+      --accent-3: #00a5d8;
+      --success: #16804a;
+      --warning: #a16107;
+      --danger: #d12b4b;
+      --glass-blur: 22px;
+      --glass-saturation: 178%;
+      --glass-opacity: .58;
+      --glass-border-brightness: .72;
+      --glass-shadow-depth: 36px;
+      --glass-radius: 30px;
+      --glass-tint: 255 255 255;
+      --glass-tint-2: 224 237 255;
+      --highlight-x: 50%;
+      --highlight-y: 0%;
+      --mx: 50%;
+      --my: 10%;
+      --shadow-soft: 0 18px 46px rgba(15, 23, 42, .12);
+      --shadow-deep: 0 34px 92px rgba(15, 23, 42, .18);
+      --focus: 0 0 0 3px rgba(49, 94, 234, .22), 0 0 0 6px rgba(255,255,255,.85);
+      --radius-xl: 38px;
+      --radius-lg: 28px;
+      --radius-md: 22px;
+      --radius-sm: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --canvas: #070b14;
+        --ink: #f4f8ff;
+        --ink-2: #dbe7fb;
+        --muted: #a5b3ca;
+        --muted-2: #8190aa;
+        --solid: rgba(13, 20, 36, .88);
+        --solid-2: rgba(17, 27, 48, .78);
+        --line: rgba(211, 229, 255, .14);
+        --line-strong: rgba(211, 229, 255, .22);
+        --accent: #7dabff;
+        --accent-2: #b69aff;
+        --accent-3: #5ad7ff;
+        --success: #6ee7a3;
+        --warning: #ffd166;
+        --danger: #ff8098;
+        --glass-opacity: .38;
+        --glass-tint: 18 28 49;
+        --glass-tint-2: 98 132 190;
+        --shadow-soft: 0 18px 54px rgba(0, 0, 0, .32);
+        --shadow-deep: 0 34px 104px rgba(0, 0, 0, .46);
+        --focus: 0 0 0 3px rgba(125,171,255,.33), 0 0 0 6px rgba(7, 11, 20, .88);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; scroll-behavior: smooth; }
+    [id] { scroll-margin-top: 124px; }
+    body {
+      min-height: 100%;
+      margin: 0;
+      color: var(--ink);
+      font: 15px/1.5 var(--font);
+      background: var(--canvas);
+      overflow-x: hidden;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+    }
+    body::before {
+      background:
+        radial-gradient(circle at 9% 8%, rgba(107, 86, 255, .55), transparent 24%),
+        radial-gradient(circle at 86% 4%, rgba(43, 202, 255, .48), transparent 22%),
+        radial-gradient(circle at 78% 54%, rgba(85, 224, 157, .28), transparent 28%),
+        radial-gradient(circle at 13% 68%, rgba(255, 151, 197, .28), transparent 27%),
+        linear-gradient(145deg, #f9fbff 0%, #eef5ff 42%, #fff7fb 100%);
+    }
+    body::after {
+      z-index: -2;
+      background:
+        linear-gradient(rgba(12, 23, 44, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(12, 23, 44, .045) 1px, transparent 1px),
+        radial-gradient(circle at var(--highlight-x) var(--highlight-y), rgba(255,255,255,.56), transparent 18rem);
+      background-size: 44px 44px, 44px 44px, 100% 100%;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 76%);
+    }
+    @media (prefers-color-scheme: dark) {
+      body::before {
+        background:
+          radial-gradient(circle at 10% 9%, rgba(107, 86, 255, .38), transparent 25%),
+          radial-gradient(circle at 86% 3%, rgba(43, 202, 255, .24), transparent 23%),
+          radial-gradient(circle at 79% 50%, rgba(85, 224, 157, .14), transparent 29%),
+          radial-gradient(circle at 14% 67%, rgba(255, 151, 197, .15), transparent 28%),
+          linear-gradient(145deg, #070b14 0%, #0c1629 45%, #171121 100%);
+      }
+      body::after {
+        background:
+          linear-gradient(rgba(211, 229, 255, .055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(211, 229, 255, .055) 1px, transparent 1px),
+          radial-gradient(circle at var(--highlight-x) var(--highlight-y), rgba(125,171,255,.20), transparent 18rem);
+      }
+    }
+
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    p { margin: 0 0 14px; }
+    ul { margin: 0 0 0 20px; padding: 0; }
+    li { margin: 7px 0; }
+    h1, h2, h3 { margin: 0; line-height: 1.08; letter-spacing: 0; }
+    h1 {
+      max-width: 820px;
+      color: var(--ink);
+      font-size: clamp(3.1rem, 8.2vw, 6.75rem);
+      line-height: .92;
+      text-wrap: balance;
+    }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.45rem); }
+    h3 { margin: 24px 0 10px; color: var(--ink); font-size: 1.05rem; }
+    .muted { color: var(--muted); }
+    .strong { color: var(--ink); font-weight: 780; }
+    .mono { font-variant-numeric: tabular-nums; }
+    .mode-note { display: inline-block; margin-left: 8px; color: var(--muted); font-size: 1rem; font-weight: 680; vertical-align: middle; }
+
+    .page-shell {
+      width: min(calc(100% - 36px), var(--page-max));
+      margin: 0 auto;
+      padding: calc(18px + var(--safe-top)) 0 calc(96px + var(--safe-bottom));
+    }
+    .liquid {
+      --lift: 0px;
+      --tilt-x: 0deg;
+      --tilt-y: 0deg;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,var(--glass-border-brightness));
+      background:
+        linear-gradient(135deg, rgba(var(--glass-tint), calc(var(--glass-opacity) + .18)), rgba(var(--glass-tint-2), calc(var(--glass-opacity) - .18)) 52%, rgba(var(--glass-tint), calc(var(--glass-opacity) + .04))),
+        radial-gradient(circle at 14% 4%, rgba(255,255,255,.54), transparent 36%);
+      backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+      box-shadow:
+        0 calc(var(--glass-shadow-depth) * .35) var(--glass-shadow-depth) rgba(15, 23, 42, .13),
+        0 2px 1px rgba(255,255,255,.55) inset,
+        0 -1px 1px rgba(15,23,42,.09) inset,
+        0 0 0 1px rgba(255,255,255,.24) inset;
+      transform: perspective(900px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translateY(var(--lift));
+      transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .liquid::before,
+    .liquid::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .liquid::before {
+      z-index: -1;
+      background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.92), rgba(255,255,255,.38) 10%, rgba(255,255,255,.07) 23%, transparent 44%),
+        linear-gradient(120deg, rgba(255,255,255,.52), transparent 28%, rgba(255,255,255,.10) 52%, transparent 74%),
+        repeating-linear-gradient(115deg, transparent 0 38px, rgba(255,255,255,.08) 40px 42px, transparent 44px 86px);
+      opacity: .72;
+      mix-blend-mode: screen;
+      transform: translate3d(calc((var(--mx-num, .5) - .5) * 8px), calc((var(--my-num, .1) - .5) * 8px), 0);
+    }
+    .liquid::after {
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.16) 34%, rgba(73, 186, 255, .35) 58%, rgba(255,255,255,.64) 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: .72;
+    }
+    .liquid:hover {
+      --lift: -2px;
+      box-shadow:
+        0 calc(var(--glass-shadow-depth) * .48) calc(var(--glass-shadow-depth) * 1.24) rgba(15, 23, 42, .16),
+        0 2px 1px rgba(255,255,255,.72) inset,
+        0 -1px 1px rgba(15,23,42,.08) inset,
+        0 0 0 1px rgba(255,255,255,.28) inset;
+    }
+    .liquid:active { --lift: 1px; }
+    .liquid:focus-visible,
+    .focus-ring:focus-visible,
+    input:focus-visible,
+    summary:focus-visible {
+      outline: none;
+      box-shadow: var(--focus), 0 calc(var(--glass-shadow-depth) * .38) var(--glass-shadow-depth) rgba(15,23,42,.15), 0 1px 0 rgba(255,255,255,.6) inset;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: calc(14px + var(--safe-top));
+      z-index: 30;
+      display: grid;
+      grid-template-columns: auto minmax(320px, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding: 10px;
+      border-radius: calc(var(--glass-radius) + 2px);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px 8px 8px;
+      color: var(--ink);
+      font-weight: 840;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 28% 22%, rgba(255,255,255,.86), transparent 24%),
+        linear-gradient(135deg, #7057ff, #38caff 55%, #43df9a);
+      box-shadow: 0 14px 34px rgba(49, 94, 234, .30), inset 0 1px 0 rgba(255,255,255,.68);
+    }
+    .brand span:last-child { display: grid; line-height: 1.05; }
+    .brand small { color: var(--muted); font-size: .74rem; font-weight: 680; }
+    .nav-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .search-pill {
+      --glass-radius: 999px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      min-width: min(100%, 420px);
+      padding: 8px 10px 8px 13px;
+      border-radius: 999px;
+      color: var(--muted);
+    }
+    .search-pill svg { width: 18px; height: 18px; opacity: .72; flex: 0 0 auto; }
+    .search-pill input {
+      min-width: 0;
+      width: 100%;
+      border: 0;
+      outline: 0;
+      color: var(--ink);
+      background: transparent;
+      padding: 6px 8px;
+    }
+    .search-pill input::placeholder { color: var(--muted-2); opacity: 1; }
+    .search-count {
+      min-width: 34px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 4px 8px;
+      color: var(--ink-2);
+      background: rgba(255,255,255,.36);
+      font-size: 12px;
+      font-weight: 760;
+    }
+    .segmented {
+      display: inline-flex;
+      gap: 4px;
+      padding: 5px;
+      border-radius: 999px;
+    }
+    .segmented button,
+    .icon-button,
+    .tab-item,
+    .fab {
+      appearance: none;
+      border: 0;
+      color: var(--ink-2);
+      background: transparent;
+    }
+    .segmented button {
+      min-height: 34px;
+      padding: 0 13px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 760;
+      transition: background .22s ease, color .22s ease, transform .22s ease;
+    }
+    .segmented button[aria-pressed="true"] {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 28px rgba(49,94,234,.28), inset 0 1px 0 rgba(255,255,255,.34);
+    }
+    .segmented button:hover { transform: translateY(-1px); background: rgba(255,255,255,.38); }
+    .segmented button[aria-pressed="true"]:hover { background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+    .nav-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 9px;
+    }
+    .icon-button {
+      --glass-radius: 17px;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 17px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 760;
+    }
+    .icon-button svg,
+    .fab svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .app-layout {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .command-rail {
+      position: sticky;
+      top: calc(106px + var(--safe-top));
+      z-index: 18;
+      display: grid;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 28px;
+    }
+    .rail-divider {
+      width: 26px;
+      height: 1px;
+      margin: 2px auto;
+      background: rgba(255,255,255,.52);
+    }
+    .content-stack { display: grid; gap: 18px; min-width: 0; }
+    .hero {
+      position: relative;
+      min-height: 470px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 44px;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,255,255,.88), transparent 34%),
+        radial-gradient(circle at 84% 8%, rgba(84, 202, 255, .26), transparent 24%),
+        radial-gradient(circle at 88% 82%, rgba(139, 92, 246, .22), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.92), rgba(244,248,255,.74));
+      box-shadow: var(--shadow-deep);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -18% -34% 36%;
+      height: 330px;
+      border-radius: 999px;
+      background: radial-gradient(ellipse at center, rgba(49,94,234,.18), transparent 66%);
+      filter: blur(4px);
+    }
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 358px;
+      gap: 34px;
+      padding: clamp(28px, 5vw, 56px);
+      min-height: inherit;
+    }
+    .eyebrow-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(255,255,255,.72);
+      color: var(--ink-2);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 22px rgba(15,23,42,.08);
+      font-size: 12px;
+      font-weight: 820;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: #24c775;
+      box-shadow: 0 0 0 7px rgba(36, 199, 117, .14);
+    }
+    .updated-chip { color: var(--muted); font-weight: 710; }
+    .hero-subcopy {
+      max-width: 680px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.9vw, 1.35rem);
+      text-wrap: balance;
+    }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .primary-action,
+    .secondary-action {
+      --glass-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 0;
+      color: var(--ink);
+      font-weight: 780;
+      text-decoration: none;
+    }
+    .primary-action {
+      color: #fff;
+      background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.46), transparent 24%),
+        linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 40px rgba(49,94,234,.27), inset 0 1px 0 rgba(255,255,255,.38);
+    }
+    .secondary-action { background: rgba(255,255,255,.52); }
+    .hero-side {
+      display: grid;
+      align-content: center;
+      gap: 14px;
+    }
+    .signal-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 116px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 16px 40px rgba(15,23,42,.10), inset 0 1px 0 rgba(255,255,255,.88);
+      padding: 18px;
+    }
+    .signal-card::after {
+      content: "";
+      position: absolute;
+      right: -28px;
+      top: -38px;
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      background: var(--orb, rgba(49, 94, 234, .17));
+    }
+    .signal-card[data-tone="drop"] { --orb: rgba(209, 43, 75, .14); }
+    .signal-card[data-tone="pace"] { --orb: rgba(139, 92, 246, .15); }
+    .signal-card[data-tone="good"] { --orb: rgba(22, 128, 74, .14); }
+    .signal-card span,
+    .signal-card strong,
+    .signal-card em { position: relative; z-index: 1; display: block; }
+    .signal-card span { color: var(--muted); font-size: 12px; font-weight: 820; text-transform: uppercase; }
+    .signal-card strong { margin-top: 4px; font-size: 2.05rem; line-height: .98; }
+    .signal-card em { margin-top: 8px; color: var(--muted); font-style: normal; font-size: .9rem; }
+
+    .section-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--solid);
+      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.68);
+      overflow: hidden;
+    }
+    .section-pad { padding: clamp(22px, 3vw, 32px); }
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 820;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-kicker::before {
+      content: "";
+      width: 8px;
+      height: 20px;
+      border-radius: 99px;
+      background: linear-gradient(180deg, var(--accent-2), var(--accent-3));
+      box-shadow: 0 8px 22px rgba(49,94,234,.28);
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .metric-card {
+      position: relative;
+      min-height: 148px;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 88% 8%, var(--metric-glow, rgba(49,94,234,.13)), transparent 44%),
+        linear-gradient(145deg, rgba(255,255,255,.94), rgba(248,250,255,.82));
+      box-shadow: 0 14px 32px rgba(15,23,42,.08), inset 0 1px 0 rgba(255,255,255,.72);
+      padding: 18px;
+    }
+    .metric-card:nth-child(1) { --metric-glow: rgba(139,92,246,.20); }
+    .metric-card:nth-child(2) { --metric-glow: rgba(49,94,234,.18); }
+    .metric-card:nth-child(3) { --metric-glow: rgba(0,165,216,.17); }
+    .metric-card:nth-child(4) { --metric-glow: rgba(36,199,117,.16); }
+    .metric-card:nth-child(5) { --metric-glow: rgba(255,178,61,.18); }
+    .metric-label { color: var(--muted); font-size: .74rem; font-weight: 820; text-transform: uppercase; }
+    .metric-value { margin-top: 12px; font-size: clamp(1.7rem, 3vw, 2.35rem); line-height: .98; font-weight: 850; }
+    .metric-foot { margin-top: 12px; color: var(--muted); font-size: .88rem; }
+    .metric-bar {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      height: 6px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(19,34,62,.08);
+    }
+    .metric-bar span {
+      display: block;
+      height: 100%;
+      width: var(--w, 50%);
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .data-health {
+      position: relative;
+      padding-left: 52px;
+      color: var(--ink-2);
+      font-size: .95rem;
+    }
+    .data-health::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      width: 24px;
+      height: 24px;
+      border-radius: 99px;
+      background: radial-gradient(circle at 35% 28%, #fff, #22c55e 54%, #14b8a6);
+      box-shadow: 0 10px 22px rgba(34,197,94,.25);
+    }
+    .data-health strong { color: var(--success); }
+    .priority-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: priority;
+    }
+    .priority-list li {
+      position: relative;
+      min-height: 152px;
+      margin: 0;
+      padding: 18px 18px 18px 64px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255,255,255,.80), rgba(248,250,255,.62));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      color: var(--muted);
+    }
+    .priority-list li::before {
+      counter-increment: priority;
+      content: counter(priority);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 860;
+      box-shadow: 0 12px 28px rgba(49,94,234,.24), inset 0 1px 0 rgba(255,255,255,.34);
+    }
+    .priority-list strong { display: block; margin-bottom: 4px; color: var(--ink); }
+    .readout-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr);
+      gap: 18px;
+    }
+    .readout-copy {
+      color: var(--ink-2);
+      font-size: 1.02rem;
+    }
+    .compact-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+    }
+    .compact-list li::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 28%, #fff, var(--accent) 54%, var(--accent-2));
+      box-shadow: 0 8px 16px rgba(49,94,234,.20);
+    }
+    .mini-chart-card {
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255,255,255,.76), rgba(248,250,255,.56));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      padding: 20px;
+    }
+    .donut-row {
+      display: grid;
+      grid-template-columns: 148px minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+      margin-top: 14px;
+    }
+    .donut {
+      width: 148px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--mix-gradient);
+      box-shadow: inset 0 0 0 22px rgba(255,255,255,.80), 0 20px 44px rgba(15,23,42,.12);
+    }
+    .legend { display: grid; gap: 8px; }
+    .legend-row { display: grid; grid-template-columns: 12px 1fr auto; gap: 9px; align-items: center; color: var(--muted); font-size: .9rem; }
+    .swatch { width: 12px; height: 12px; border-radius: 99px; background: var(--c); }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255,255,255,.72);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+      margin-top: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: .91rem;
+    }
+    th, td {
+      padding: 13px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      background: rgba(247,249,255,.78);
+      font-size: .74rem;
+      font-weight: 820;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    td { color: var(--ink-2); background: rgba(255,255,255,.36); }
+    tbody tr:nth-child(even) td { background: rgba(247,250,255,.46); }
+    tr:last-child td { border-bottom: 0; }
+    .wide td:last-child { overflow-wrap: anywhere; }
+    .status { font-weight: 840; text-transform: uppercase; font-size: .76rem; }
+    .status.watch { color: var(--warning); }
+    .status.info { color: var(--accent); }
+    .status.caveat { color: var(--muted); }
+    .status.ok { color: var(--success); }
+    .status.action { color: var(--danger); }
+    .status-table td:first-child { width: 110px; }
+    .rank-table td:first-child {
+      color: var(--accent);
+      font-weight: 860;
+      white-space: nowrap;
+    }
+    .rank-table td:first-child::before {
+      content: "#";
+      opacity: .55;
+    }
+    .period-block + .period-block { margin-top: 30px; }
+    .release-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .release-stat {
+      min-height: 118px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(255,255,255,.76), rgba(248,250,255,.56));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.68);
+    }
+    .release-stat span,
+    .release-stat strong,
+    .release-stat em { display: block; }
+    .release-stat span {
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 820;
+      text-transform: uppercase;
+    }
+    .release-stat strong {
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      line-height: 1;
+    }
+    .release-stat em {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: .86rem;
+      font-style: normal;
+    }
+    .release-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: 18px;
+      align-items: start;
+      margin-top: 18px;
+    }
+    .release-grid h3 { margin-top: 0; }
+    .release-empty {
+      min-height: 110px;
+      display: grid;
+      place-items: center start;
+      padding: 18px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 24px;
+      background: rgba(255,255,255,.34);
+    }
+    .release-table td:nth-child(2) { min-width: 240px; }
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    figure,
+    .chart-card {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--solid);
+      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.68);
+      overflow: hidden;
+    }
+    .chart-shell {
+      min-height: 320px;
+      padding: clamp(18px, 2.6vw, 28px);
+    }
+    .chart-title {
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: clamp(1.15rem, 2vw, 1.65rem);
+      font-weight: 820;
+    }
+    .chart-shell picture { display: block; }
+    .chart-shell img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 8px;
+    }
+    .report-details {
+      border-top: 0;
+      margin-top: 14px;
+    }
+    .report-details summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 28px;
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 840;
+    }
+    .report-details summary::-webkit-details-marker { display: none; }
+    .report-details summary::after {
+      content: "+";
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid var(--line);
+      color: var(--accent);
+      font-size: 1.3rem;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+    .report-details[open] summary::after { transform: rotate(45deg); }
+    .details-body { padding: 0 28px 28px; }
+    .details-note { margin-top: 0; }
+    .appendix { display: grid; gap: 14px; }
+    .appendix-title { margin: 10px 0 0; }
+    .data-explorer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 16px 0 28px;
+    }
+    .data-card {
+      min-width: 0;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.34);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.54);
+    }
+    .data-card h3 { margin-top: 0; }
+    .data-preview {
+      margin-top: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.42);
+      background: rgba(255,255,255,.22);
+      overflow: hidden;
+    }
+    .data-preview summary {
+      cursor: pointer;
+      padding: 12px 14px;
+      font-weight: 820;
+      color: var(--ink);
+      list-style: none;
+    }
+    .data-preview summary::-webkit-details-marker { display: none; }
+    .data-preview summary::after {
+      content: "+";
+      float: right;
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .data-preview[open] summary::after { content: "-"; }
+    .data-table-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+      padding: 0 14px;
+    }
+    .csv-link {
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 780;
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+    .preview-note { padding: 0 14px; }
+    .data-preview .table-wrap {
+      margin: 12px 14px 14px;
+      max-height: 520px;
+      overflow: auto;
+    }
+    .mobile-tabbar {
+      position: fixed;
+      left: 50%;
+      bottom: calc(12px + var(--safe-bottom));
+      z-index: 50;
+      display: none;
+      width: min(calc(100% - 28px), 450px);
+      transform: translateX(-50%);
+      padding: 8px;
+      border-radius: 30px;
+    }
+    .mobile-tabbar nav {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+    }
+    .tab-item {
+      display: grid;
+      place-items: center;
+      gap: 3px;
+      min-height: 54px;
+      border-radius: 22px;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 740;
+      color: var(--muted);
+    }
+    .tab-item svg { width: 19px; height: 19px; }
+    .tab-item[aria-current="page"],
+    .tab-item:hover,
+    .tab-item:focus-visible {
+      color: var(--ink);
+      background: rgba(255,255,255,.46);
+    }
+    .fab {
+      position: fixed;
+      right: max(22px, env(safe-area-inset-right, 0px) + 20px);
+      bottom: calc(24px + var(--safe-bottom));
+      z-index: 45;
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 22px;
+    }
+    .hide-row { display: none !important; }
+
+    @media (prefers-color-scheme: dark) {
+      .hero {
+        background:
+          radial-gradient(circle at 12% 8%, rgba(56, 82, 143, .34), transparent 35%),
+          radial-gradient(circle at 84% 8%, rgba(84,202,255,.13), transparent 24%),
+          radial-gradient(circle at 88% 82%, rgba(139,92,246,.14), transparent 28%),
+          linear-gradient(145deg, rgba(16,26,46,.92), rgba(9,15,29,.78));
+      }
+      .eyebrow,
+      .signal-card,
+      .metric-card,
+      .priority-list li,
+      .mini-chart-card,
+      .release-stat,
+      .release-empty,
+      .data-card,
+      .table-wrap,
+      .report-details summary::after {
+        background: rgba(18, 29, 50, .72);
+      }
+      .metric-card {
+        background: radial-gradient(circle at 88% 8%, var(--metric-glow, rgba(125,171,255,.16)), transparent 44%), linear-gradient(145deg, rgba(17, 27, 48, .90), rgba(12, 20, 36, .76));
+      }
+      .section-panel,
+      figure,
+      .chart-card {
+        background: var(--solid);
+        box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.08);
+      }
+      .priority-list li,
+      .mini-chart-card,
+      .release-stat,
+      .data-card,
+      .table-wrap { box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+      th { background: rgba(211,229,255,.07); }
+      td { background: rgba(12,20,36,.26); color: var(--ink-2); }
+      tbody tr:nth-child(even) td { background: rgba(211,229,255,.04); }
+      .donut { box-shadow: inset 0 0 0 22px rgba(11, 18, 32, .92), 0 20px 44px rgba(0,0,0,.28); }
+      .metric-bar { background: rgba(211,229,255,.10); }
+      .search-count { background: rgba(255,255,255,.10); }
+    }
+
+    @supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+      .liquid {
+        background: rgba(255,255,255,.96);
+        box-shadow: 0 20px 48px rgba(15,23,42,.16), inset 0 1px 0 rgba(255,255,255,.9);
+      }
+      @media (prefers-color-scheme: dark) {
+        .liquid { background: rgba(15, 23, 42, .96); }
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+      }
+      .liquid { transform: none !important; }
+    }
+    @media (prefers-reduced-transparency: reduce) {
+      .liquid {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255,255,255,.97) !important;
+      }
+      @media (prefers-color-scheme: dark) {
+        .liquid { background: rgba(12, 20, 36, .97) !important; }
+      }
+    }
+    @media (forced-colors: active) {
+      .liquid,
+      .section-panel,
+      .metric-card,
+      .table-wrap,
+      .priority-list li {
+        border: 1px solid CanvasText;
+        background: Canvas;
+        box-shadow: none;
+      }
+      .liquid::before,
+      .liquid::after,
+      body::before,
+      body::after { display: none; }
+    }
+    @media (max-width: 1120px) {
+      .top-nav { grid-template-columns: 1fr auto; }
+      .nav-center { grid-column: 1 / -1; grid-row: 2; justify-content: stretch; }
+      .search-pill { min-width: 0; flex: 1 1 auto; }
+      .app-layout { grid-template-columns: 1fr; }
+      .command-rail { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-side { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .release-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .release-grid { grid-template-columns: 1fr; }
+      .readout-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      :root { --glass-radius: 26px; --glass-blur: 18px; --glass-shadow-depth: 28px; }
+      .page-shell {
+        width: min(calc(100% - 24px), var(--page-max));
+        padding-top: calc(10px + var(--safe-top));
+        padding-bottom: calc(118px + var(--safe-bottom));
+      }
+      [id] { scroll-margin-top: 24px; }
+      .top-nav {
+        position: relative;
+        top: auto;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        margin-bottom: 14px;
+        border-radius: 28px;
+      }
+      .brand { padding: 5px 4px; }
+      .brand-mark { width: 36px; height: 36px; border-radius: 14px; }
+      .nav-actions .segmented { display: none; }
+      .nav-actions .icon-button:nth-child(2) { display: none; }
+      .nav-center { display: block; }
+      .search-pill { min-width: 0; width: 100%; }
+      .hero { min-height: auto; border-radius: 34px; }
+      .hero-inner { padding: 26px; gap: 22px; }
+      .hero-side,
+      .metric-grid,
+      .release-summary-grid,
+      .priority-list,
+      .chart-grid { grid-template-columns: 1fr; }
+      .signal-card { min-height: 104px; }
+      .section-header { display: grid; align-items: start; }
+      .section-pad { padding: 22px; }
+      .metric-card { min-height: 134px; }
+      .data-explorer-grid { grid-template-columns: 1fr; }
+      .priority-list li { min-height: auto; padding-right: 16px; }
+      .donut-row { grid-template-columns: 1fr; justify-items: start; }
+      .mobile-tabbar { display: block; }
+      .fab { right: 18px; bottom: calc(94px + var(--safe-bottom)); width: 56px; height: 56px; }
+      table { min-width: 680px; }
+      h1 { font-size: clamp(3rem, 12vw, 4.4rem); }
+    }
+    
+    .calendar-page-hero {
+      min-height: auto;
+      padding: clamp(28px, 5vw, 54px);
+    }
+    .calendar-page-hero h1 {
+      max-width: 900px;
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+    }
+    .calendar-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .calendar-month-nav {
+      position: sticky;
+      top: calc(92px + var(--safe-top));
+      z-index: 20;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 8px;
+      padding: 10px;
+      border-radius: 28px;
+    }
+    .month-jump {
+      display: grid;
+      place-items: center;
+      min-height: 38px;
+      border-radius: 999px;
+      color: var(--ink-2);
+      text-decoration: none;
+      font-weight: 820;
+      font-size: .82rem;
+    }
+    .calendar-year-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .month-card {
+      padding: 18px;
+      overflow: visible;
+    }
+    .month-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .month-header span {
+      display: grid;
+      place-items: center;
+      min-width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 860;
+    }
+    .weekday-row,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 6px;
+    }
+    .weekday-row {
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 840;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .calendar-day {
+      min-height: 106px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.42);
+      padding: 8px;
+      overflow: hidden;
+    }
+    .calendar-day time {
+      display: inline-grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 820;
+      font-size: .82rem;
+    }
+    .calendar-day.today time {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+    .calendar-day.outside-month {
+      opacity: .38;
+      background: rgba(255,255,255,.18);
+    }
+    .calendar-day.has-event {
+      background: linear-gradient(145deg, rgba(255,255,255,.82), rgba(239,247,255,.62));
+      border-color: var(--line-strong);
+    }
+    .day-events {
+      display: grid;
+      gap: 5px;
+      margin-top: 6px;
+    }
+    .event-chip {
+      display: grid;
+      gap: 1px;
+      padding: 6px 7px;
+      border-radius: 12px;
+      background: rgba(49,94,234,.10);
+      border-left: 3px solid var(--accent);
+      color: var(--ink-2);
+    }
+    .event-chip.planned {
+      background: rgba(161,97,7,.10);
+      border-left-color: var(--warning);
+    }
+    .event-chip strong {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--ink);
+      font-size: .72rem;
+      line-height: 1.15;
+    }
+    .event-chip span,
+    .event-more {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: .66rem;
+      line-height: 1.1;
+    }
+    .event-more {
+      padding: 0 7px;
+      font-weight: 780;
+    }
+    @media (prefers-color-scheme: dark) {
+      .calendar-day { background: rgba(18,29,50,.52); }
+      .calendar-day.outside-month { background: rgba(18,29,50,.22); }
+      .calendar-day.has-event { background: linear-gradient(145deg, rgba(18,29,50,.86), rgba(12,20,36,.72)); }
+    }
+    @media (max-width: 1120px) {
+      .calendar-year-grid { grid-template-columns: 1fr; }
+      .calendar-month-nav { grid-template-columns: repeat(6, minmax(0, 1fr)); top: calc(12px + var(--safe-top)); }
+    }
+    @media (max-width: 760px) {
+      .calendar-summary-grid,
+      .calendar-month-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .month-card { padding: 14px; }
+      .weekday-row,
+      .calendar-grid { gap: 4px; }
+      .calendar-day {
+        min-height: 86px;
+        border-radius: 14px;
+        padding: 5px;
+      }
+      .event-chip {
+        padding: 5px;
+        border-radius: 10px;
+      }
+      .event-chip strong { font-size: .66rem; }
+      .event-chip span { display: none; }
+      h1 { font-size: clamp(2.6rem, 11vw, 4rem); }
+    }
+    </style>
+</head>
+<body>
+<div class="page-shell">
+  <header class="top-nav liquid" data-liquid>
+    <a class="brand focus-ring" href="index.html#calendar" aria-label="Back to Creator Sales dashboard">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Release Calendar<small>creator sales planning</small></span>
+    </a>
+    <div class="nav-center">
+      <nav class="segmented liquid" data-liquid aria-label="Calendar navigation">
+        <a class="secondary-action" href="index.html#calendar">Dashboard</a>
+        <a class="secondary-action" href="data/release_calendar.csv">CSV</a>
+      </nav>
+    </div>
+  </header>
+  <main class="content-stack">
+    <section class="hero calendar-page-hero">
+      <div class="eyebrow-row">
+        <span class="eyebrow">Release planning calendar</span>
+        <span class="updated-chip mono">Generated Jun 30, 2026 · 13:01 local</span>
+      </div>
+      <h1>2026 Release Calendar</h1>
+      <p class="hero-subcopy">Month-by-month view of actual release dates from the dashboard's First Offered logic, with planned releases from the editable schedule file when present.</p>
+      <div class="calendar-summary-grid">
+        <article class="release-stat"><span>Released</span><strong class="mono">15</strong><em>dated releases in 2026</em></article>
+        <article class="release-stat"><span>Planned</span><strong class="mono">0</strong><em>from planned_releases.csv</em></article>
+        <article class="release-stat"><span>Release days</span><strong class="mono">14</strong><em>days with calendar notes</em></article>
+      </div>
+    </section>
+    <nav class="calendar-month-nav liquid" data-liquid aria-label="Jump to month"><a class="month-jump liquid" data-liquid href="#2026-01">Jan</a><a class="month-jump liquid" data-liquid href="#2026-02">Feb</a><a class="month-jump liquid" data-liquid href="#2026-03">Mar</a><a class="month-jump liquid" data-liquid href="#2026-04">Apr</a><a class="month-jump liquid" data-liquid href="#2026-05">May</a><a class="month-jump liquid" data-liquid href="#2026-06">Jun</a><a class="month-jump liquid" data-liquid href="#2026-07">Jul</a><a class="month-jump liquid" data-liquid href="#2026-08">Aug</a><a class="month-jump liquid" data-liquid href="#2026-09">Sep</a><a class="month-jump liquid" data-liquid href="#2026-10">Oct</a><a class="month-jump liquid" data-liquid href="#2026-11">Nov</a><a class="month-jump liquid" data-liquid href="#2026-12">Dec</a></nav>
+    <section class="calendar-year-grid" aria-label="2026 release months">
+      <section id="2026-01" class="month-card section-panel"><div class="month-header"><h2>January</h2><span class="mono">2</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2025-12-28">28</time></article><article class="calendar-day outside-month"><time datetime="2025-12-29">29</time></article><article class="calendar-day outside-month"><time datetime="2025-12-30">30</time></article><article class="calendar-day outside-month"><time datetime="2025-12-31">31</time></article><article class="calendar-day"><time datetime="2026-01-01">1</time></article><article class="calendar-day"><time datetime="2026-01-02">2</time></article><article class="calendar-day"><time datetime="2026-01-03">3</time></article><article class="calendar-day has-event"><time datetime="2026-01-04">4</time><div class="day-events"><div class="event-chip released"><strong>Greedy fatty gets messy stuffing cake!</strong><span>Curvage · $29</span></div></div></article><article class="calendar-day"><time datetime="2026-01-05">5</time></article><article class="calendar-day"><time datetime="2026-01-06">6</time></article><article class="calendar-day"><time datetime="2026-01-07">7</time></article><article class="calendar-day"><time datetime="2026-01-08">8</time></article><article class="calendar-day"><time datetime="2026-01-09">9</time></article><article class="calendar-day"><time datetime="2026-01-10">10</time></article><article class="calendar-day"><time datetime="2026-01-11">11</time></article><article class="calendar-day"><time datetime="2026-01-12">12</time></article><article class="calendar-day"><time datetime="2026-01-13">13</time></article><article class="calendar-day"><time datetime="2026-01-14">14</time></article><article class="calendar-day"><time datetime="2026-01-15">15</time></article><article class="calendar-day"><time datetime="2026-01-16">16</time></article><article class="calendar-day"><time datetime="2026-01-17">17</time></article><article class="calendar-day"><time datetime="2026-01-18">18</time></article><article class="calendar-day"><time datetime="2026-01-19">19</time></article><article class="calendar-day"><time datetime="2026-01-20">20</time></article><article class="calendar-day"><time datetime="2026-01-21">21</time></article><article class="calendar-day"><time datetime="2026-01-22">22</time></article><article class="calendar-day"><time datetime="2026-01-23">23</time></article><article class="calendar-day"><time datetime="2026-01-24">24</time></article><article class="calendar-day"><time datetime="2026-01-25">25</time></article><article class="calendar-day"><time datetime="2026-01-26">26</time></article><article class="calendar-day"><time datetime="2026-01-27">27</time></article><article class="calendar-day"><time datetime="2026-01-28">28</time></article><article class="calendar-day"><time datetime="2026-01-29">29</time></article><article class="calendar-day has-event"><time datetime="2026-01-30">30</time><div class="day-events"><div class="event-chip released"><strong>Gassy Giantess Gobbles You Up</strong><span>Clips4Sale, Curvage, ManyVids, OnlyFans · $2,497</span></div></div></article><article class="calendar-day"><time datetime="2026-01-31">31</time></article></div></section>
+<section id="2026-02" class="month-card section-panel"><div class="month-header"><h2>February</h2><span class="mono">2</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day"><time datetime="2026-02-01">1</time></article><article class="calendar-day"><time datetime="2026-02-02">2</time></article><article class="calendar-day"><time datetime="2026-02-03">3</time></article><article class="calendar-day"><time datetime="2026-02-04">4</time></article><article class="calendar-day"><time datetime="2026-02-05">5</time></article><article class="calendar-day"><time datetime="2026-02-06">6</time></article><article class="calendar-day has-event"><time datetime="2026-02-07">7</time><div class="day-events"><div class="event-chip released"><strong>Messy piggy stuffs chocolate cake!</strong><span>Curvage · $38</span></div></div></article><article class="calendar-day"><time datetime="2026-02-08">8</time></article><article class="calendar-day"><time datetime="2026-02-09">9</time></article><article class="calendar-day"><time datetime="2026-02-10">10</time></article><article class="calendar-day"><time datetime="2026-02-11">11</time></article><article class="calendar-day"><time datetime="2026-02-12">12</time></article><article class="calendar-day"><time datetime="2026-02-13">13</time></article><article class="calendar-day"><time datetime="2026-02-14">14</time></article><article class="calendar-day"><time datetime="2026-02-15">15</time></article><article class="calendar-day"><time datetime="2026-02-16">16</time></article><article class="calendar-day"><time datetime="2026-02-17">17</time></article><article class="calendar-day"><time datetime="2026-02-18">18</time></article><article class="calendar-day"><time datetime="2026-02-19">19</time></article><article class="calendar-day"><time datetime="2026-02-20">20</time></article><article class="calendar-day"><time datetime="2026-02-21">21</time></article><article class="calendar-day has-event"><time datetime="2026-02-22">22</time><div class="day-events"><div class="event-chip released"><strong>Diet Pills Gone Wrong</strong><span>Clips4Sale, Curvage, ManyVids, OnlyFans · $3,588</span></div></div></article><article class="calendar-day"><time datetime="2026-02-23">23</time></article><article class="calendar-day"><time datetime="2026-02-24">24</time></article><article class="calendar-day"><time datetime="2026-02-25">25</time></article><article class="calendar-day"><time datetime="2026-02-26">26</time></article><article class="calendar-day"><time datetime="2026-02-27">27</time></article><article class="calendar-day"><time datetime="2026-02-28">28</time></article></div></section>
+<section id="2026-03" class="month-card section-panel"><div class="month-header"><h2>March</h2><span class="mono">2</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day"><time datetime="2026-03-01">1</time></article><article class="calendar-day"><time datetime="2026-03-02">2</time></article><article class="calendar-day"><time datetime="2026-03-03">3</time></article><article class="calendar-day has-event"><time datetime="2026-03-04">4</time><div class="day-events"><div class="event-chip released"><strong>HR Fatty Makes You Her Feeder POV</strong><span>Clips4Sale, Curvage, ManyVids, OnlyFans · $2,577</span></div></div></article><article class="calendar-day"><time datetime="2026-03-05">5</time></article><article class="calendar-day"><time datetime="2026-03-06">6</time></article><article class="calendar-day"><time datetime="2026-03-07">7</time></article><article class="calendar-day"><time datetime="2026-03-08">8</time></article><article class="calendar-day"><time datetime="2026-03-09">9</time></article><article class="calendar-day"><time datetime="2026-03-10">10</time></article><article class="calendar-day has-event"><time datetime="2026-03-11">11</time><div class="day-events"><div class="event-chip released"><strong>Stuffed Girlfriend Gets Gassy</strong><span>Clips4Sale, Curvage, ManyVids, OnlyFans · $2,812</span></div></div></article><article class="calendar-day"><time datetime="2026-03-12">12</time></article><article class="calendar-day"><time datetime="2026-03-13">13</time></article><article class="calendar-day"><time datetime="2026-03-14">14</time></article><article class="calendar-day"><time datetime="2026-03-15">15</time></article><article class="calendar-day"><time datetime="2026-03-16">16</time></article><article class="calendar-day"><time datetime="2026-03-17">17</time></article><article class="calendar-day"><time datetime="2026-03-18">18</time></article><article class="calendar-day"><time datetime="2026-03-19">19</time></article><article class="calendar-day"><time datetime="2026-03-20">20</time></article><article class="calendar-day"><time datetime="2026-03-21">21</time></article><article class="calendar-day"><time datetime="2026-03-22">22</time></article><article class="calendar-day"><time datetime="2026-03-23">23</time></article><article class="calendar-day"><time datetime="2026-03-24">24</time></article><article class="calendar-day"><time datetime="2026-03-25">25</time></article><article class="calendar-day"><time datetime="2026-03-26">26</time></article><article class="calendar-day"><time datetime="2026-03-27">27</time></article><article class="calendar-day"><time datetime="2026-03-28">28</time></article><article class="calendar-day"><time datetime="2026-03-29">29</time></article><article class="calendar-day"><time datetime="2026-03-30">30</time></article><article class="calendar-day"><time datetime="2026-03-31">31</time></article><article class="calendar-day outside-month"><time datetime="2026-04-01">1</time></article><article class="calendar-day outside-month"><time datetime="2026-04-02">2</time></article><article class="calendar-day outside-month"><time datetime="2026-04-03">3</time></article><article class="calendar-day outside-month"><time datetime="2026-04-04">4</time></article></div></section>
+<section id="2026-04" class="month-card section-panel"><div class="month-header"><h2>April</h2><span class="mono">5</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2026-03-29">29</time></article><article class="calendar-day outside-month"><time datetime="2026-03-30">30</time></article><article class="calendar-day outside-month"><time datetime="2026-03-31">31</time></article><article class="calendar-day"><time datetime="2026-04-01">1</time></article><article class="calendar-day"><time datetime="2026-04-02">2</time></article><article class="calendar-day"><time datetime="2026-04-03">3</time></article><article class="calendar-day"><time datetime="2026-04-04">4</time></article><article class="calendar-day"><time datetime="2026-04-05">5</time></article><article class="calendar-day has-event"><time datetime="2026-04-06">6</time><div class="day-events"><div class="event-chip released"><strong>Exercise After Gaining</strong><span>Clips4Sale, Curvage, ManyVids, OnlyFans · $2,162</span></div><div class="event-chip released"><strong>Room Service Stuffing</strong><span>OnlyFans · $24</span></div></div></article><article class="calendar-day"><time datetime="2026-04-07">7</time></article><article class="calendar-day"><time datetime="2026-04-08">8</time></article><article class="calendar-day"><time datetime="2026-04-09">9</time></article><article class="calendar-day"><time datetime="2026-04-10">10</time></article><article class="calendar-day"><time datetime="2026-04-11">11</time></article><article class="calendar-day"><time datetime="2026-04-12">12</time></article><article class="calendar-day"><time datetime="2026-04-13">13</time></article><article class="calendar-day"><time datetime="2026-04-14">14</time></article><article class="calendar-day"><time datetime="2026-04-15">15</time></article><article class="calendar-day"><time datetime="2026-04-16">16</time></article><article class="calendar-day has-event"><time datetime="2026-04-17">17</time><div class="day-events"><div class="event-chip released"><strong>BBW Covered in Oil - Full Nude Version</strong><span>ManyVids · $10</span></div></div></article><article class="calendar-day"><time datetime="2026-04-18">18</time></article><article class="calendar-day"><time datetime="2026-04-19">19</time></article><article class="calendar-day has-event"><time datetime="2026-04-20">20</time><div class="day-events"><div class="event-chip released"><strong>Stuffed and Horny</strong><span>Clips4Sale, ManyVids · $1,243</span></div></div></article><article class="calendar-day"><time datetime="2026-04-21">21</time></article><article class="calendar-day"><time datetime="2026-04-22">22</time></article><article class="calendar-day"><time datetime="2026-04-23">23</time></article><article class="calendar-day"><time datetime="2026-04-24">24</time></article><article class="calendar-day"><time datetime="2026-04-25">25</time></article><article class="calendar-day"><time datetime="2026-04-26">26</time></article><article class="calendar-day has-event"><time datetime="2026-04-27">27</time><div class="day-events"><div class="event-chip released"><strong>The Diet of a Gaining SSBBW</strong><span>Clips4Sale, Curvage, ManyVids, OnlyFans · $1,545</span></div></div></article><article class="calendar-day"><time datetime="2026-04-28">28</time></article><article class="calendar-day"><time datetime="2026-04-29">29</time></article><article class="calendar-day"><time datetime="2026-04-30">30</time></article><article class="calendar-day outside-month"><time datetime="2026-05-01">1</time></article><article class="calendar-day outside-month"><time datetime="2026-05-02">2</time></article></div></section>
+<section id="2026-05" class="month-card section-panel"><div class="month-header"><h2>May</h2><span class="mono">2</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2026-04-26">26</time></article><article class="calendar-day outside-month"><time datetime="2026-04-27">27</time></article><article class="calendar-day outside-month"><time datetime="2026-04-28">28</time></article><article class="calendar-day outside-month"><time datetime="2026-04-29">29</time></article><article class="calendar-day outside-month"><time datetime="2026-04-30">30</time></article><article class="calendar-day"><time datetime="2026-05-01">1</time></article><article class="calendar-day"><time datetime="2026-05-02">2</time></article><article class="calendar-day"><time datetime="2026-05-03">3</time></article><article class="calendar-day has-event"><time datetime="2026-05-04">4</time><div class="day-events"><div class="event-chip released"><strong>Gaining SSBBW Wants to Reach 600lbs</strong><span>Clips4Sale, Curvage, ManyVids, OnlyFans · $2,164</span></div></div></article><article class="calendar-day"><time datetime="2026-05-05">5</time></article><article class="calendar-day"><time datetime="2026-05-06">6</time></article><article class="calendar-day"><time datetime="2026-05-07">7</time></article><article class="calendar-day"><time datetime="2026-05-08">8</time></article><article class="calendar-day"><time datetime="2026-05-09">9</time></article><article class="calendar-day"><time datetime="2026-05-10">10</time></article><article class="calendar-day"><time datetime="2026-05-11">11</time></article><article class="calendar-day"><time datetime="2026-05-12">12</time></article><article class="calendar-day"><time datetime="2026-05-13">13</time></article><article class="calendar-day"><time datetime="2026-05-14">14</time></article><article class="calendar-day"><time datetime="2026-05-15">15</time></article><article class="calendar-day"><time datetime="2026-05-16">16</time></article><article class="calendar-day"><time datetime="2026-05-17">17</time></article><article class="calendar-day"><time datetime="2026-05-18">18</time></article><article class="calendar-day"><time datetime="2026-05-19">19</time></article><article class="calendar-day"><time datetime="2026-05-20">20</time></article><article class="calendar-day has-event"><time datetime="2026-05-21">21</time><div class="day-events"><div class="event-chip released"><strong>Best Friend&#x27;s Mom Teases You</strong><span>Clips4Sale, Curvage, ManyVids, OnlyFans · $5,956</span></div></div></article><article class="calendar-day"><time datetime="2026-05-22">22</time></article><article class="calendar-day"><time datetime="2026-05-23">23</time></article><article class="calendar-day"><time datetime="2026-05-24">24</time></article><article class="calendar-day"><time datetime="2026-05-25">25</time></article><article class="calendar-day"><time datetime="2026-05-26">26</time></article><article class="calendar-day"><time datetime="2026-05-27">27</time></article><article class="calendar-day"><time datetime="2026-05-28">28</time></article><article class="calendar-day"><time datetime="2026-05-29">29</time></article><article class="calendar-day"><time datetime="2026-05-30">30</time></article><article class="calendar-day"><time datetime="2026-05-31">31</time></article><article class="calendar-day outside-month"><time datetime="2026-06-01">1</time></article><article class="calendar-day outside-month"><time datetime="2026-06-02">2</time></article><article class="calendar-day outside-month"><time datetime="2026-06-03">3</time></article><article class="calendar-day outside-month"><time datetime="2026-06-04">4</time></article><article class="calendar-day outside-month"><time datetime="2026-06-05">5</time></article><article class="calendar-day outside-month"><time datetime="2026-06-06">6</time></article></div></section>
+<section id="2026-06" class="month-card section-panel"><div class="month-header"><h2>June</h2><span class="mono">2</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2026-05-31">31</time></article><article class="calendar-day"><time datetime="2026-06-01">1</time></article><article class="calendar-day"><time datetime="2026-06-02">2</time></article><article class="calendar-day"><time datetime="2026-06-03">3</time></article><article class="calendar-day"><time datetime="2026-06-04">4</time></article><article class="calendar-day"><time datetime="2026-06-05">5</time></article><article class="calendar-day"><time datetime="2026-06-06">6</time></article><article class="calendar-day"><time datetime="2026-06-07">7</time></article><article class="calendar-day"><time datetime="2026-06-08">8</time></article><article class="calendar-day"><time datetime="2026-06-09">9</time></article><article class="calendar-day"><time datetime="2026-06-10">10</time></article><article class="calendar-day has-event"><time datetime="2026-06-11">11</time><div class="day-events"><div class="event-chip released"><strong>Fucking Your Stuffed SSBBW Girlfriend POV</strong><span>Clips4Sale, ManyVids, OnlyFans · $1,343</span></div></div></article><article class="calendar-day"><time datetime="2026-06-12">12</time></article><article class="calendar-day"><time datetime="2026-06-13">13</time></article><article class="calendar-day"><time datetime="2026-06-14">14</time></article><article class="calendar-day"><time datetime="2026-06-15">15</time></article><article class="calendar-day"><time datetime="2026-06-16">16</time></article><article class="calendar-day"><time datetime="2026-06-17">17</time></article><article class="calendar-day"><time datetime="2026-06-18">18</time></article><article class="calendar-day"><time datetime="2026-06-19">19</time></article><article class="calendar-day"><time datetime="2026-06-20">20</time></article><article class="calendar-day"><time datetime="2026-06-21">21</time></article><article class="calendar-day"><time datetime="2026-06-22">22</time></article><article class="calendar-day"><time datetime="2026-06-23">23</time></article><article class="calendar-day"><time datetime="2026-06-24">24</time></article><article class="calendar-day"><time datetime="2026-06-25">25</time></article><article class="calendar-day"><time datetime="2026-06-26">26</time></article><article class="calendar-day has-event"><time datetime="2026-06-27">27</time><div class="day-events"><div class="event-chip released"><strong>Greedy SSBBW Devours Roommates Leftovers</strong><span>Clips4Sale, Curvage, ManyVids · $1,801</span></div></div></article><article class="calendar-day"><time datetime="2026-06-28">28</time></article><article class="calendar-day"><time datetime="2026-06-29">29</time></article><article class="calendar-day today"><time datetime="2026-06-30">30</time></article><article class="calendar-day outside-month"><time datetime="2026-07-01">1</time></article><article class="calendar-day outside-month"><time datetime="2026-07-02">2</time></article><article class="calendar-day outside-month"><time datetime="2026-07-03">3</time></article><article class="calendar-day outside-month"><time datetime="2026-07-04">4</time></article></div></section>
+<section id="2026-07" class="month-card section-panel"><div class="month-header"><h2>July</h2><span class="mono">0</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2026-06-28">28</time></article><article class="calendar-day outside-month"><time datetime="2026-06-29">29</time></article><article class="calendar-day outside-month today"><time datetime="2026-06-30">30</time></article><article class="calendar-day"><time datetime="2026-07-01">1</time></article><article class="calendar-day"><time datetime="2026-07-02">2</time></article><article class="calendar-day"><time datetime="2026-07-03">3</time></article><article class="calendar-day"><time datetime="2026-07-04">4</time></article><article class="calendar-day"><time datetime="2026-07-05">5</time></article><article class="calendar-day"><time datetime="2026-07-06">6</time></article><article class="calendar-day"><time datetime="2026-07-07">7</time></article><article class="calendar-day"><time datetime="2026-07-08">8</time></article><article class="calendar-day"><time datetime="2026-07-09">9</time></article><article class="calendar-day"><time datetime="2026-07-10">10</time></article><article class="calendar-day"><time datetime="2026-07-11">11</time></article><article class="calendar-day"><time datetime="2026-07-12">12</time></article><article class="calendar-day"><time datetime="2026-07-13">13</time></article><article class="calendar-day"><time datetime="2026-07-14">14</time></article><article class="calendar-day"><time datetime="2026-07-15">15</time></article><article class="calendar-day"><time datetime="2026-07-16">16</time></article><article class="calendar-day"><time datetime="2026-07-17">17</time></article><article class="calendar-day"><time datetime="2026-07-18">18</time></article><article class="calendar-day"><time datetime="2026-07-19">19</time></article><article class="calendar-day"><time datetime="2026-07-20">20</time></article><article class="calendar-day"><time datetime="2026-07-21">21</time></article><article class="calendar-day"><time datetime="2026-07-22">22</time></article><article class="calendar-day"><time datetime="2026-07-23">23</time></article><article class="calendar-day"><time datetime="2026-07-24">24</time></article><article class="calendar-day"><time datetime="2026-07-25">25</time></article><article class="calendar-day"><time datetime="2026-07-26">26</time></article><article class="calendar-day"><time datetime="2026-07-27">27</time></article><article class="calendar-day"><time datetime="2026-07-28">28</time></article><article class="calendar-day"><time datetime="2026-07-29">29</time></article><article class="calendar-day"><time datetime="2026-07-30">30</time></article><article class="calendar-day"><time datetime="2026-07-31">31</time></article><article class="calendar-day outside-month"><time datetime="2026-08-01">1</time></article></div></section>
+<section id="2026-08" class="month-card section-panel"><div class="month-header"><h2>August</h2><span class="mono">0</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2026-07-26">26</time></article><article class="calendar-day outside-month"><time datetime="2026-07-27">27</time></article><article class="calendar-day outside-month"><time datetime="2026-07-28">28</time></article><article class="calendar-day outside-month"><time datetime="2026-07-29">29</time></article><article class="calendar-day outside-month"><time datetime="2026-07-30">30</time></article><article class="calendar-day outside-month"><time datetime="2026-07-31">31</time></article><article class="calendar-day"><time datetime="2026-08-01">1</time></article><article class="calendar-day"><time datetime="2026-08-02">2</time></article><article class="calendar-day"><time datetime="2026-08-03">3</time></article><article class="calendar-day"><time datetime="2026-08-04">4</time></article><article class="calendar-day"><time datetime="2026-08-05">5</time></article><article class="calendar-day"><time datetime="2026-08-06">6</time></article><article class="calendar-day"><time datetime="2026-08-07">7</time></article><article class="calendar-day"><time datetime="2026-08-08">8</time></article><article class="calendar-day"><time datetime="2026-08-09">9</time></article><article class="calendar-day"><time datetime="2026-08-10">10</time></article><article class="calendar-day"><time datetime="2026-08-11">11</time></article><article class="calendar-day"><time datetime="2026-08-12">12</time></article><article class="calendar-day"><time datetime="2026-08-13">13</time></article><article class="calendar-day"><time datetime="2026-08-14">14</time></article><article class="calendar-day"><time datetime="2026-08-15">15</time></article><article class="calendar-day"><time datetime="2026-08-16">16</time></article><article class="calendar-day"><time datetime="2026-08-17">17</time></article><article class="calendar-day"><time datetime="2026-08-18">18</time></article><article class="calendar-day"><time datetime="2026-08-19">19</time></article><article class="calendar-day"><time datetime="2026-08-20">20</time></article><article class="calendar-day"><time datetime="2026-08-21">21</time></article><article class="calendar-day"><time datetime="2026-08-22">22</time></article><article class="calendar-day"><time datetime="2026-08-23">23</time></article><article class="calendar-day"><time datetime="2026-08-24">24</time></article><article class="calendar-day"><time datetime="2026-08-25">25</time></article><article class="calendar-day"><time datetime="2026-08-26">26</time></article><article class="calendar-day"><time datetime="2026-08-27">27</time></article><article class="calendar-day"><time datetime="2026-08-28">28</time></article><article class="calendar-day"><time datetime="2026-08-29">29</time></article><article class="calendar-day"><time datetime="2026-08-30">30</time></article><article class="calendar-day"><time datetime="2026-08-31">31</time></article><article class="calendar-day outside-month"><time datetime="2026-09-01">1</time></article><article class="calendar-day outside-month"><time datetime="2026-09-02">2</time></article><article class="calendar-day outside-month"><time datetime="2026-09-03">3</time></article><article class="calendar-day outside-month"><time datetime="2026-09-04">4</time></article><article class="calendar-day outside-month"><time datetime="2026-09-05">5</time></article></div></section>
+<section id="2026-09" class="month-card section-panel"><div class="month-header"><h2>September</h2><span class="mono">0</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2026-08-30">30</time></article><article class="calendar-day outside-month"><time datetime="2026-08-31">31</time></article><article class="calendar-day"><time datetime="2026-09-01">1</time></article><article class="calendar-day"><time datetime="2026-09-02">2</time></article><article class="calendar-day"><time datetime="2026-09-03">3</time></article><article class="calendar-day"><time datetime="2026-09-04">4</time></article><article class="calendar-day"><time datetime="2026-09-05">5</time></article><article class="calendar-day"><time datetime="2026-09-06">6</time></article><article class="calendar-day"><time datetime="2026-09-07">7</time></article><article class="calendar-day"><time datetime="2026-09-08">8</time></article><article class="calendar-day"><time datetime="2026-09-09">9</time></article><article class="calendar-day"><time datetime="2026-09-10">10</time></article><article class="calendar-day"><time datetime="2026-09-11">11</time></article><article class="calendar-day"><time datetime="2026-09-12">12</time></article><article class="calendar-day"><time datetime="2026-09-13">13</time></article><article class="calendar-day"><time datetime="2026-09-14">14</time></article><article class="calendar-day"><time datetime="2026-09-15">15</time></article><article class="calendar-day"><time datetime="2026-09-16">16</time></article><article class="calendar-day"><time datetime="2026-09-17">17</time></article><article class="calendar-day"><time datetime="2026-09-18">18</time></article><article class="calendar-day"><time datetime="2026-09-19">19</time></article><article class="calendar-day"><time datetime="2026-09-20">20</time></article><article class="calendar-day"><time datetime="2026-09-21">21</time></article><article class="calendar-day"><time datetime="2026-09-22">22</time></article><article class="calendar-day"><time datetime="2026-09-23">23</time></article><article class="calendar-day"><time datetime="2026-09-24">24</time></article><article class="calendar-day"><time datetime="2026-09-25">25</time></article><article class="calendar-day"><time datetime="2026-09-26">26</time></article><article class="calendar-day"><time datetime="2026-09-27">27</time></article><article class="calendar-day"><time datetime="2026-09-28">28</time></article><article class="calendar-day"><time datetime="2026-09-29">29</time></article><article class="calendar-day"><time datetime="2026-09-30">30</time></article><article class="calendar-day outside-month"><time datetime="2026-10-01">1</time></article><article class="calendar-day outside-month"><time datetime="2026-10-02">2</time></article><article class="calendar-day outside-month"><time datetime="2026-10-03">3</time></article></div></section>
+<section id="2026-10" class="month-card section-panel"><div class="month-header"><h2>October</h2><span class="mono">0</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2026-09-27">27</time></article><article class="calendar-day outside-month"><time datetime="2026-09-28">28</time></article><article class="calendar-day outside-month"><time datetime="2026-09-29">29</time></article><article class="calendar-day outside-month"><time datetime="2026-09-30">30</time></article><article class="calendar-day"><time datetime="2026-10-01">1</time></article><article class="calendar-day"><time datetime="2026-10-02">2</time></article><article class="calendar-day"><time datetime="2026-10-03">3</time></article><article class="calendar-day"><time datetime="2026-10-04">4</time></article><article class="calendar-day"><time datetime="2026-10-05">5</time></article><article class="calendar-day"><time datetime="2026-10-06">6</time></article><article class="calendar-day"><time datetime="2026-10-07">7</time></article><article class="calendar-day"><time datetime="2026-10-08">8</time></article><article class="calendar-day"><time datetime="2026-10-09">9</time></article><article class="calendar-day"><time datetime="2026-10-10">10</time></article><article class="calendar-day"><time datetime="2026-10-11">11</time></article><article class="calendar-day"><time datetime="2026-10-12">12</time></article><article class="calendar-day"><time datetime="2026-10-13">13</time></article><article class="calendar-day"><time datetime="2026-10-14">14</time></article><article class="calendar-day"><time datetime="2026-10-15">15</time></article><article class="calendar-day"><time datetime="2026-10-16">16</time></article><article class="calendar-day"><time datetime="2026-10-17">17</time></article><article class="calendar-day"><time datetime="2026-10-18">18</time></article><article class="calendar-day"><time datetime="2026-10-19">19</time></article><article class="calendar-day"><time datetime="2026-10-20">20</time></article><article class="calendar-day"><time datetime="2026-10-21">21</time></article><article class="calendar-day"><time datetime="2026-10-22">22</time></article><article class="calendar-day"><time datetime="2026-10-23">23</time></article><article class="calendar-day"><time datetime="2026-10-24">24</time></article><article class="calendar-day"><time datetime="2026-10-25">25</time></article><article class="calendar-day"><time datetime="2026-10-26">26</time></article><article class="calendar-day"><time datetime="2026-10-27">27</time></article><article class="calendar-day"><time datetime="2026-10-28">28</time></article><article class="calendar-day"><time datetime="2026-10-29">29</time></article><article class="calendar-day"><time datetime="2026-10-30">30</time></article><article class="calendar-day"><time datetime="2026-10-31">31</time></article></div></section>
+<section id="2026-11" class="month-card section-panel"><div class="month-header"><h2>November</h2><span class="mono">0</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day"><time datetime="2026-11-01">1</time></article><article class="calendar-day"><time datetime="2026-11-02">2</time></article><article class="calendar-day"><time datetime="2026-11-03">3</time></article><article class="calendar-day"><time datetime="2026-11-04">4</time></article><article class="calendar-day"><time datetime="2026-11-05">5</time></article><article class="calendar-day"><time datetime="2026-11-06">6</time></article><article class="calendar-day"><time datetime="2026-11-07">7</time></article><article class="calendar-day"><time datetime="2026-11-08">8</time></article><article class="calendar-day"><time datetime="2026-11-09">9</time></article><article class="calendar-day"><time datetime="2026-11-10">10</time></article><article class="calendar-day"><time datetime="2026-11-11">11</time></article><article class="calendar-day"><time datetime="2026-11-12">12</time></article><article class="calendar-day"><time datetime="2026-11-13">13</time></article><article class="calendar-day"><time datetime="2026-11-14">14</time></article><article class="calendar-day"><time datetime="2026-11-15">15</time></article><article class="calendar-day"><time datetime="2026-11-16">16</time></article><article class="calendar-day"><time datetime="2026-11-17">17</time></article><article class="calendar-day"><time datetime="2026-11-18">18</time></article><article class="calendar-day"><time datetime="2026-11-19">19</time></article><article class="calendar-day"><time datetime="2026-11-20">20</time></article><article class="calendar-day"><time datetime="2026-11-21">21</time></article><article class="calendar-day"><time datetime="2026-11-22">22</time></article><article class="calendar-day"><time datetime="2026-11-23">23</time></article><article class="calendar-day"><time datetime="2026-11-24">24</time></article><article class="calendar-day"><time datetime="2026-11-25">25</time></article><article class="calendar-day"><time datetime="2026-11-26">26</time></article><article class="calendar-day"><time datetime="2026-11-27">27</time></article><article class="calendar-day"><time datetime="2026-11-28">28</time></article><article class="calendar-day"><time datetime="2026-11-29">29</time></article><article class="calendar-day"><time datetime="2026-11-30">30</time></article><article class="calendar-day outside-month"><time datetime="2026-12-01">1</time></article><article class="calendar-day outside-month"><time datetime="2026-12-02">2</time></article><article class="calendar-day outside-month"><time datetime="2026-12-03">3</time></article><article class="calendar-day outside-month"><time datetime="2026-12-04">4</time></article><article class="calendar-day outside-month"><time datetime="2026-12-05">5</time></article></div></section>
+<section id="2026-12" class="month-card section-panel"><div class="month-header"><h2>December</h2><span class="mono">0</span></div><div class="weekday-row" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="calendar-grid"><article class="calendar-day outside-month"><time datetime="2026-11-29">29</time></article><article class="calendar-day outside-month"><time datetime="2026-11-30">30</time></article><article class="calendar-day"><time datetime="2026-12-01">1</time></article><article class="calendar-day"><time datetime="2026-12-02">2</time></article><article class="calendar-day"><time datetime="2026-12-03">3</time></article><article class="calendar-day"><time datetime="2026-12-04">4</time></article><article class="calendar-day"><time datetime="2026-12-05">5</time></article><article class="calendar-day"><time datetime="2026-12-06">6</time></article><article class="calendar-day"><time datetime="2026-12-07">7</time></article><article class="calendar-day"><time datetime="2026-12-08">8</time></article><article class="calendar-day"><time datetime="2026-12-09">9</time></article><article class="calendar-day"><time datetime="2026-12-10">10</time></article><article class="calendar-day"><time datetime="2026-12-11">11</time></article><article class="calendar-day"><time datetime="2026-12-12">12</time></article><article class="calendar-day"><time datetime="2026-12-13">13</time></article><article class="calendar-day"><time datetime="2026-12-14">14</time></article><article class="calendar-day"><time datetime="2026-12-15">15</time></article><article class="calendar-day"><time datetime="2026-12-16">16</time></article><article class="calendar-day"><time datetime="2026-12-17">17</time></article><article class="calendar-day"><time datetime="2026-12-18">18</time></article><article class="calendar-day"><time datetime="2026-12-19">19</time></article><article class="calendar-day"><time datetime="2026-12-20">20</time></article><article class="calendar-day"><time datetime="2026-12-21">21</time></article><article class="calendar-day"><time datetime="2026-12-22">22</time></article><article class="calendar-day"><time datetime="2026-12-23">23</time></article><article class="calendar-day"><time datetime="2026-12-24">24</time></article><article class="calendar-day"><time datetime="2026-12-25">25</time></article><article class="calendar-day"><time datetime="2026-12-26">26</time></article><article class="calendar-day"><time datetime="2026-12-27">27</time></article><article class="calendar-day"><time datetime="2026-12-28">28</time></article><article class="calendar-day"><time datetime="2026-12-29">29</time></article><article class="calendar-day"><time datetime="2026-12-30">30</time></article><article class="calendar-day"><time datetime="2026-12-31">31</time></article><article class="calendar-day outside-month"><time datetime="2027-01-01">1</time></article><article class="calendar-day outside-month"><time datetime="2027-01-02">2</time></article></div></section>
+    </section>
+    <section class="section-panel section-pad">
+      <div class="section-header"><div><div class="section-kicker">Audit list</div><h2>2026 Release Rows</h2></div></div>
+      <p class="muted">This is the same data represented in the month grid. Older release years remain in the CSV and Data Explorer.</p>
+      <div class="table-wrap"><table class="wide release-table">
+<thead><tr>
+<th>Date</th>
+<th>Title</th>
+<th>Type</th>
+<th>Platforms</th>
+<th>Lifetime Net</th>
+<th>Basis</th>
+<th>Confidence</th>
+</tr></thead><tbody>
+<tr>
+<td>2026-01-04</td>
+<td>Greedy fatty gets messy stuffing cake!</td>
+<td>Released</td>
+<td>Curvage</td>
+<td>$29</td>
+<td>sale date</td>
+<td>low</td>
+</tr>
+<tr>
+<td>2026-01-30</td>
+<td>Gassy Giantess Gobbles You Up</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$2,497</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-02-07</td>
+<td>Messy piggy stuffs chocolate cake!</td>
+<td>Released</td>
+<td>Curvage</td>
+<td>$38</td>
+<td>sale date</td>
+<td>low</td>
+</tr>
+<tr>
+<td>2026-02-22</td>
+<td>Diet Pills Gone Wrong</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$3,588</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-03-04</td>
+<td>HR Fatty Makes You Her Feeder POV</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$2,577</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-03-11</td>
+<td>Stuffed Girlfriend Gets Gassy</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$2,812</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-04-06</td>
+<td>Exercise After Gaining</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$2,162</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-04-06</td>
+<td>Room Service Stuffing</td>
+<td>Released</td>
+<td>OnlyFans</td>
+<td>$24</td>
+<td>OF message sent date</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>2026-04-17</td>
+<td>BBW Covered in Oil - Full Nude Version</td>
+<td>Released</td>
+<td>ManyVids</td>
+<td>$10</td>
+<td>sale date</td>
+<td>low</td>
+</tr>
+<tr>
+<td>2026-04-20</td>
+<td>Stuffed and Horny</td>
+<td>Released</td>
+<td>Clips4Sale, ManyVids</td>
+<td>$1,243</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-04-27</td>
+<td>The Diet of a Gaining SSBBW</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$1,545</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-05-04</td>
+<td>Gaining SSBBW Wants to Reach 600lbs</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$2,164</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-05-21</td>
+<td>Best Friend&#x27;s Mom Teases You</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$5,956</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-06-11</td>
+<td>Fucking Your Stuffed SSBBW Girlfriend POV</td>
+<td>Released</td>
+<td>Clips4Sale, ManyVids, OnlyFans</td>
+<td>$1,343</td>
+<td>master content release date</td>
+<td>high</td>
+</tr>
+<tr>
+<td>2026-06-27</td>
+<td>Greedy SSBBW Devours Roommates Leftovers</td>
+<td>Released</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>$1,801</td>
+<td>C4S date added</td>
+<td>medium</td>
+</tr>
+</tbody></table></div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
