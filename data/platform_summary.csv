@@ -1,0 +1,6 @@
+platform,gross_amount,net_amount,rows,first_date,last_date,gross_method,net_method
+Clips4Sale,31645.73,18987.44,1523,2026-01-01,2026-06-29,exported gross-like transaction total,validated at 60% of C4S transaction gross
+Curvage,21465.56,15183.0,212,2026-01-01,2026-06-29,estimated from observed Curvage earnings / total_sales overlap; exported item-level total_sales; exported item-level total_sales for overlapping date,exported Curvage daily purchases through latest daily export; exported item-level earnings after latest daily purchases export
+ManyVids,8014.44,4822.65,349,2026-01-31,2026-06-29,estimated from ManyVids 60% payout rate for Video; estimated from ManyVids 80% payout rate for Club; estimated from ManyVids monthly earnings category payout rates after subtracting captured Recent Sales,exported Recent Sales total; manual monthly total net less already captured Recent Sales rows
+OnlyFans,16091.66,12873.33,168,2026-01-01,2026-06-17,exported Supercreator account total_gross,estimated at 80% of Supercreator gross
+ModelCentro,24064.05,15924.31,1222,2026-01-01,2026-06-29,exported transaction gross,exported transaction net
