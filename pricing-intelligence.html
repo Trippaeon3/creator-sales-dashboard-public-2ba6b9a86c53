@@ -1,0 +1,2807 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:,">
+  <title>Pricing Intelligence</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      --page-max: 1240px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-top: env(safe-area-inset-top, 0px);
+      --canvas: #f7f9ff;
+      --ink: #0d1526;
+      --ink-2: #25334a;
+      --muted: #5e6c83;
+      --muted-2: #7b879b;
+      --solid: rgba(255, 255, 255, .92);
+      --solid-2: rgba(249, 251, 255, .82);
+      --line: rgba(19, 34, 62, .11);
+      --line-strong: rgba(19, 34, 62, .17);
+      --accent: #315eea;
+      --accent-2: #8b5cf6;
+      --accent-3: #00a5d8;
+      --success: #16804a;
+      --warning: #a16107;
+      --danger: #d12b4b;
+      --glass-blur: 22px;
+      --glass-saturation: 178%;
+      --glass-opacity: .58;
+      --glass-border-brightness: .72;
+      --glass-shadow-depth: 36px;
+      --glass-radius: 30px;
+      --glass-tint: 255 255 255;
+      --glass-tint-2: 224 237 255;
+      --highlight-x: 50%;
+      --highlight-y: 0%;
+      --mx: 50%;
+      --my: 10%;
+      --shadow-soft: 0 18px 46px rgba(15, 23, 42, .12);
+      --shadow-deep: 0 34px 92px rgba(15, 23, 42, .18);
+      --focus: 0 0 0 3px rgba(49, 94, 234, .22), 0 0 0 6px rgba(255,255,255,.85);
+      --radius-xl: 38px;
+      --radius-lg: 28px;
+      --radius-md: 22px;
+      --radius-sm: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --canvas: #070b14;
+        --ink: #f4f8ff;
+        --ink-2: #dbe7fb;
+        --muted: #a5b3ca;
+        --muted-2: #8190aa;
+        --solid: rgba(13, 20, 36, .88);
+        --solid-2: rgba(17, 27, 48, .78);
+        --line: rgba(211, 229, 255, .14);
+        --line-strong: rgba(211, 229, 255, .22);
+        --accent: #7dabff;
+        --accent-2: #b69aff;
+        --accent-3: #5ad7ff;
+        --success: #6ee7a3;
+        --warning: #ffd166;
+        --danger: #ff8098;
+        --glass-opacity: .38;
+        --glass-tint: 18 28 49;
+        --glass-tint-2: 98 132 190;
+        --shadow-soft: 0 18px 54px rgba(0, 0, 0, .32);
+        --shadow-deep: 0 34px 104px rgba(0, 0, 0, .46);
+        --focus: 0 0 0 3px rgba(125,171,255,.33), 0 0 0 6px rgba(7, 11, 20, .88);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; scroll-behavior: smooth; }
+    [id] { scroll-margin-top: 124px; }
+    body {
+      min-height: 100%;
+      margin: 0;
+      color: var(--ink);
+      font: 15px/1.5 var(--font);
+      background: var(--canvas);
+      overflow-x: hidden;
+    }
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+    }
+    body::before {
+      background:
+        radial-gradient(circle at 9% 8%, rgba(107, 86, 255, .55), transparent 24%),
+        radial-gradient(circle at 86% 4%, rgba(43, 202, 255, .48), transparent 22%),
+        radial-gradient(circle at 78% 54%, rgba(85, 224, 157, .28), transparent 28%),
+        radial-gradient(circle at 13% 68%, rgba(255, 151, 197, .28), transparent 27%),
+        linear-gradient(145deg, #f9fbff 0%, #eef5ff 42%, #fff7fb 100%);
+    }
+    body::after {
+      z-index: -2;
+      background:
+        linear-gradient(rgba(12, 23, 44, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(12, 23, 44, .045) 1px, transparent 1px),
+        radial-gradient(circle at var(--highlight-x) var(--highlight-y), rgba(255,255,255,.56), transparent 18rem);
+      background-size: 44px 44px, 44px 44px, 100% 100%;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.72), transparent 76%);
+    }
+    @media (prefers-color-scheme: dark) {
+      body::before {
+        background:
+          radial-gradient(circle at 10% 9%, rgba(107, 86, 255, .38), transparent 25%),
+          radial-gradient(circle at 86% 3%, rgba(43, 202, 255, .24), transparent 23%),
+          radial-gradient(circle at 79% 50%, rgba(85, 224, 157, .14), transparent 29%),
+          radial-gradient(circle at 14% 67%, rgba(255, 151, 197, .15), transparent 28%),
+          linear-gradient(145deg, #070b14 0%, #0c1629 45%, #171121 100%);
+      }
+      body::after {
+        background:
+          linear-gradient(rgba(211, 229, 255, .055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(211, 229, 255, .055) 1px, transparent 1px),
+          radial-gradient(circle at var(--highlight-x) var(--highlight-y), rgba(125,171,255,.20), transparent 18rem);
+      }
+    }
+
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    p { margin: 0 0 14px; }
+    ul { margin: 0 0 0 20px; padding: 0; }
+    li { margin: 7px 0; }
+    h1, h2, h3 { margin: 0; line-height: 1.08; letter-spacing: 0; }
+    h1 {
+      max-width: 820px;
+      color: var(--ink);
+      font-size: clamp(3.1rem, 8.2vw, 6.75rem);
+      line-height: .92;
+      text-wrap: balance;
+    }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.45rem); }
+    h3 { margin: 24px 0 10px; color: var(--ink); font-size: 1.05rem; }
+    .muted { color: var(--muted); }
+    .strong { color: var(--ink); font-weight: 780; }
+    .mono { font-variant-numeric: tabular-nums; }
+    .mode-note { display: inline-block; margin-left: 8px; color: var(--muted); font-size: 1rem; font-weight: 680; vertical-align: middle; }
+
+    .page-shell {
+      width: min(calc(100% - 36px), var(--page-max));
+      margin: 0 auto;
+      padding: calc(18px + var(--safe-top)) 0 calc(96px + var(--safe-bottom));
+    }
+    .liquid {
+      --lift: 0px;
+      --tilt-x: 0deg;
+      --tilt-y: 0deg;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,var(--glass-border-brightness));
+      background:
+        linear-gradient(135deg, rgba(var(--glass-tint), calc(var(--glass-opacity) + .18)), rgba(var(--glass-tint-2), calc(var(--glass-opacity) - .18)) 52%, rgba(var(--glass-tint), calc(var(--glass-opacity) + .04))),
+        radial-gradient(circle at 14% 4%, rgba(255,255,255,.54), transparent 36%);
+      backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+      box-shadow:
+        0 calc(var(--glass-shadow-depth) * .35) var(--glass-shadow-depth) rgba(15, 23, 42, .13),
+        0 2px 1px rgba(255,255,255,.55) inset,
+        0 -1px 1px rgba(15,23,42,.09) inset,
+        0 0 0 1px rgba(255,255,255,.24) inset;
+      transform: perspective(900px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translateY(var(--lift));
+      transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .liquid::before,
+    .liquid::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .liquid::before {
+      z-index: -1;
+      background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.92), rgba(255,255,255,.38) 10%, rgba(255,255,255,.07) 23%, transparent 44%),
+        linear-gradient(120deg, rgba(255,255,255,.52), transparent 28%, rgba(255,255,255,.10) 52%, transparent 74%),
+        repeating-linear-gradient(115deg, transparent 0 38px, rgba(255,255,255,.08) 40px 42px, transparent 44px 86px);
+      opacity: .72;
+      mix-blend-mode: screen;
+      transform: translate3d(calc((var(--mx-num, .5) - .5) * 8px), calc((var(--my-num, .1) - .5) * 8px), 0);
+    }
+    .liquid::after {
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.16) 34%, rgba(73, 186, 255, .35) 58%, rgba(255,255,255,.64) 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: .72;
+    }
+    .liquid:hover {
+      --lift: -2px;
+      box-shadow:
+        0 calc(var(--glass-shadow-depth) * .48) calc(var(--glass-shadow-depth) * 1.24) rgba(15, 23, 42, .16),
+        0 2px 1px rgba(255,255,255,.72) inset,
+        0 -1px 1px rgba(15,23,42,.08) inset,
+        0 0 0 1px rgba(255,255,255,.28) inset;
+    }
+    .liquid:active { --lift: 1px; }
+    .liquid:focus-visible,
+    .focus-ring:focus-visible,
+    input:focus-visible,
+    summary:focus-visible {
+      outline: none;
+      box-shadow: var(--focus), 0 calc(var(--glass-shadow-depth) * .38) var(--glass-shadow-depth) rgba(15,23,42,.15), 0 1px 0 rgba(255,255,255,.6) inset;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: calc(14px + var(--safe-top));
+      z-index: 30;
+      display: grid;
+      grid-template-columns: auto minmax(320px, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding: 10px;
+      border-radius: calc(var(--glass-radius) + 2px);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px 8px 8px;
+      color: var(--ink);
+      font-weight: 840;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 28% 22%, rgba(255,255,255,.86), transparent 24%),
+        linear-gradient(135deg, #7057ff, #38caff 55%, #43df9a);
+      box-shadow: 0 14px 34px rgba(49, 94, 234, .30), inset 0 1px 0 rgba(255,255,255,.68);
+    }
+    .brand span:last-child { display: grid; line-height: 1.05; }
+    .brand small { color: var(--muted); font-size: .74rem; font-weight: 680; }
+    .nav-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .search-pill {
+      --glass-radius: 999px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      min-width: min(100%, 420px);
+      padding: 8px 10px 8px 13px;
+      border-radius: 999px;
+      color: var(--muted);
+    }
+    .search-pill svg { width: 18px; height: 18px; opacity: .72; flex: 0 0 auto; }
+    .search-pill input {
+      min-width: 0;
+      width: 100%;
+      border: 0;
+      outline: 0;
+      color: var(--ink);
+      background: transparent;
+      padding: 6px 8px;
+    }
+    .search-pill input::placeholder { color: var(--muted-2); opacity: 1; }
+    .search-count {
+      min-width: 34px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 4px 8px;
+      color: var(--ink-2);
+      background: rgba(255,255,255,.36);
+      font-size: 12px;
+      font-weight: 760;
+    }
+    .segmented {
+      display: inline-flex;
+      gap: 4px;
+      padding: 5px;
+      border-radius: 999px;
+    }
+    .segmented button,
+    .icon-button,
+    .tab-item,
+    .fab {
+      appearance: none;
+      border: 0;
+      color: var(--ink-2);
+      background: transparent;
+    }
+    .segmented button {
+      min-height: 34px;
+      padding: 0 13px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 760;
+      transition: background .22s ease, color .22s ease, transform .22s ease;
+    }
+    .segmented button[aria-pressed="true"] {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 28px rgba(49,94,234,.28), inset 0 1px 0 rgba(255,255,255,.34);
+    }
+    .segmented button:hover { transform: translateY(-1px); background: rgba(255,255,255,.38); }
+    .segmented button[aria-pressed="true"]:hover { background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+    .nav-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 9px;
+    }
+    .icon-button {
+      --glass-radius: 17px;
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 17px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 760;
+    }
+    .icon-button svg,
+    .fab svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .app-layout {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .command-rail {
+      position: sticky;
+      top: calc(106px + var(--safe-top));
+      z-index: 18;
+      display: grid;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 28px;
+    }
+    .rail-divider {
+      width: 26px;
+      height: 1px;
+      margin: 2px auto;
+      background: rgba(255,255,255,.52);
+    }
+    .content-stack { display: grid; gap: 18px; min-width: 0; }
+    .hero {
+      position: relative;
+      min-height: 470px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 44px;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,255,255,.88), transparent 34%),
+        radial-gradient(circle at 84% 8%, rgba(84, 202, 255, .26), transparent 24%),
+        radial-gradient(circle at 88% 82%, rgba(139, 92, 246, .22), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.92), rgba(244,248,255,.74));
+      box-shadow: var(--shadow-deep);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -18% -34% 36%;
+      height: 330px;
+      border-radius: 999px;
+      background: radial-gradient(ellipse at center, rgba(49,94,234,.18), transparent 66%);
+      filter: blur(4px);
+    }
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 358px;
+      gap: 34px;
+      padding: clamp(28px, 5vw, 56px);
+      min-height: inherit;
+    }
+    .eyebrow-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(255,255,255,.72);
+      color: var(--ink-2);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 22px rgba(15,23,42,.08);
+      font-size: 12px;
+      font-weight: 820;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: #24c775;
+      box-shadow: 0 0 0 7px rgba(36, 199, 117, .14);
+    }
+    .updated-chip { color: var(--muted); font-weight: 710; }
+    .hero-subcopy {
+      max-width: 680px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.9vw, 1.35rem);
+      text-wrap: balance;
+    }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .primary-action,
+    .secondary-action {
+      --glass-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 0;
+      color: var(--ink);
+      font-weight: 780;
+      text-decoration: none;
+    }
+    .primary-action {
+      color: #fff;
+      background:
+        radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.46), transparent 24%),
+        linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 40px rgba(49,94,234,.27), inset 0 1px 0 rgba(255,255,255,.38);
+    }
+    .secondary-action { background: rgba(255,255,255,.52); }
+    .hero-side {
+      display: grid;
+      align-content: center;
+      gap: 14px;
+    }
+    .signal-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 116px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 16px 40px rgba(15,23,42,.10), inset 0 1px 0 rgba(255,255,255,.88);
+      padding: 18px;
+    }
+    .signal-card::after {
+      content: "";
+      position: absolute;
+      right: -28px;
+      top: -38px;
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      background: var(--orb, rgba(49, 94, 234, .17));
+    }
+    .signal-card[data-tone="drop"] { --orb: rgba(209, 43, 75, .14); }
+    .signal-card[data-tone="pace"] { --orb: rgba(139, 92, 246, .15); }
+    .signal-card[data-tone="good"] { --orb: rgba(22, 128, 74, .14); }
+    .signal-card span,
+    .signal-card strong,
+    .signal-card em { position: relative; z-index: 1; display: block; }
+    .signal-card span { color: var(--muted); font-size: 12px; font-weight: 820; text-transform: uppercase; }
+    .signal-card strong { margin-top: 4px; font-size: 2.05rem; line-height: .98; }
+    .signal-card em { margin-top: 8px; color: var(--muted); font-style: normal; font-size: .9rem; }
+
+    .section-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--solid);
+      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.68);
+      overflow: hidden;
+    }
+    .section-pad { padding: clamp(22px, 3vw, 32px); }
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 820;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-kicker::before {
+      content: "";
+      width: 8px;
+      height: 20px;
+      border-radius: 99px;
+      background: linear-gradient(180deg, var(--accent-2), var(--accent-3));
+      box-shadow: 0 8px 22px rgba(49,94,234,.28);
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .metric-card {
+      position: relative;
+      min-height: 148px;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 88% 8%, var(--metric-glow, rgba(49,94,234,.13)), transparent 44%),
+        linear-gradient(145deg, rgba(255,255,255,.94), rgba(248,250,255,.82));
+      box-shadow: 0 14px 32px rgba(15,23,42,.08), inset 0 1px 0 rgba(255,255,255,.72);
+      padding: 18px;
+    }
+    .metric-card:nth-child(1) { --metric-glow: rgba(139,92,246,.20); }
+    .metric-card:nth-child(2) { --metric-glow: rgba(49,94,234,.18); }
+    .metric-card:nth-child(3) { --metric-glow: rgba(0,165,216,.17); }
+    .metric-card:nth-child(4) { --metric-glow: rgba(36,199,117,.16); }
+    .metric-card:nth-child(5) { --metric-glow: rgba(255,178,61,.18); }
+    .metric-label { color: var(--muted); font-size: .74rem; font-weight: 820; text-transform: uppercase; }
+    .metric-value { margin-top: 12px; font-size: clamp(1.7rem, 3vw, 2.35rem); line-height: .98; font-weight: 850; }
+    .metric-foot { margin-top: 12px; color: var(--muted); font-size: .88rem; }
+    .metric-bar {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      height: 6px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(19,34,62,.08);
+    }
+    .metric-bar span {
+      display: block;
+      height: 100%;
+      width: var(--w, 50%);
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .data-health {
+      position: relative;
+      padding-left: 52px;
+      color: var(--ink-2);
+      font-size: .95rem;
+    }
+    .data-health::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      width: 24px;
+      height: 24px;
+      border-radius: 99px;
+      background: radial-gradient(circle at 35% 28%, #fff, #22c55e 54%, #14b8a6);
+      box-shadow: 0 10px 22px rgba(34,197,94,.25);
+    }
+    .data-health strong { color: var(--success); }
+    .priority-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: priority;
+    }
+    .priority-list li {
+      position: relative;
+      min-height: 152px;
+      margin: 0;
+      padding: 18px 18px 18px 64px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255,255,255,.80), rgba(248,250,255,.62));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      color: var(--muted);
+    }
+    .priority-list li::before {
+      counter-increment: priority;
+      content: counter(priority);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 860;
+      box-shadow: 0 12px 28px rgba(49,94,234,.24), inset 0 1px 0 rgba(255,255,255,.34);
+    }
+    .priority-list strong { display: block; margin-bottom: 4px; color: var(--ink); }
+    .readout-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr);
+      gap: 18px;
+    }
+    .readout-copy {
+      color: var(--ink-2);
+      font-size: 1.02rem;
+    }
+    .compact-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .compact-list li {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+    }
+    .compact-list li::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 28%, #fff, var(--accent) 54%, var(--accent-2));
+      box-shadow: 0 8px 16px rgba(49,94,234,.20);
+    }
+    .mini-chart-card {
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255,255,255,.76), rgba(248,250,255,.56));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+      padding: 20px;
+    }
+    .donut-row {
+      display: grid;
+      grid-template-columns: 148px minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+      margin-top: 14px;
+    }
+    .donut {
+      width: 148px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--mix-gradient);
+      box-shadow: inset 0 0 0 22px rgba(255,255,255,.80), 0 20px 44px rgba(15,23,42,.12);
+    }
+    .legend { display: grid; gap: 8px; }
+    .legend-row { display: grid; grid-template-columns: 12px 1fr auto; gap: 9px; align-items: center; color: var(--muted); font-size: .9rem; }
+    .swatch { width: 12px; height: 12px; border-radius: 99px; background: var(--c); }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255,255,255,.72);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+      margin-top: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: .91rem;
+    }
+    th, td {
+      padding: 13px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      background: rgba(247,249,255,.78);
+      font-size: .74rem;
+      font-weight: 820;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    td { color: var(--ink-2); background: rgba(255,255,255,.36); }
+    tbody tr:nth-child(even) td { background: rgba(247,250,255,.46); }
+    tr:last-child td { border-bottom: 0; }
+    .wide td:last-child { overflow-wrap: anywhere; }
+    .status { font-weight: 840; text-transform: uppercase; font-size: .76rem; }
+    .status.watch { color: var(--warning); }
+    .status.info { color: var(--accent); }
+    .status.caveat { color: var(--muted); }
+    .status.ok { color: var(--success); }
+    .status.action { color: var(--danger); }
+    .status-table td:first-child { width: 110px; }
+    .rank-table td:first-child {
+      color: var(--accent);
+      font-weight: 860;
+      white-space: nowrap;
+    }
+    .rank-table td:first-child::before {
+      content: "#";
+      opacity: .55;
+    }
+    .period-block + .period-block { margin-top: 30px; }
+    .release-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .release-stat {
+      min-height: 118px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(145deg, rgba(255,255,255,.76), rgba(248,250,255,.56));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.68);
+    }
+    .release-stat span,
+    .release-stat strong,
+    .release-stat em { display: block; }
+    .release-stat span {
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 820;
+      text-transform: uppercase;
+    }
+    .release-stat strong {
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      line-height: 1;
+    }
+    .release-stat em {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: .86rem;
+      font-style: normal;
+    }
+    .release-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      gap: 18px;
+      align-items: start;
+      margin-top: 18px;
+    }
+    .release-grid h3 { margin-top: 0; }
+    .release-empty {
+      min-height: 110px;
+      display: grid;
+      place-items: center start;
+      padding: 18px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 24px;
+      background: rgba(255,255,255,.34);
+    }
+    .release-table td:nth-child(2) { min-width: 240px; }
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    figure,
+    .chart-card {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--solid);
+      box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.68);
+      overflow: hidden;
+    }
+    .chart-shell {
+      min-height: 320px;
+      padding: clamp(18px, 2.6vw, 28px);
+    }
+    .chart-title {
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: clamp(1.15rem, 2vw, 1.65rem);
+      font-weight: 820;
+    }
+    .chart-shell picture { display: block; }
+    .chart-shell img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 8px;
+    }
+    .report-details {
+      border-top: 0;
+      margin-top: 14px;
+    }
+    .report-details summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 28px;
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 840;
+    }
+    .report-details summary::-webkit-details-marker { display: none; }
+    .report-details summary::after {
+      content: "+";
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid var(--line);
+      color: var(--accent);
+      font-size: 1.3rem;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+    .report-details[open] summary::after { transform: rotate(45deg); }
+    .details-body { padding: 0 28px 28px; }
+    .details-note { margin-top: 0; }
+    .appendix { display: grid; gap: 14px; }
+    .appendix-title { margin: 10px 0 0; }
+    .data-explorer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 16px 0 28px;
+    }
+    .data-card {
+      min-width: 0;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.34);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.54);
+    }
+    .data-card h3 { margin-top: 0; }
+    .data-preview {
+      margin-top: 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.42);
+      background: rgba(255,255,255,.22);
+      overflow: hidden;
+    }
+    .data-preview summary {
+      cursor: pointer;
+      padding: 12px 14px;
+      font-weight: 820;
+      color: var(--ink);
+      list-style: none;
+    }
+    .data-preview summary::-webkit-details-marker { display: none; }
+    .data-preview summary::after {
+      content: "+";
+      float: right;
+      color: var(--accent);
+      font-weight: 900;
+    }
+    .data-preview[open] summary::after { content: "-"; }
+    .data-table-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+      padding: 0 14px;
+    }
+    .csv-link {
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 780;
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+    .preview-note { padding: 0 14px; }
+    .data-preview .table-wrap {
+      margin: 12px 14px 14px;
+      max-height: 520px;
+      overflow: auto;
+    }
+    .mobile-tabbar {
+      position: fixed;
+      left: 50%;
+      bottom: calc(12px + var(--safe-bottom));
+      z-index: 50;
+      display: none;
+      width: min(calc(100% - 28px), 450px);
+      transform: translateX(-50%);
+      padding: 8px;
+      border-radius: 30px;
+    }
+    .mobile-tabbar nav {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+    .tab-item {
+      display: grid;
+      place-items: center;
+      gap: 3px;
+      min-height: 54px;
+      border-radius: 22px;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 740;
+      color: var(--muted);
+    }
+    .tab-item svg { width: 19px; height: 19px; }
+    .tab-item[aria-current="page"],
+    .tab-item:hover,
+    .tab-item:focus-visible {
+      color: var(--ink);
+      background: rgba(255,255,255,.46);
+    }
+    .fab {
+      position: fixed;
+      right: max(22px, env(safe-area-inset-right, 0px) + 20px);
+      bottom: calc(24px + var(--safe-bottom));
+      z-index: 45;
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 22px;
+    }
+    .hide-row { display: none !important; }
+
+    @media (prefers-color-scheme: dark) {
+      .hero {
+        background:
+          radial-gradient(circle at 12% 8%, rgba(56, 82, 143, .34), transparent 35%),
+          radial-gradient(circle at 84% 8%, rgba(84,202,255,.13), transparent 24%),
+          radial-gradient(circle at 88% 82%, rgba(139,92,246,.14), transparent 28%),
+          linear-gradient(145deg, rgba(16,26,46,.92), rgba(9,15,29,.78));
+      }
+      .eyebrow,
+      .signal-card,
+      .metric-card,
+      .priority-list li,
+      .mini-chart-card,
+      .release-stat,
+      .release-empty,
+      .data-card,
+      .table-wrap,
+      .report-details summary::after {
+        background: rgba(18, 29, 50, .72);
+      }
+      .metric-card {
+        background: radial-gradient(circle at 88% 8%, var(--metric-glow, rgba(125,171,255,.16)), transparent 44%), linear-gradient(145deg, rgba(17, 27, 48, .90), rgba(12, 20, 36, .76));
+      }
+      .section-panel,
+      figure,
+      .chart-card {
+        background: var(--solid);
+        box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.08);
+      }
+      .priority-list li,
+      .mini-chart-card,
+      .release-stat,
+      .data-card,
+      .table-wrap { box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+      th { background: rgba(211,229,255,.07); }
+      td { background: rgba(12,20,36,.26); color: var(--ink-2); }
+      tbody tr:nth-child(even) td { background: rgba(211,229,255,.04); }
+      .donut { box-shadow: inset 0 0 0 22px rgba(11, 18, 32, .92), 0 20px 44px rgba(0,0,0,.28); }
+      .metric-bar { background: rgba(211,229,255,.10); }
+      .search-count { background: rgba(255,255,255,.10); }
+    }
+
+    @supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+      .liquid {
+        background: rgba(255,255,255,.96);
+        box-shadow: 0 20px 48px rgba(15,23,42,.16), inset 0 1px 0 rgba(255,255,255,.9);
+      }
+      @media (prefers-color-scheme: dark) {
+        .liquid { background: rgba(15, 23, 42, .96); }
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+      }
+      .liquid { transform: none !important; }
+    }
+    @media (prefers-reduced-transparency: reduce) {
+      .liquid {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(255,255,255,.97) !important;
+      }
+      @media (prefers-color-scheme: dark) {
+        .liquid { background: rgba(12, 20, 36, .97) !important; }
+      }
+    }
+    @media (forced-colors: active) {
+      .liquid,
+      .section-panel,
+      .metric-card,
+      .table-wrap,
+      .priority-list li {
+        border: 1px solid CanvasText;
+        background: Canvas;
+        box-shadow: none;
+      }
+      .liquid::before,
+      .liquid::after,
+      body::before,
+      body::after { display: none; }
+    }
+    @media (max-width: 1120px) {
+      .top-nav { grid-template-columns: 1fr auto; }
+      .nav-center { grid-column: 1 / -1; grid-row: 2; justify-content: stretch; }
+      .search-pill { min-width: 0; flex: 1 1 auto; }
+      .app-layout { grid-template-columns: 1fr; }
+      .command-rail { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-side { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .release-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .release-grid { grid-template-columns: 1fr; }
+      .readout-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      :root { --glass-radius: 26px; --glass-blur: 18px; --glass-shadow-depth: 28px; }
+      .page-shell {
+        width: min(calc(100% - 24px), var(--page-max));
+        padding-top: calc(10px + var(--safe-top));
+        padding-bottom: calc(118px + var(--safe-bottom));
+      }
+      [id] { scroll-margin-top: 24px; }
+      .top-nav {
+        position: relative;
+        top: auto;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        margin-bottom: 14px;
+        border-radius: 28px;
+      }
+      .brand { padding: 5px 4px; }
+      .brand-mark { width: 36px; height: 36px; border-radius: 14px; }
+      .nav-actions .segmented { display: none; }
+      .nav-actions .icon-button:nth-child(2) { display: none; }
+      .nav-center { display: block; }
+      .search-pill { min-width: 0; width: 100%; }
+      .hero { min-height: auto; border-radius: 34px; }
+      .hero-inner { padding: 26px; gap: 22px; }
+      .hero-side,
+      .metric-grid,
+      .release-summary-grid,
+      .priority-list,
+      .chart-grid { grid-template-columns: 1fr; }
+      .signal-card { min-height: 104px; }
+      .section-header { display: grid; align-items: start; }
+      .section-pad { padding: 22px; }
+      .metric-card { min-height: 134px; }
+      .data-explorer-grid { grid-template-columns: 1fr; }
+      .priority-list li { min-height: auto; padding-right: 16px; }
+      .donut-row { grid-template-columns: 1fr; justify-items: start; }
+      .mobile-tabbar { display: block; }
+      .fab { right: 18px; bottom: calc(94px + var(--safe-bottom)); width: 56px; height: 56px; }
+      table { min-width: 680px; }
+      h1 { font-size: clamp(3rem, 12vw, 4.4rem); }
+    }
+    
+    .pricing-page-hero {
+      min-height: auto;
+      padding: clamp(28px, 5vw, 54px);
+    }
+    .pricing-page-hero h1 {
+      max-width: 960px;
+      font-size: clamp(2.7rem, 7vw, 5.1rem);
+    }
+    .pricing-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .pricing-summary-card {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 18px;
+      background: linear-gradient(145deg, rgba(255,255,255,.60), rgba(255,255,255,.30));
+      backdrop-filter: blur(24px) saturate(1.35);
+      -webkit-backdrop-filter: blur(24px) saturate(1.35);
+      box-shadow: var(--shadow-soft);
+    }
+    .pricing-summary-card span {
+      display: block;
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .pricing-summary-card strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      line-height: 1;
+    }
+    .pricing-summary-card em {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-style: normal;
+      line-height: 1.35;
+    }
+    .pricing-method-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .pricing-method-grid .section-panel {
+      overflow: visible;
+    }
+    @media (prefers-color-scheme: dark) {
+      .pricing-summary-card {
+        background: linear-gradient(145deg, rgba(18,29,50,.82), rgba(12,20,36,.58));
+      }
+    }
+    @media (max-width: 980px) {
+      .pricing-summary-grid,
+      .pricing-method-grid { grid-template-columns: 1fr; }
+    }
+    </style>
+</head>
+<body>
+<div class="page-shell">
+  <header class="top-nav liquid" data-liquid>
+    <a class="brand focus-ring" href="index.html#pricing" aria-label="Back to Creator Sales dashboard">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Pricing Intelligence<small>creator sales analytics</small></span>
+    </a>
+    <div class="nav-center">
+      <nav class="segmented liquid" data-liquid aria-label="Pricing navigation">
+        <a class="secondary-action" href="index.html#pricing">Dashboard</a>
+        <a class="secondary-action" href="content-prices-full.html">Price Matrix</a>
+        <a class="secondary-action" href="data/pricing_tier_summary.csv">CSV</a>
+      </nav>
+    </div>
+  </header>
+  <main class="content-stack">
+    <section class="hero pricing-page-hero">
+      <div class="eyebrow-row">
+        <span class="eyebrow">Pricing science layer</span>
+        <span class="updated-chip mono">Generated Jul 2, 2026 · 16:19 local</span>
+      </div>
+      <h1>Pricing Intelligence</h1>
+      <p class="hero-subcopy">Observational pricing signals from listed prices, mapped video sales, release age, net/day, and native OF PPV message efficiency. This page ranks what has worked; it does not claim a clean optimal price without controlled testing.</p>
+      <div class="pricing-summary-grid">
+        <article class="pricing-summary-card"><span>Best tier by net/day</span><strong class="mono">$36.99</strong><em>$385.34 net/day across priced mapped videos</em></article>
+        <article class="pricing-summary-card"><span>Top efficiency title</span><strong class="mono">$368.25</strong><em>Greedy SSBBW Devours Roommates Leftovers</em></article>
+        <article class="pricing-summary-card"><span>Best OF PPV tier</span><strong class="mono">$36.99</strong><em>$338.84 net per 1,000 viewed messages</em></article>
+      </div>
+    </section>
+
+    <section class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Contribution view</div><h2>Price Tier Performance</h2></div></div><p class="muted">Grouped by the highest captured listed platform price for each mapped video. Net/day is the practical contribution metric for already-produced digital content. Launch-window values only appear when a title is still inside that first 7- or 30-day window.</p><div class="table-wrap"><table class="wide rank-table">
+<thead><tr>
+<th>Price Tier</th>
+<th>Titles</th>
+<th>Net</th>
+<th>Net/Day</th>
+<th>Avg Net/Sale</th>
+<th>Latest 7 Net</th>
+<th>MTD Net</th>
+<th>YTD Net</th>
+<th>Launch 7 Net</th>
+<th>Launch 30 Net</th>
+<th>Avg Days Live</th>
+<th>Top Content</th>
+</tr></thead><tbody>
+<tr>
+<td>$36.99</td>
+<td>2</td>
+<td>$3,474</td>
+<td>$385.34</td>
+<td>$23.96</td>
+<td>$2,254</td>
+<td>$182</td>
+<td>$3,474</td>
+<td>$2,210</td>
+<td>$2,210</td>
+<td>40.0</td>
+<td>Greedy SSBBW Devours Roommates Leftovers, Stuffed and Horny</td>
+</tr>
+<tr>
+<td>$27.99</td>
+<td>5</td>
+<td>$11,467</td>
+<td>$193.91</td>
+<td>$18.32</td>
+<td>$363</td>
+<td>$46</td>
+<td>$9,250</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>167.4</td>
+<td>Best Friend&#x27;s Mom Teases You, Exercise After Gaining, The Diet of a Gaining SSBBW</td>
+</tr>
+<tr>
+<td>$19.99</td>
+<td>8</td>
+<td>$8,137</td>
+<td>$83.68</td>
+<td>$12.77</td>
+<td>$221</td>
+<td>$45</td>
+<td>$6,778</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>763.5</td>
+<td>Gaining SSBBW Wants to Reach 600lbs, Stuffed Girlfriend Gets Gassy, HR Fatty Makes You Her Feeder POV</td>
+</tr>
+<tr>
+<td>$20.99</td>
+<td>8</td>
+<td>$2,145</td>
+<td>$64.70</td>
+<td>$13.24</td>
+<td>$302</td>
+<td>$62</td>
+<td>$1,726</td>
+<td>n/a</td>
+<td>$1,393</td>
+<td>736.1</td>
+<td>Fucking Your Stuffed SSBBW Girlfriend POV, Neighbor Gets Bred, Worship My Sweaty Ass</td>
+</tr>
+<tr>
+<td>$14.99</td>
+<td>11</td>
+<td>$4,641</td>
+<td>$28.22</td>
+<td>$11.72</td>
+<td>$68</td>
+<td>$21</td>
+<td>$3,373</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1383.9</td>
+<td>Diet Pills Gone Wrong, Stuffing My Face With Pizza, Impregnation Fantasy Chat</td>
+</tr>
+<tr>
+<td>$24.99</td>
+<td>13</td>
+<td>$3,989</td>
+<td>$18.45</td>
+<td>$16.62</td>
+<td>$60</td>
+<td>$0</td>
+<td>$3,326</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>798.5</td>
+<td>Gassy Giantess Gobbles You Up, Stuffing and Makeout POV, Therapist Turns You Into a Feeder Part 2</td>
+</tr>
+<tr>
+<td>$21.99</td>
+<td>9</td>
+<td>$3,315</td>
+<td>$13.51</td>
+<td>$13.53</td>
+<td>$95</td>
+<td>$26</td>
+<td>$3,315</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>463.7</td>
+<td>Ex GF Got Fat - Holiday Hookup, Boyfriend Gets Vored, Wife Wants to Stop Gaining the Reboot</td>
+</tr>
+<tr>
+<td>$31.99</td>
+<td>1</td>
+<td>$1,496</td>
+<td>$6.99</td>
+<td>$22.66</td>
+<td>$48</td>
+<td>$0</td>
+<td>$1,496</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>214.0</td>
+<td>Greedy SSBBW Stuffs Whole Thanksgiving Dinner</td>
+</tr>
+<tr>
+<td>$23.99</td>
+<td>3</td>
+<td>$675</td>
+<td>$2.41</td>
+<td>$15.34</td>
+<td>$14</td>
+<td>$0</td>
+<td>$560</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>560.3</td>
+<td>Dorothy Returns to Oz POV, Gaining for Daddy, SSBBW Babe Gobbles Entire Pie</td>
+</tr>
+<tr>
+<td>$29.99</td>
+<td>2</td>
+<td>$627</td>
+<td>$2.28</td>
+<td>$19.60</td>
+<td>$40</td>
+<td>$18</td>
+<td>$627</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>403.5</td>
+<td>Therapist Turns You Into a Feeder Part 3, SSBBW Smokes After Thanksgiving Stuffing</td>
+</tr>
+<tr>
+<td>$15.99</td>
+<td>11</td>
+<td>$872</td>
+<td>$2.20</td>
+<td>$10.51</td>
+<td>$56</td>
+<td>$18</td>
+<td>$872</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1028.9</td>
+<td>Hungry Girlfriend Ignores You, Belly Worship to Keep Your Job, Fat Dom GF Makes you Clean Sweaty Ass and Pussy</td>
+</tr>
+<tr>
+<td>$34.99</td>
+<td>2</td>
+<td>$765</td>
+<td>$1.68</td>
+<td>$23.19</td>
+<td>$21</td>
+<td>$0</td>
+<td>$765</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>502.5</td>
+<td>SSBBW Burps and Farts While Stuffing, Measurements and Weigh-In</td>
+</tr>
+<tr>
+<td>$17.99</td>
+<td>11</td>
+<td>$788</td>
+<td>$1.56</td>
+<td>$10.51</td>
+<td>$54</td>
+<td>$27</td>
+<td>$788</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1037.1</td>
+<td>SSBBW Squashes You Under Ass and Feet, Cum for My Fat Part 2, Hotel Concierge Fucking POV</td>
+</tr>
+<tr>
+<td>$16.99</td>
+<td>20</td>
+<td>$807</td>
+<td>$0.89</td>
+<td>$9.38</td>
+<td>$46</td>
+<td>$10</td>
+<td>$807</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1209.8</td>
+<td>Friends With Benefits, Cum for My Fat, Seducing You Into Impregnation</td>
+</tr>
+<tr>
+<td>$28.99</td>
+<td>1</td>
+<td>$320</td>
+<td>$0.71</td>
+<td>$18.83</td>
+<td>$0</td>
+<td>$0</td>
+<td>$320</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>448.0</td>
+<td>Stuffing Until I&#x27;m Stuck</td>
+</tr>
+<tr>
+<td>$13.99</td>
+<td>19</td>
+<td>$614</td>
+<td>$0.68</td>
+<td>$7.13</td>
+<td>$34</td>
+<td>$0</td>
+<td>$614</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1479.3</td>
+<td>SSBBW Ex Wants to Get Pregnant, Vibe Until I Cum, Heavy Hanging Belly</td>
+</tr>
+<tr>
+<td>$18.99</td>
+<td>7</td>
+<td>$331</td>
+<td>$0.61</td>
+<td>$10.03</td>
+<td>$11</td>
+<td>$11</td>
+<td>$331</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>973.0</td>
+<td>Smoking a cigarette in an outgrown shirt, Horny SSBBW Succubus Grows for Your Cum POV, Fat Girl Walks in Sexy Black Bodystocking</td>
+</tr>
+<tr>
+<td>$26.99</td>
+<td>3</td>
+<td>$209</td>
+<td>$0.49</td>
+<td>$16.11</td>
+<td>$16</td>
+<td>$0</td>
+<td>$185</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>648.7</td>
+<td>Room Service Stuffing, Squirting on the First Date, Fatty Chugs Three Large Milkshakes</td>
+</tr>
+<tr>
+<td>$12.99</td>
+<td>15</td>
+<td>$411</td>
+<td>$0.27</td>
+<td>$5.56</td>
+<td>$23</td>
+<td>$15</td>
+<td>$411</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1745.7</td>
+<td>Crawling Back to Your Fat Mistress, Fat Party Girl Gets the Wrong Room, POV Morning Sex</td>
+</tr>
+<tr>
+<td>$22.99</td>
+<td>2</td>
+<td>$165</td>
+<td>$0.19</td>
+<td>$13.79</td>
+<td>$14</td>
+<td>$0</td>
+<td>$165</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>920.5</td>
+<td>Magical Belly Growth and Riding POV, Worship My Fat SSBBW Body</td>
+</tr>
+<tr>
+<td>$11.99</td>
+<td>9</td>
+<td>$143</td>
+<td>$0.07</td>
+<td>$7.14</td>
+<td>$7</td>
+<td>$0</td>
+<td>$122</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2256.4</td>
+<td>Your Cum Makes Me Gain, Weight on Your Chest, POV Fucking and Sucking</td>
+</tr>
+<tr>
+<td>$10.99</td>
+<td>10</td>
+<td>$130</td>
+<td>$0.06</td>
+<td>$4.99</td>
+<td>$3</td>
+<td>$0</td>
+<td>$130</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2087.0</td>
+<td>Touring My Fat Jiggly Body, Solo Shower Sex, Not in Kansas</td>
+</tr>
+<tr>
+<td>$9.99</td>
+<td>8</td>
+<td>$121</td>
+<td>$0.04</td>
+<td>$5.74</td>
+<td>$18</td>
+<td>$0</td>
+<td>$118</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2287.5</td>
+<td>Smoking and Sensual Rubbing, Horny Pillow Grinding, Fatty in the Shower</td>
+</tr>
+<tr>
+<td>$7.99</td>
+<td>3</td>
+<td>$29</td>
+<td>$0.01</td>
+<td>$4.79</td>
+<td>$5</td>
+<td>$0</td>
+<td>$24</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2205.7</td>
+<td>Hot Pink Catwalk and Fat Bouncing, Flopping My Fat Around, 400lbs Bouncing on Your Cock</td>
+</tr>
+<tr>
+<td>$6.99</td>
+<td>1</td>
+<td>$21</td>
+<td>$0.01</td>
+<td>$4.19</td>
+<td>$4</td>
+<td>$0</td>
+<td>$21</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2042.0</td>
+<td>Red Satin Shorts Fat Booty Worship</td>
+</tr>
+<tr>
+<td>$4.99</td>
+<td>11</td>
+<td>$75</td>
+<td>$0.01</td>
+<td>$2.99</td>
+<td>$0</td>
+<td>$0</td>
+<td>$63</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2777.5</td>
+<td>Big Horny Housewife, Squirting and Fishnets, Squeaky Chair Big Girl</td>
+</tr>
+<tr>
+<td>$5.99</td>
+<td>1</td>
+<td>$18</td>
+<td>$0.01</td>
+<td>$3.59</td>
+<td>$0</td>
+<td>$0</td>
+<td>$18</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2168.0</td>
+<td>Tight Dress Belly Bouncing</td>
+</tr>
+<tr>
+<td>$8.99</td>
+<td>3</td>
+<td>$21</td>
+<td>$0.00</td>
+<td>$5.24</td>
+<td>$5</td>
+<td>$0</td>
+<td>$21</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2154.0</td>
+<td>Jiggly Catwalk, Full Body Measurements, Cozy Winter Pussy Play</td>
+</tr>
+</tbody></table></div><p class="muted"><a class="csv-link liquid" data-liquid href="data/pricing_tier_summary.csv">Open tier CSV</a></p></section>
+
+    <section class="pricing-method-grid">
+      <section class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Video pricing</div><h2>Top Content by Price Efficiency</h2></div></div><p class="muted">Content sorted by net/day, with price tier, release age, and recent period contribution kept visible.</p><div class="table-wrap"><table class="wide rank-table">
+<thead><tr>
+<th>Content</th>
+<th>Tier</th>
+<th>Platforms</th>
+<th>Sales</th>
+<th>Net</th>
+<th>Net/Day</th>
+<th>Avg Net/Sale</th>
+<th>Latest 7</th>
+<th>MTD</th>
+<th>YTD</th>
+<th>Days Live</th>
+<th>First Offered</th>
+<th>Price Status</th>
+</tr></thead><tbody>
+<tr>
+<td>Greedy SSBBW Devours Roommates Leftovers</td>
+<td>$36.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>88</td>
+<td>$2,210</td>
+<td>$368.25</td>
+<td>$25.11</td>
+<td>$2,210</td>
+<td>$182</td>
+<td>$2,210</td>
+<td>6</td>
+<td>2026-06-27</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Best Friend&#x27;s Mom Teases You</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>349</td>
+<td>$6,075</td>
+<td>$141.28</td>
+<td>$17.41</td>
+<td>$309</td>
+<td>$46</td>
+<td>$4,530</td>
+<td>43</td>
+<td>2026-05-21</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Fucking Your Stuffed SSBBW Girlfriend POV</td>
+<td>$20.99</td>
+<td>Clips4Sale, ManyVids, OnlyFans</td>
+<td>102</td>
+<td>$1,393</td>
+<td>$63.34</td>
+<td>$13.66</td>
+<td>$239</td>
+<td>$50</td>
+<td>$974</td>
+<td>22</td>
+<td>2026-06-11</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Gaining SSBBW Wants to Reach 600lbs</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>155</td>
+<td>$2,188</td>
+<td>$36.47</td>
+<td>$14.12</td>
+<td>$102</td>
+<td>$24</td>
+<td>$1,724</td>
+<td>60</td>
+<td>2026-05-04</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Diet Pills Gone Wrong</td>
+<td>$14.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>332</td>
+<td>$3,599</td>
+<td>$27.47</td>
+<td>$10.84</td>
+<td>$42</td>
+<td>$11</td>
+<td>$3,047</td>
+<td>131</td>
+<td>2026-02-22</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Stuffed Girlfriend Gets Gassy</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>203</td>
+<td>$2,812</td>
+<td>$24.67</td>
+<td>$13.85</td>
+<td>$78</td>
+<td>n/a</td>
+<td>$2,492</td>
+<td>114</td>
+<td>2026-03-11</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Exercise After Gaining</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>107</td>
+<td>$2,162</td>
+<td>$24.57</td>
+<td>$20.20</td>
+<td>$17</td>
+<td>n/a</td>
+<td>$1,803</td>
+<td>88</td>
+<td>2026-04-06</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>The Diet of a Gaining SSBBW</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>80</td>
+<td>$1,545</td>
+<td>$23.06</td>
+<td>$19.31</td>
+<td>$17</td>
+<td>n/a</td>
+<td>$1,232</td>
+<td>67</td>
+<td>2026-04-27</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>HR Fatty Makes You Her Feeder POV</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>237</td>
+<td>$2,610</td>
+<td>$21.57</td>
+<td>$11.01</td>
+<td>$42</td>
+<td>$21</td>
+<td>$2,034</td>
+<td>121</td>
+<td>2026-03-04</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Stuffed and Horny</td>
+<td>$36.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>57</td>
+<td>$1,265</td>
+<td>$17.09</td>
+<td>$22.19</td>
+<td>$44</td>
+<td>n/a</td>
+<td>$1,265</td>
+<td>74</td>
+<td>2026-04-20</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Gassy Giantess Gobbles You Up</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>145</td>
+<td>$2,497</td>
+<td>$16.21</td>
+<td>$17.22</td>
+<td>$15</td>
+<td>n/a</td>
+<td>$1,837</td>
+<td>154</td>
+<td>2026-01-30</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Ex GF Got Fat - Holiday Hookup</td>
+<td>$21.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>154</td>
+<td>$2,068</td>
+<td>$10.94</td>
+<td>$13.43</td>
+<td>$13</td>
+<td>n/a</td>
+<td>$2,068</td>
+<td>189</td>
+<td>2025-12-26</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Greedy SSBBW Stuffs Whole Thanksgiving Dinner</td>
+<td>$31.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>66</td>
+<td>$1,496</td>
+<td>$6.99</td>
+<td>$22.66</td>
+<td>$48</td>
+<td>n/a</td>
+<td>$1,496</td>
+<td>214</td>
+<td>2025-12-01</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Co-workers&#x27; Revenge: Cake Stuffing and Rapid Growth</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>75</td>
+<td>$1,413</td>
+<td>$4.07</td>
+<td>$18.84</td>
+<td>$21</td>
+<td>n/a</td>
+<td>$1,413</td>
+<td>347</td>
+<td>2025-07-21</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Dorothy Returns to Oz POV</td>
+<td>$23.99</td>
+<td>Clips4Sale, ManyVids, OnlyFans</td>
+<td>30</td>
+<td>$461</td>
+<td>$1.99</td>
+<td>$15.35</td>
+<td>$14</td>
+<td>n/a</td>
+<td>$345</td>
+<td>231</td>
+<td>2025-11-14</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Therapist Turns You Into a Feeder Part 3</td>
+<td>$29.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>23</td>
+<td>$444</td>
+<td>$1.96</td>
+<td>$19.30</td>
+<td>$18</td>
+<td>$18</td>
+<td>$444</td>
+<td>226</td>
+<td>2025-11-19</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Hungry Girlfriend Ignores You</td>
+<td>$15.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>38</td>
+<td>$453</td>
+<td>$1.76</td>
+<td>$11.93</td>
+<td>$19</td>
+<td>n/a</td>
+<td>$453</td>
+<td>258</td>
+<td>2025-10-18</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>SSBBW Burps and Farts While Stuffing</td>
+<td>$34.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>29</td>
+<td>$665</td>
+<td>$1.50</td>
+<td>$22.93</td>
+<td>$21</td>
+<td>n/a</td>
+<td>$665</td>
+<td>443</td>
+<td>2025-04-16</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>SSBBW Squashes You Under Ass and Feet</td>
+<td>$17.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>27</td>
+<td>$306</td>
+<td>$0.93</td>
+<td>$11.35</td>
+<td>$22</td>
+<td>$11</td>
+<td>$306</td>
+<td>328</td>
+<td>2025-08-09</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Fitting My Fat Body</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>15</td>
+<td>$272</td>
+<td>$0.93</td>
+<td>$18.14</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$272</td>
+<td>292</td>
+<td>2025-09-14</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Neighbor Gets Bred</td>
+<td>$20.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>27</td>
+<td>$340</td>
+<td>$0.88</td>
+<td>$12.59</td>
+<td>$25</td>
+<td>n/a</td>
+<td>$340</td>
+<td>388</td>
+<td>2025-06-10</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Stuffing Until I&#x27;m Stuck</td>
+<td>$28.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>17</td>
+<td>$320</td>
+<td>$0.71</td>
+<td>$18.83</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$320</td>
+<td>448</td>
+<td>2025-04-11</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Boyfriend Gets Vored</td>
+<td>$21.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>18</td>
+<td>$284</td>
+<td>$0.51</td>
+<td>$15.77</td>
+<td>$16</td>
+<td>n/a</td>
+<td>$284</td>
+<td>557</td>
+<td>2024-12-23</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Wife Wants to Stop Gaining the Reboot</td>
+<td>$21.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>19</td>
+<td>$251</td>
+<td>$0.50</td>
+<td>$13.19</td>
+<td>$40</td>
+<td>$13</td>
+<td>$251</td>
+<td>498</td>
+<td>2025-02-20</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>After-Gym Stuffing</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>17</td>
+<td>$230</td>
+<td>$0.48</td>
+<td>$13.52</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$230</td>
+<td>480</td>
+<td>2025-03-10</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Work Meeting Masturbation</td>
+<td>$21.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>14</td>
+<td>$185</td>
+<td>$0.42</td>
+<td>$13.19</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$185</td>
+<td>436</td>
+<td>2025-04-23</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Smoking a cigarette in an outgrown shirt</td>
+<td>$18.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>12</td>
+<td>$145</td>
+<td>$0.42</td>
+<td>$12.05</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$145</td>
+<td>341</td>
+<td>2025-07-27</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Stuffing and Makeout POV</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>18</td>
+<td>$302</td>
+<td>$0.41</td>
+<td>$16.79</td>
+<td>$15</td>
+<td>n/a</td>
+<td>$302</td>
+<td>732</td>
+<td>2024-07-01</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Pantyhose Pussy Licking and Toe Sucking</td>
+<td>$21.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>10</td>
+<td>$132</td>
+<td>$0.41</td>
+<td>$13.19</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$132</td>
+<td>321</td>
+<td>2025-08-16</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Gaining for Daddy</td>
+<td>$23.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>13</td>
+<td>$200</td>
+<td>$0.40</td>
+<td>$15.39</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$200</td>
+<td>501</td>
+<td>2025-02-17</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Stuffing My Face With Pizza</td>
+<td>$14.99</td>
+<td>ManyVids, OnlyFans</td>
+<td>25</td>
+<td>$719</td>
+<td>$0.35</td>
+<td>$28.77</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$9</td>
+<td>2078</td>
+<td>2020-10-24</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>SSBBW Ex Wants to Get Pregnant</td>
+<td>$13.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>25</td>
+<td>$210</td>
+<td>$0.34</td>
+<td>$8.39</td>
+<td>$25</td>
+<td>n/a</td>
+<td>$210</td>
+<td>614</td>
+<td>2024-10-27</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>SSBBW Smokes After Thanksgiving Stuffing</td>
+<td>$29.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>9</td>
+<td>$183</td>
+<td>$0.32</td>
+<td>$20.35</td>
+<td>$22</td>
+<td>n/a</td>
+<td>$183</td>
+<td>581</td>
+<td>2024-11-29</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Therapist Turns You Into a Feeder Part 2</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>8</td>
+<td>$138</td>
+<td>$0.32</td>
+<td>$17.19</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$138</td>
+<td>432</td>
+<td>2025-04-27</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Mutual Gaining Fantasy</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage</td>
+<td>11</td>
+<td>$176</td>
+<td>$0.31</td>
+<td>$16.04</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$176</td>
+<td>575</td>
+<td>2024-12-05</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>SSBBW Rips Leggings and Fucks Pussy</td>
+<td>$19.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>12</td>
+<td>$144</td>
+<td>$0.29</td>
+<td>$11.99</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$144</td>
+<td>488</td>
+<td>2025-03-02</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Room Service Stuffing</td>
+<td>$26.99</td>
+<td>OnlyFans</td>
+<td>1</td>
+<td>$24</td>
+<td>$0.27</td>
+<td>$24.00</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>88</td>
+<td>2026-04-06</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Worship My Sweaty Fat</td>
+<td>$24.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>10</td>
+<td>$150</td>
+<td>$0.26</td>
+<td>$14.99</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$150</td>
+<td>576</td>
+<td>2024-12-04</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Resist Temptation or Get Swallowed</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>9</td>
+<td>$151</td>
+<td>$0.25</td>
+<td>$16.75</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$151</td>
+<td>594</td>
+<td>2024-11-16</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Cum for My Fat Part 2</td>
+<td>$17.99</td>
+<td>Clips4Sale, ManyVids</td>
+<td>13</td>
+<td>$138</td>
+<td>$0.24</td>
+<td>$10.61</td>
+<td>$11</td>
+<td>$11</td>
+<td>$138</td>
+<td>569</td>
+<td>2024-12-11</td>
+<td>Price spread</td>
+</tr>
+</tbody></table></div><p class="muted"><a class="csv-link liquid" data-liquid href="data/pricing_content_efficiency.csv">Open content efficiency CSV</a></p></section>
+      <section class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">PPV conversion</div><h2>OnlyFans PPV Efficiency</h2></div></div><p class="muted">OF pricing is better judged by net per viewed message than by purchases alone. These rows are supplemental native message stats, not top-line revenue rows.</p><div class="table-wrap"><table class="wide rank-table">
+<thead><tr>
+<th>Price Tier</th>
+<th>Messages</th>
+<th>Purchases</th>
+<th>Viewed</th>
+<th>Purchase Rate</th>
+<th>Est. Net</th>
+<th>Net/Viewed</th>
+<th>Net/1k Viewed</th>
+<th>Top Messages</th>
+</tr></thead><tbody>
+<tr>
+<td>$36.99</td>
+<td>2</td>
+<td>45</td>
+<td>3,930</td>
+<td>1.1%</td>
+<td>$1,332</td>
+<td>$0.34</td>
+<td>$338.84</td>
+<td>Woke up starving but everything is closed! Good thing my roommate has a ton of leftovers in the fridge. 👀 I plan to only take a few bites, but quickly lose control devouring everything in sight! Suddenly her alarm goes off, I try to cover u, I have no self control when it comes to pizza, taking bite after bite. I&#x27;m such a greedy pig and nothing makes me hotter! You&#x27;ll want to unlock this to see how hard I cum while stuffing my face 🥵🍕</td>
+</tr>
+<tr>
+<td>$27.99</td>
+<td>3</td>
+<td>99</td>
+<td>7,745</td>
+<td>1.3%</td>
+<td>$2,217</td>
+<td>$0.29</td>
+<td>$286.22</td>
+<td>In town from college, you go to visit your best friend at his house. He isn&#x27;t home yet, but his mom is... After sussing out your attraction to fat women, she decides to show you just how to please one. Teasing you with her gorgeous soft bod, I love how much I&#x27;ve gained over the years, and I thought you might want to hear how it&#x27;s impacted the way I exercise. Hang out with me while I smoke and chat about moving in a massive 530lb body! 🏋🏻‍♀️💪, I love sharing my weight gain journey with you, so you&#x27;re getting an even closer look at my daily diet with a kitchen tour! Chat with me about how my daily diet has evolved with my growth while I smoke, snack, and show off my well-stocked c</td>
+</tr>
+<tr>
+<td>$20.99</td>
+<td>1</td>
+<td>25</td>
+<td>1,953</td>
+<td>1.3%</td>
+<td>$420</td>
+<td>$0.21</td>
+<td>$214.95</td>
+<td>You surprised your girlfriend with her favorite treats and it turned out just how you planned - with her face and pussy stuffed 🧁🥵</td>
+</tr>
+<tr>
+<td>$19.99</td>
+<td>3</td>
+<td>85</td>
+<td>8,432</td>
+<td>1.0%</td>
+<td>$1,359</td>
+<td>$0.16</td>
+<td>$161.21</td>
+<td>Budget cuts are coming, but the HR manager offers to help protect your job... As long as you take care of her needs. 🤤 You&#x27;re mine now, and you&#x27;re gonna feed me, fuck me, and worship me every day if you want to keep that paycheck. Unlock th, Your gaining girlfriend has gotten so fucking fat, stretching and expanding her stomach to stuff more and more. She&#x27;s knows how much you love big fat women, and she&#x27;s determined to make it to 600lbs all for you! 🍪😍, You&#x27;re feast for two turned into a stuffing all for your girlfriend! You can tell all that food really did a number on her stomach when you start to hear it gurgling. First the burps start erupting, but she can&#x27;t hold back her farts as she</td>
+</tr>
+<tr>
+<td>$24.99</td>
+<td>1</td>
+<td>22</td>
+<td>2,795</td>
+<td>0.8%</td>
+<td>$440</td>
+<td>$0.16</td>
+<td>$157.36</td>
+<td>You&#x27;ve been spotted by a massive gassy giantess, and there&#x27;s nowhere for you to run. Will her burps and farts knock you out before she swallows you whole? You&#x27;ll have to unlock to find out! 💨😘</td>
+</tr>
+<tr>
+<td>$14.99</td>
+<td>1</td>
+<td>36</td>
+<td>2,796</td>
+<td>1.3%</td>
+<td>$432</td>
+<td>$0.15</td>
+<td>$154.40</td>
+<td>I thought these diet pills would solve everything, but it all went wrong! 😳 I grew so quick and got wedged in the car, by then it was too late... Unlock if you wanna see me expand until I pop! 🍗🎈</td>
+</tr>
+</tbody></table></div><p class="muted"><a class="csv-link liquid" data-liquid href="data/pricing_of_ppv_price_tiers.csv">Open OF tier CSV</a></p></section>
+    </section>
+
+    <section class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Message detail</div><h2>OF Message Detail</h2></div></div><p class="muted">Top individual PPV messages by estimated net per viewed message.</p><div class="table-wrap"><table class="wide rank-table">
+<thead><tr>
+<th>Message</th>
+<th>Type</th>
+<th>Date</th>
+<th>Tier</th>
+<th>Purchases</th>
+<th>Viewed</th>
+<th>Purchase Rate</th>
+<th>Est. Net</th>
+<th>Net/Viewed</th>
+<th>Net/1k Viewed</th>
+</tr></thead><tbody>
+<tr>
+<td>In town from college, you go to visit your best friend at his house. He isn&#x27;t home yet, but his mom is... After sussing out your attraction to fat women, she decides to show you just how to please one. Teasing you with her gorgeous soft bod</td>
+<td>group</td>
+<td>2026-05-22</td>
+<td>$27.99</td>
+<td>69</td>
+<td>2,304</td>
+<td>3.0%</td>
+<td>$1,545</td>
+<td>$0.67</td>
+<td>$670.59</td>
+</tr>
+<tr>
+<td>Woke up starving but everything is closed! Good thing my roommate has a ton of leftovers in the fridge. 👀 I plan to only take a few bites, but quickly lose control devouring everything in sight! Suddenly her alarm goes off, I try to cover u</td>
+<td>group</td>
+<td>2026-06-28</td>
+<td>$36.99</td>
+<td>21</td>
+<td>1,246</td>
+<td>1.7%</td>
+<td>$621</td>
+<td>$0.50</td>
+<td>$498.74</td>
+</tr>
+<tr>
+<td>I have no self control when it comes to pizza, taking bite after bite. I&#x27;m such a greedy pig and nothing makes me hotter! You&#x27;ll want to unlock this to see how hard I cum while stuffing my face 🥵🍕</td>
+<td>group</td>
+<td>2026-04-21</td>
+<td>$36.99</td>
+<td>24</td>
+<td>2,684</td>
+<td>0.9%</td>
+<td>$710</td>
+<td>$0.26</td>
+<td>$264.61</td>
+</tr>
+<tr>
+<td>You surprised your girlfriend with her favorite treats and it turned out just how you planned - with her face and pussy stuffed 🧁🥵</td>
+<td>group</td>
+<td>2026-06-11</td>
+<td>$20.99</td>
+<td>25</td>
+<td>1,953</td>
+<td>1.3%</td>
+<td>$420</td>
+<td>$0.21</td>
+<td>$214.95</td>
+</tr>
+<tr>
+<td>Budget cuts are coming, but the HR manager offers to help protect your job... As long as you take care of her needs. 🤤 You&#x27;re mine now, and you&#x27;re gonna feed me, fuck me, and worship me every day if you want to keep that paycheck. Unlock th</td>
+<td>group</td>
+<td>2026-03-05</td>
+<td>$19.99</td>
+<td>36</td>
+<td>2,975</td>
+<td>1.2%</td>
+<td>$576</td>
+<td>$0.19</td>
+<td>$193.52</td>
+</tr>
+<tr>
+<td>Your gaining girlfriend has gotten so fucking fat, stretching and expanding her stomach to stuff more and more. She&#x27;s knows how much you love big fat women, and she&#x27;s determined to make it to 600lbs all for you! 🍪😍</td>
+<td>group</td>
+<td>2026-05-05</td>
+<td>$19.99</td>
+<td>29</td>
+<td>2,514</td>
+<td>1.1%</td>
+<td>$464</td>
+<td>$0.18</td>
+<td>$184.47</td>
+</tr>
+<tr>
+<td>You&#x27;ve been spotted by a massive gassy giantess, and there&#x27;s nowhere for you to run. Will her burps and farts knock you out before she swallows you whole? You&#x27;ll have to unlock to find out! 💨😘</td>
+<td>group</td>
+<td>2026-01-30</td>
+<td>$24.99</td>
+<td>22</td>
+<td>2,795</td>
+<td>0.8%</td>
+<td>$440</td>
+<td>$0.16</td>
+<td>$157.36</td>
+</tr>
+<tr>
+<td>I thought these diet pills would solve everything, but it all went wrong! 😳 I grew so quick and got wedged in the car, by then it was too late... Unlock if you wanna see me expand until I pop! 🍗🎈</td>
+<td>group</td>
+<td>2026-02-22</td>
+<td>$14.99</td>
+<td>36</td>
+<td>2,796</td>
+<td>1.3%</td>
+<td>$432</td>
+<td>$0.15</td>
+<td>$154.40</td>
+</tr>
+<tr>
+<td>I love how much I&#x27;ve gained over the years, and I thought you might want to hear how it&#x27;s impacted the way I exercise. Hang out with me while I smoke and chat about moving in a massive 530lb body! 🏋🏻‍♀️💪</td>
+<td>group</td>
+<td>2026-04-06</td>
+<td>$27.99</td>
+<td>16</td>
+<td>2,811</td>
+<td>0.6%</td>
+<td>$358</td>
+<td>$0.13</td>
+<td>$127.45</td>
+</tr>
+<tr>
+<td>I love sharing my weight gain journey with you, so you&#x27;re getting an even closer look at my daily diet with a kitchen tour! Chat with me about how my daily diet has evolved with my growth while I smoke, snack, and show off my well-stocked c</td>
+<td>group</td>
+<td>2026-04-28</td>
+<td>$27.99</td>
+<td>14</td>
+<td>2,630</td>
+<td>0.5%</td>
+<td>$313</td>
+<td>$0.12</td>
+<td>$119.20</td>
+</tr>
+<tr>
+<td>You&#x27;re feast for two turned into a stuffing all for your girlfriend! You can tell all that food really did a number on her stomach when you start to hear it gurgling. First the burps start erupting, but she can&#x27;t hold back her farts as she</td>
+<td>group</td>
+<td>2026-03-11</td>
+<td>$19.99</td>
+<td>20</td>
+<td>2,943</td>
+<td>0.7%</td>
+<td>$320</td>
+<td>$0.11</td>
+<td>$108.68</td>
+</tr>
+<tr>
+<td>Straight from the bowl to your tongue. Clean up toilet slut 👅</td>
+<td>direct</td>
+<td>2026-03-11</td>
+<td>$100.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$80</td>
+<td>$80.00</td>
+<td>$80,000.00</td>
+</tr>
+<tr>
+<td>You have been such a good boy, I love to see you beg for me.</td>
+<td>direct</td>
+<td>2026-03-11</td>
+<td>$85.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$68</td>
+<td>$68.00</td>
+<td>$68,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 36849649720</td>
+<td>direct</td>
+<td>2026-03-10</td>
+<td>$70.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$56</td>
+<td>$56.00</td>
+<td>$56,000.00</td>
+</tr>
+<tr>
+<td>Yes that’s suchhh a good boy. You belong only to me, you exist to worship my fat, swallow those big stinky logs, and drink from my dripping pussy. Imagine if I even let you stick your cock into my stinky dirty asshole. Coating it completely</td>
+<td>direct</td>
+<td>2026-03-11</td>
+<td>$60.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$48</td>
+<td>$48.00</td>
+<td>$48,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 39435921652</td>
+<td>direct</td>
+<td>2026-04-30</td>
+<td>$40.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$32</td>
+<td>$32.00</td>
+<td>$32,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 39433209237</td>
+<td>direct</td>
+<td>2026-04-30</td>
+<td>$40.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$32</td>
+<td>$32.00</td>
+<td>$32,000.00</td>
+</tr>
+<tr>
+<td>Every second of your day is spent day dreaming of my holes spread wide and ready to pummel you with farts, and fill you with all the stinky fudge and sweet juices. No matter what you’re doing, your goddess is the top of your mind aren’t I?</td>
+<td>direct</td>
+<td>2026-03-11</td>
+<td>$35.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$28</td>
+<td>$28.00</td>
+<td>$28,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 36846236309</td>
+<td>direct</td>
+<td>2026-03-10</td>
+<td>$35.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$28</td>
+<td>$28.00</td>
+<td>$28,000.00</td>
+</tr>
+<tr>
+<td>Mmm you&#x27;ll lose it watching this one, Josué.. those tiny shorts barely cover me while I stuff myself like a greedy goddess.. My belly just keeps growing with every bite</td>
+<td>direct</td>
+<td>2026-04-06</td>
+<td>$30.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$24</td>
+<td>$24.00</td>
+<td>$24,000.00</td>
+</tr>
+<tr>
+<td>This one&#x27;s all about me giving in to that greedy side.. room service, strappy lingerie, my belly jiggling while I can&#x27;t stop stuffing myself.. You&#x27;d love watching me lose control like this</td>
+<td>direct</td>
+<td>2026-04-06</td>
+<td>$30.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$24</td>
+<td>$24.00</td>
+<td>$24,000.00</td>
+</tr>
+<tr>
+<td>Maybe something more like this? 🥵</td>
+<td>direct</td>
+<td>2026-04-22</td>
+<td>$25.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$20</td>
+<td>$20.00</td>
+<td>$20,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 36848874574</td>
+<td>direct</td>
+<td>2026-03-10</td>
+<td>$25.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$20</td>
+<td>$20.00</td>
+<td>$20,000.00</td>
+</tr>
+<tr>
+<td>Fuuuck yes, you&#x27;ll make your goddess very happy with you. I would turn you into my throne, let you dine on me and feel the power of all 530lbs of me. Could you handle that? 😈</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$22.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$18</td>
+<td>$17.60</td>
+<td>$17,600.00</td>
+</tr>
+<tr>
+<td>Mmmm I was hoping you&#x27;d say that! Cause I recorded one right up close that I think you&#x27;d love 🥵</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$22.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$18</td>
+<td>$17.60</td>
+<td>$17,600.00</td>
+</tr>
+<tr>
+<td>I wanted to show you how good the view would be 😈</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$22.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$18</td>
+<td>$17.60</td>
+<td>$17,600.00</td>
+</tr>
+<tr>
+<td>Can you handle that? 😈</td>
+<td>direct</td>
+<td>2026-05-06</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$16</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>I’d keep blasting you with fucking farts baby while you lick that puckering hole just like this 🤤</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$16</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 39431304991</td>
+<td>direct</td>
+<td>2026-04-30</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$16</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>Oh it totally is 😏 you&#x27;ll lose it seeing where I started.. these pics are from way before I grew into the greedy goddess I am now 💜 wanna see the difference?</td>
+<td>direct</td>
+<td>2026-04-06</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$16</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 36880948785</td>
+<td>direct</td>
+<td>2026-03-10</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$16</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>Funny how you’re begging for your life and reaching for your cock at the same time 🤭 I shove you slowly down my throat, the light disappearing as you go deeper and deeper. I can taste the fear and arousal in your sweat and it’s fucking deli</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$19.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$15</td>
+<td>$15.20</td>
+<td>$15,200.00</td>
+</tr>
+<tr>
+<td>I loooove having my ass eaten 😈 I&#x27;d have it spread nice and wide for you just like this... 🥵</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$19.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$15</td>
+<td>$15.20</td>
+<td>$15,200.00</td>
+</tr>
+<tr>
+<td>Yesss baby 🥵 Look how fucking delicious my spread ass looks. I&#x27;m gonna bury your face with it 😏</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$19.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$15</td>
+<td>$15.20</td>
+<td>$15,200.00</td>
+</tr>
+<tr>
+<td>I just want to be a cum filled slut for you baby, imagine us fucking like this.. have you seen it? 😈</td>
+<td>direct</td>
+<td>2026-03-30</td>
+<td>$17.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$14</td>
+<td>$13.60</td>
+<td>$13,600.00</td>
+</tr>
+<tr>
+<td>Maybe you could start eating that fat ass for me and encourage all those farts come to the surface? 🥵</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$15.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$12</td>
+<td>$12.00</td>
+<td>$12,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 39484540697</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$15.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$12</td>
+<td>$12.00</td>
+<td>$12,000.00</td>
+</tr>
+<tr>
+<td>I want you to start with these nudes, open them up and tell me exactly how you would please your goddess 🥵</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$14.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$11</td>
+<td>$11.20</td>
+<td>$11,200.00</td>
+</tr>
+<tr>
+<td>Wanna see how good I look with my legs spread for you? 😈</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$12.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$10</td>
+<td>$9.60</td>
+<td>$9,600.00</td>
+</tr>
+<tr>
+<td>Mmm I couldn&#x27;t resist showing you just how massive she really is.. My belly spilling forward while my tits hang heavy, leopard print straining to contain me 😈</td>
+<td>direct</td>
+<td>2026-04-21</td>
+<td>$10.00</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$8</td>
+<td>$8.00</td>
+<td>$8,000.00</td>
+</tr>
+</tbody></table></div><p class="muted"><a class="csv-link liquid" data-liquid href="data/pricing_of_ppv_efficiency.csv">Open OF message CSV</a></p></section>
+
+    <section class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Experiment log</div><h2>Forward Price Tests</h2></div></div><p class="muted">Add planned-release test fields to planned_releases.csv, then refresh. This turns future releases into measured pricing experiments without changing the sales totals.</p><p class="muted">No planned price-test rows yet. Use planned_releases.csv columns: price_tier, test_type, hypothesis, success_metric.</p></section>
+
+    <section class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Method guardrails</div><h2>Pricing Caveats</h2></div></div><ul class="compact-list"><li>These are observational signals, not a formal optimal-price proof.</li><li>Primary price tier uses the highest captured listed platform price because platform-specific audiences are not interchangeable.</li><li>C4S title snapshots, Curvage title allocation, and native OF message stats are supplemental content intelligence and do not change canonical platform totals.</li><li>Clean elasticity requires controlled tests by platform, release type, and promo exposure.</li></ul></section>
+  </main>
+</div>
+</body>
+</html>

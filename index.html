@@ -929,7 +929,7 @@
     }
     .mobile-tabbar nav {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(7, 1fr);
       gap: 6px;
     }
     .tab-item {
@@ -1194,7 +1194,7 @@
           tab.toggleAttribute("aria-current", tab.getAttribute("href") === "#" + id);
         });
       }, { threshold: [0.22, 0.42, 0.62] });
-      ["overview", "priorities", "content", "calendar", "data", "audit"].forEach(function(id) {
+      ["overview", "priorities", "content", "pricing", "calendar", "data", "audit"].forEach(function(id) {
         var element = document.getElementById(id);
         if (element) observer.observe(element);
       });
@@ -1240,6 +1240,7 @@
       <a class="icon-button liquid" data-liquid href="#overview" aria-label="Overview"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></a>
       <a class="icon-button liquid" data-liquid href="#priorities" aria-label="Priorities"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></a>
       <a class="icon-button liquid" data-liquid href="#content" aria-label="Content"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></a>
+      <a class="icon-button liquid" data-liquid href="#pricing" aria-label="Pricing"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg></a>
       <a class="icon-button liquid" data-liquid href="#calendar" aria-label="Release calendar"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg></a>
       <div class="rail-divider" aria-hidden="true"></div>
       <a class="icon-button liquid" data-liquid href="#charts" aria-label="Charts"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></a>
@@ -1253,12 +1254,13 @@
           <div>
             <div class="eyebrow-row">
               <span class="eyebrow">Creator intelligence dashboard</span>
-              <span class="updated-chip mono">Generated Jul 2, 2026 · 15:55 local</span>
+              <span class="updated-chip mono">Generated Jul 2, 2026 · 16:19 local</span>
             </div>
             <h1>Creator Sales Analytics Report</h1>
             <p class="hero-subcopy">A premium control layer floats above stable sales intelligence: recent movement, platform drivers, and content winners without turning the whole report into frosted glass.</p>
             <div class="hero-cta-row">
               <a class="primary-action liquid" data-liquid href="#priorities">Review action plan <span aria-hidden="true">&rarr;</span></a>
+              <a class="secondary-action liquid" data-liquid href="#pricing">Review pricing signals</a>
               <a class="secondary-action liquid" data-liquid href="#audit">Check source health</a>
             </div>
           </div>
@@ -2029,7 +2031,212 @@
 </tr>
 </tbody></table></div></section>
 
-      <section id="pricing" class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Pricing</div><h2>Content Price Matrix</h2></div></div><p class="muted">All video rows from the master content catalog, excluding photosets. Trusted rows and needs-review catalog rows are both visible here; sales leaderboards still use only trusted mappings. OnlyFans is intentionally omitted until OF title dedupe is stronger.</p><div class="table-wrap"><table class="wide rank-table">
+      <section id="pricing" class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Pricing science</div><h2>Pricing Intelligence</h2></div></div><p class="muted">Contribution-style pricing signals from mapped video sales, listed platform prices, release age, and native OF PPV message efficiency. This is an observational decision layer; controlled tests still beat pure historical inference.</p><div class="hero-cta-row release-actions"><a class="primary-action liquid" data-liquid href="pricing-intelligence.html">Open pricing intelligence <span aria-hidden="true">&rarr;</span></a><a class="secondary-action liquid" data-liquid href="data/pricing_tier_summary.csv">Open pricing CSV</a></div><div class="period-block"><h3>Price Tier Performance</h3><div class="table-wrap"><table class="wide rank-table">
+<thead><tr>
+<th>Tier</th>
+<th>Titles</th>
+<th>Net</th>
+<th>Net/Day</th>
+<th>Avg Net/Sale</th>
+<th>Latest 7 Net</th>
+<th>Top Content</th>
+</tr></thead><tbody>
+<tr>
+<td>$36.99</td>
+<td>2</td>
+<td>$3,474</td>
+<td>$385.34</td>
+<td>$23.96</td>
+<td>$2,254</td>
+<td>Greedy SSBBW Devours Roommates Leftovers, Stuffed and Horny</td>
+</tr>
+<tr>
+<td>$27.99</td>
+<td>5</td>
+<td>$11,467</td>
+<td>$193.91</td>
+<td>$18.32</td>
+<td>$363</td>
+<td>Best Friend&#x27;s Mom Teases You, Exercise After Gaining, The Diet of a Gaining SSBBW</td>
+</tr>
+<tr>
+<td>$19.99</td>
+<td>8</td>
+<td>$8,137</td>
+<td>$83.68</td>
+<td>$12.77</td>
+<td>$221</td>
+<td>Gaining SSBBW Wants to Reach 600lbs, Stuffed Girlfriend Gets Gassy, HR Fatty Makes You Her Feeder POV</td>
+</tr>
+<tr>
+<td>$20.99</td>
+<td>8</td>
+<td>$2,145</td>
+<td>$64.70</td>
+<td>$13.24</td>
+<td>$302</td>
+<td>Fucking Your Stuffed SSBBW Girlfriend POV, Neighbor Gets Bred, Worship My Sweaty Ass</td>
+</tr>
+<tr>
+<td>$14.99</td>
+<td>11</td>
+<td>$4,641</td>
+<td>$28.22</td>
+<td>$11.72</td>
+<td>$68</td>
+<td>Diet Pills Gone Wrong, Stuffing My Face With Pizza, Impregnation Fantasy Chat</td>
+</tr>
+<tr>
+<td>$24.99</td>
+<td>13</td>
+<td>$3,989</td>
+<td>$18.45</td>
+<td>$16.62</td>
+<td>$60</td>
+<td>Gassy Giantess Gobbles You Up, Stuffing and Makeout POV, Therapist Turns You Into a Feeder Part 2</td>
+</tr>
+</tbody></table></div></div><div class="period-block"><h3>Top Content by Price Efficiency</h3><div class="table-wrap"><table class="wide rank-table">
+<thead><tr>
+<th>Content</th>
+<th>Tier</th>
+<th>Platforms</th>
+<th>Net/Day</th>
+<th>Net</th>
+<th>Latest 7 Net</th>
+<th>Days Live</th>
+</tr></thead><tbody>
+<tr>
+<td>Greedy SSBBW Devours Roommates Leftovers</td>
+<td>$36.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>$368.25</td>
+<td>$2,210</td>
+<td>$2,210</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Best Friend&#x27;s Mom Teases You</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$141.28</td>
+<td>$6,075</td>
+<td>$309</td>
+<td>43</td>
+</tr>
+<tr>
+<td>Fucking Your Stuffed SSBBW Girlfriend POV</td>
+<td>$20.99</td>
+<td>Clips4Sale, ManyVids, OnlyFans</td>
+<td>$63.34</td>
+<td>$1,393</td>
+<td>$239</td>
+<td>22</td>
+</tr>
+<tr>
+<td>Gaining SSBBW Wants to Reach 600lbs</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$36.47</td>
+<td>$2,188</td>
+<td>$102</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Diet Pills Gone Wrong</td>
+<td>$14.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$27.47</td>
+<td>$3,599</td>
+<td>$42</td>
+<td>131</td>
+</tr>
+<tr>
+<td>Stuffed Girlfriend Gets Gassy</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$24.67</td>
+<td>$2,812</td>
+<td>$78</td>
+<td>114</td>
+</tr>
+<tr>
+<td>Exercise After Gaining</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$24.57</td>
+<td>$2,162</td>
+<td>$17</td>
+<td>88</td>
+</tr>
+<tr>
+<td>The Diet of a Gaining SSBBW</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>$23.06</td>
+<td>$1,545</td>
+<td>$17</td>
+<td>67</td>
+</tr>
+</tbody></table></div></div><div class="period-block"><h3>OF PPV Price Tiers</h3><div class="table-wrap"><table class="wide rank-table">
+<thead><tr>
+<th>Tier</th>
+<th>Messages</th>
+<th>Purchases</th>
+<th>Viewed</th>
+<th>Purchase Rate</th>
+<th>Net/1k Viewed</th>
+</tr></thead><tbody>
+<tr>
+<td>$36.99</td>
+<td>2</td>
+<td>45</td>
+<td>3,930</td>
+<td>1.1%</td>
+<td>$338.84</td>
+</tr>
+<tr>
+<td>$27.99</td>
+<td>3</td>
+<td>99</td>
+<td>7,745</td>
+<td>1.3%</td>
+<td>$286.22</td>
+</tr>
+<tr>
+<td>$20.99</td>
+<td>1</td>
+<td>25</td>
+<td>1,953</td>
+<td>1.3%</td>
+<td>$214.95</td>
+</tr>
+<tr>
+<td>$19.99</td>
+<td>3</td>
+<td>85</td>
+<td>8,432</td>
+<td>1.0%</td>
+<td>$161.21</td>
+</tr>
+<tr>
+<td>$24.99</td>
+<td>1</td>
+<td>22</td>
+<td>2,795</td>
+<td>0.8%</td>
+<td>$157.36</td>
+</tr>
+<tr>
+<td>$14.99</td>
+<td>1</td>
+<td>36</td>
+<td>2,796</td>
+<td>1.3%</td>
+<td>$154.40</td>
+</tr>
+</tbody></table></div></div></section>
+
+      <section id="price-matrix" class="section-panel section-pad" data-search-block><div class="section-header"><div><div class="section-kicker">Pricing</div><h2>Content Price Matrix</h2></div></div><p class="muted">All video rows from the master content catalog, excluding photosets. Trusted rows and needs-review catalog rows are both visible here; sales leaderboards still use only trusted mappings. OnlyFans is intentionally omitted until OF title dedupe is stronger.</p><div class="table-wrap"><table class="wide rank-table">
 <thead><tr>
 <th>Content</th>
 <th>Release Date</th>
@@ -5715,7 +5922,2244 @@
 <td>$58</td>
 <td>$91</td>
 </tr>
-</tbody></table></div></details></article></div><h3>Content Intelligence</h3><div class="data-explorer-grid"><article class="data-card"><h3>Content Price Matrix</h3><p class="muted">All master-catalog videos by platform price, with photosets excluded. Needs-review rows are visible here but do not feed trusted sales leaderboards.</p><details id="content-price-table" class="data-preview"><summary>Preview table (291 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/content_price_matrix.csv">Open CSV</a></div><p class="muted preview-note">Showing 60 of 291 rows here; open the CSV for the remaining 231 rows.</p><div class="table-wrap"><table class="wide">
+</tbody></table></div></details></article></div><h3>Content Intelligence</h3><div class="data-explorer-grid"><article class="data-card"><h3>Pricing Tier Summary</h3><p class="muted">Contribution-style rollup by highest captured listed price. Net/day is observational, not a clean elasticity estimate.</p><details id="pricing-tier-table" class="data-preview"><summary>Preview table (28 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/pricing_tier_summary.csv">Open CSV</a></div><p class="muted preview-note">Showing 28 of 28 rows here.</p><div class="table-wrap"><table class="wide">
+<thead><tr>
+<th>Tier</th>
+<th>Content</th>
+<th>Active</th>
+<th>Gross</th>
+<th>Net</th>
+<th>Avg Net/Sale</th>
+<th>Net/Day</th>
+<th>Latest 7 Net</th>
+<th>MTD Net</th>
+<th>YTD Net</th>
+<th>Launch 7 Net</th>
+<th>Launch 30 Net</th>
+<th>Avg Days Live</th>
+<th>Top Content</th>
+</tr></thead><tbody>
+<tr>
+<td>$36.99</td>
+<td>2</td>
+<td>2</td>
+<td>$5,363</td>
+<td>$3,474</td>
+<td>$23.96</td>
+<td>$385.34</td>
+<td>$2,254</td>
+<td>$182</td>
+<td>$3,474</td>
+<td>$2,210</td>
+<td>$2,210</td>
+<td>40.0</td>
+<td>Greedy SSBBW Devours Roommates Leftovers, Stuffed and Horny</td>
+</tr>
+<tr>
+<td>$27.99</td>
+<td>5</td>
+<td>5</td>
+<td>$17,630</td>
+<td>$11,467</td>
+<td>$18.32</td>
+<td>$193.91</td>
+<td>$363</td>
+<td>$46</td>
+<td>$9,250</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>167.4</td>
+<td>Best Friend&#x27;s Mom Teases You, Exercise After Gaining, The Diet of a Gaining SSBBW</td>
+</tr>
+<tr>
+<td>$19.99</td>
+<td>8</td>
+<td>8</td>
+<td>$11,967</td>
+<td>$8,137</td>
+<td>$12.77</td>
+<td>$83.68</td>
+<td>$221</td>
+<td>$45</td>
+<td>$6,778</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>763.5</td>
+<td>Gaining SSBBW Wants to Reach 600lbs, Stuffed Girlfriend Gets Gassy, HR Fatty Makes You Her Feeder POV</td>
+</tr>
+<tr>
+<td>$20.99</td>
+<td>8</td>
+<td>8</td>
+<td>$3,382</td>
+<td>$2,145</td>
+<td>$13.24</td>
+<td>$64.70</td>
+<td>$302</td>
+<td>$62</td>
+<td>$1,726</td>
+<td>n/a</td>
+<td>$1,393</td>
+<td>736.1</td>
+<td>Fucking Your Stuffed SSBBW Girlfriend POV, Neighbor Gets Bred, Worship My Sweaty Ass</td>
+</tr>
+<tr>
+<td>$14.99</td>
+<td>11</td>
+<td>11</td>
+<td>$6,602</td>
+<td>$4,641</td>
+<td>$11.72</td>
+<td>$28.22</td>
+<td>$68</td>
+<td>$21</td>
+<td>$3,373</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1383.9</td>
+<td>Diet Pills Gone Wrong, Stuffing My Face With Pizza, Impregnation Fantasy Chat</td>
+</tr>
+<tr>
+<td>$24.99</td>
+<td>13</td>
+<td>13</td>
+<td>$6,036</td>
+<td>$3,989</td>
+<td>$16.62</td>
+<td>$18.45</td>
+<td>$60</td>
+<td>$0</td>
+<td>$3,326</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>798.5</td>
+<td>Gassy Giantess Gobbles You Up, Stuffing and Makeout POV, Therapist Turns You Into a Feeder Part 2</td>
+</tr>
+<tr>
+<td>$21.99</td>
+<td>9</td>
+<td>9</td>
+<td>$5,150</td>
+<td>$3,315</td>
+<td>$13.53</td>
+<td>$13.51</td>
+<td>$95</td>
+<td>$26</td>
+<td>$3,315</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>463.7</td>
+<td>Ex GF Got Fat - Holiday Hookup, Boyfriend Gets Vored, Wife Wants to Stop Gaining the Reboot</td>
+</tr>
+<tr>
+<td>$31.99</td>
+<td>1</td>
+<td>1</td>
+<td>$2,199</td>
+<td>$1,496</td>
+<td>$22.66</td>
+<td>$6.99</td>
+<td>$48</td>
+<td>$0</td>
+<td>$1,496</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>214.0</td>
+<td>Greedy SSBBW Stuffs Whole Thanksgiving Dinner</td>
+</tr>
+<tr>
+<td>$23.99</td>
+<td>3</td>
+<td>3</td>
+<td>$1,036</td>
+<td>$675</td>
+<td>$15.34</td>
+<td>$2.41</td>
+<td>$14</td>
+<td>$0</td>
+<td>$560</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>560.3</td>
+<td>Dorothy Returns to Oz POV, Gaining for Daddy, SSBBW Babe Gobbles Entire Pie</td>
+</tr>
+<tr>
+<td>$29.99</td>
+<td>2</td>
+<td>2</td>
+<td>$974</td>
+<td>$627</td>
+<td>$19.60</td>
+<td>$2.28</td>
+<td>$40</td>
+<td>$18</td>
+<td>$627</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>403.5</td>
+<td>Therapist Turns You Into a Feeder Part 3, SSBBW Smokes After Thanksgiving Stuffing</td>
+</tr>
+<tr>
+<td>$15.99</td>
+<td>11</td>
+<td>11</td>
+<td>$1,353</td>
+<td>$872</td>
+<td>$10.51</td>
+<td>$2.20</td>
+<td>$56</td>
+<td>$18</td>
+<td>$872</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1028.9</td>
+<td>Hungry Girlfriend Ignores You, Belly Worship to Keep Your Job, Fat Dom GF Makes you Clean Sweaty Ass and Pussy</td>
+</tr>
+<tr>
+<td>$34.99</td>
+<td>2</td>
+<td>2</td>
+<td>$1,186</td>
+<td>$765</td>
+<td>$23.19</td>
+<td>$1.68</td>
+<td>$21</td>
+<td>$0</td>
+<td>$765</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>502.5</td>
+<td>SSBBW Burps and Farts While Stuffing, Measurements and Weigh-In</td>
+</tr>
+<tr>
+<td>$17.99</td>
+<td>11</td>
+<td>11</td>
+<td>$1,283</td>
+<td>$788</td>
+<td>$10.51</td>
+<td>$1.56</td>
+<td>$54</td>
+<td>$27</td>
+<td>$788</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1037.1</td>
+<td>SSBBW Squashes You Under Ass and Feet, Cum for My Fat Part 2, Hotel Concierge Fucking POV</td>
+</tr>
+<tr>
+<td>$16.99</td>
+<td>20</td>
+<td>20</td>
+<td>$1,311</td>
+<td>$807</td>
+<td>$9.38</td>
+<td>$0.89</td>
+<td>$46</td>
+<td>$10</td>
+<td>$807</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1209.8</td>
+<td>Friends With Benefits, Cum for My Fat, Seducing You Into Impregnation</td>
+</tr>
+<tr>
+<td>$28.99</td>
+<td>1</td>
+<td>1</td>
+<td>$493</td>
+<td>$320</td>
+<td>$18.83</td>
+<td>$0.71</td>
+<td>$0</td>
+<td>$0</td>
+<td>$320</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>448.0</td>
+<td>Stuffing Until I&#x27;m Stuck</td>
+</tr>
+<tr>
+<td>$13.99</td>
+<td>19</td>
+<td>19</td>
+<td>$1,012</td>
+<td>$614</td>
+<td>$7.13</td>
+<td>$0.68</td>
+<td>$34</td>
+<td>$0</td>
+<td>$614</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1479.3</td>
+<td>SSBBW Ex Wants to Get Pregnant, Vibe Until I Cum, Heavy Hanging Belly</td>
+</tr>
+<tr>
+<td>$18.99</td>
+<td>7</td>
+<td>7</td>
+<td>$526</td>
+<td>$331</td>
+<td>$10.03</td>
+<td>$0.61</td>
+<td>$11</td>
+<td>$11</td>
+<td>$331</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>973.0</td>
+<td>Smoking a cigarette in an outgrown shirt, Horny SSBBW Succubus Grows for Your Cum POV, Fat Girl Walks in Sexy Black Bodystocking</td>
+</tr>
+<tr>
+<td>$26.99</td>
+<td>3</td>
+<td>3</td>
+<td>$329</td>
+<td>$209</td>
+<td>$16.11</td>
+<td>$0.49</td>
+<td>$16</td>
+<td>$0</td>
+<td>$185</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>648.7</td>
+<td>Room Service Stuffing, Squirting on the First Date, Fatty Chugs Three Large Milkshakes</td>
+</tr>
+<tr>
+<td>$12.99</td>
+<td>15</td>
+<td>15</td>
+<td>$668</td>
+<td>$411</td>
+<td>$5.56</td>
+<td>$0.27</td>
+<td>$23</td>
+<td>$15</td>
+<td>$411</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>1745.7</td>
+<td>Crawling Back to Your Fat Mistress, Fat Party Girl Gets the Wrong Room, POV Morning Sex</td>
+</tr>
+<tr>
+<td>$22.99</td>
+<td>2</td>
+<td>2</td>
+<td>$276</td>
+<td>$165</td>
+<td>$13.79</td>
+<td>$0.19</td>
+<td>$14</td>
+<td>$0</td>
+<td>$165</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>920.5</td>
+<td>Magical Belly Growth and Riding POV, Worship My Fat SSBBW Body</td>
+</tr>
+<tr>
+<td>$11.99</td>
+<td>9</td>
+<td>9</td>
+<td>$232</td>
+<td>$143</td>
+<td>$7.14</td>
+<td>$0.07</td>
+<td>$7</td>
+<td>$0</td>
+<td>$122</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2256.4</td>
+<td>Your Cum Makes Me Gain, Weight on Your Chest, POV Fucking and Sucking</td>
+</tr>
+<tr>
+<td>$10.99</td>
+<td>10</td>
+<td>10</td>
+<td>$215</td>
+<td>$130</td>
+<td>$4.99</td>
+<td>$0.06</td>
+<td>$3</td>
+<td>$0</td>
+<td>$130</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2087.0</td>
+<td>Touring My Fat Jiggly Body, Solo Shower Sex, Not in Kansas</td>
+</tr>
+<tr>
+<td>$9.99</td>
+<td>8</td>
+<td>8</td>
+<td>$200</td>
+<td>$121</td>
+<td>$5.74</td>
+<td>$0.04</td>
+<td>$18</td>
+<td>$0</td>
+<td>$118</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2287.5</td>
+<td>Smoking and Sensual Rubbing, Horny Pillow Grinding, Fatty in the Shower</td>
+</tr>
+<tr>
+<td>$7.99</td>
+<td>3</td>
+<td>3</td>
+<td>$48</td>
+<td>$29</td>
+<td>$4.79</td>
+<td>$0.01</td>
+<td>$5</td>
+<td>$0</td>
+<td>$24</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2205.7</td>
+<td>Hot Pink Catwalk and Fat Bouncing, Flopping My Fat Around, 400lbs Bouncing on Your Cock</td>
+</tr>
+<tr>
+<td>$6.99</td>
+<td>1</td>
+<td>1</td>
+<td>$35</td>
+<td>$21</td>
+<td>$4.19</td>
+<td>$0.01</td>
+<td>$4</td>
+<td>$0</td>
+<td>$21</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2042.0</td>
+<td>Red Satin Shorts Fat Booty Worship</td>
+</tr>
+<tr>
+<td>$4.99</td>
+<td>11</td>
+<td>11</td>
+<td>$125</td>
+<td>$75</td>
+<td>$2.99</td>
+<td>$0.01</td>
+<td>$0</td>
+<td>$0</td>
+<td>$63</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2777.5</td>
+<td>Big Horny Housewife, Squirting and Fishnets, Squeaky Chair Big Girl</td>
+</tr>
+<tr>
+<td>$5.99</td>
+<td>1</td>
+<td>1</td>
+<td>$30</td>
+<td>$18</td>
+<td>$3.59</td>
+<td>$0.01</td>
+<td>$0</td>
+<td>$0</td>
+<td>$18</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2168.0</td>
+<td>Tight Dress Belly Bouncing</td>
+</tr>
+<tr>
+<td>$8.99</td>
+<td>3</td>
+<td>3</td>
+<td>$35</td>
+<td>$21</td>
+<td>$5.24</td>
+<td>$0.00</td>
+<td>$5</td>
+<td>$0</td>
+<td>$21</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2154.0</td>
+<td>Jiggly Catwalk, Full Body Measurements, Cozy Winter Pussy Play</td>
+</tr>
+</tbody></table></div></details></article><article class="data-card"><h3>Pricing Content Efficiency</h3><p class="muted">Mapped/priced videos sorted by net/day with release age and recent-period performance.</p><details id="pricing-content-table" class="data-preview"><summary>Preview table (199 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/pricing_content_efficiency.csv">Open CSV</a></div><p class="muted preview-note">Showing 60 of 199 rows here; open the CSV for the remaining 139 rows.</p><div class="table-wrap"><table class="wide">
+<thead><tr>
+<th>Content</th>
+<th>Tier</th>
+<th>Listed Platforms</th>
+<th>Priced Platforms</th>
+<th>Sales Platforms</th>
+<th>Sales</th>
+<th>Gross</th>
+<th>Net</th>
+<th>Avg Net/Sale</th>
+<th>Days Live</th>
+<th>Net/Day</th>
+<th>Latest 7 Net</th>
+<th>MTD Net</th>
+<th>YTD Net</th>
+<th>First Offered</th>
+<th>Price Status</th>
+</tr></thead><tbody>
+<tr>
+<td>Greedy SSBBW Devours Roommates Leftovers</td>
+<td>$36.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>88</td>
+<td>$3,255</td>
+<td>$2,210</td>
+<td>$25.11</td>
+<td>6</td>
+<td>$368.25</td>
+<td>$2,210</td>
+<td>$182</td>
+<td>$2,210</td>
+<td>2026-06-27</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Best Friend&#x27;s Mom Teases You</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>349</td>
+<td>$9,646</td>
+<td>$6,075</td>
+<td>$17.41</td>
+<td>43</td>
+<td>$141.28</td>
+<td>$309</td>
+<td>$46</td>
+<td>$4,530</td>
+<td>2026-05-21</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Fucking Your Stuffed SSBBW Girlfriend POV</td>
+<td>$20.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids, OnlyFans</td>
+<td>102</td>
+<td>$2,147</td>
+<td>$1,393</td>
+<td>$13.66</td>
+<td>22</td>
+<td>$63.34</td>
+<td>$239</td>
+<td>$50</td>
+<td>$974</td>
+<td>2026-06-11</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Gaining SSBBW Wants to Reach 600lbs</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>155</td>
+<td>$3,212</td>
+<td>$2,188</td>
+<td>$14.12</td>
+<td>60</td>
+<td>$36.47</td>
+<td>$102</td>
+<td>$24</td>
+<td>$1,724</td>
+<td>2026-05-04</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Diet Pills Gone Wrong</td>
+<td>$14.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>332</td>
+<td>$5,175</td>
+<td>$3,599</td>
+<td>$10.84</td>
+<td>131</td>
+<td>$27.47</td>
+<td>$42</td>
+<td>$11</td>
+<td>$3,047</td>
+<td>2026-02-22</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Stuffed Girlfriend Gets Gassy</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>203</td>
+<td>$4,169</td>
+<td>$2,812</td>
+<td>$13.85</td>
+<td>114</td>
+<td>$24.67</td>
+<td>$78</td>
+<td>n/a</td>
+<td>$2,492</td>
+<td>2026-03-11</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Exercise After Gaining</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>107</td>
+<td>$3,155</td>
+<td>$2,162</td>
+<td>$20.20</td>
+<td>88</td>
+<td>$24.57</td>
+<td>$17</td>
+<td>n/a</td>
+<td>$1,803</td>
+<td>2026-04-06</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>The Diet of a Gaining SSBBW</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>80</td>
+<td>$2,285</td>
+<td>$1,545</td>
+<td>$19.31</td>
+<td>67</td>
+<td>$23.06</td>
+<td>$17</td>
+<td>n/a</td>
+<td>$1,232</td>
+<td>2026-04-27</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>HR Fatty Makes You Her Feeder POV</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>237</td>
+<td>$3,738</td>
+<td>$2,610</td>
+<td>$11.01</td>
+<td>121</td>
+<td>$21.57</td>
+<td>$42</td>
+<td>$21</td>
+<td>$2,034</td>
+<td>2026-03-04</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Stuffed and Horny</td>
+<td>$36.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>57</td>
+<td>$2,108</td>
+<td>$1,265</td>
+<td>$22.19</td>
+<td>74</td>
+<td>$17.09</td>
+<td>$44</td>
+<td>n/a</td>
+<td>$1,265</td>
+<td>2026-04-20</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Gassy Giantess Gobbles You Up</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids, OnlyFans</td>
+<td>145</td>
+<td>$3,698</td>
+<td>$2,497</td>
+<td>$17.22</td>
+<td>154</td>
+<td>$16.21</td>
+<td>$15</td>
+<td>n/a</td>
+<td>$1,837</td>
+<td>2026-01-30</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Ex GF Got Fat - Holiday Hookup</td>
+<td>$21.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>154</td>
+<td>$3,138</td>
+<td>$2,068</td>
+<td>$13.43</td>
+<td>189</td>
+<td>$10.94</td>
+<td>$13</td>
+<td>n/a</td>
+<td>$2,068</td>
+<td>2025-12-26</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Greedy SSBBW Stuffs Whole Thanksgiving Dinner</td>
+<td>$31.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>66</td>
+<td>$2,199</td>
+<td>$1,496</td>
+<td>$22.66</td>
+<td>214</td>
+<td>$6.99</td>
+<td>$48</td>
+<td>n/a</td>
+<td>$1,496</td>
+<td>2025-12-01</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Co-workers&#x27; Revenge: Cake Stuffing and Rapid Growth</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>75</td>
+<td>$2,123</td>
+<td>$1,413</td>
+<td>$18.84</td>
+<td>347</td>
+<td>$4.07</td>
+<td>$21</td>
+<td>n/a</td>
+<td>$1,413</td>
+<td>2025-07-21</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Dorothy Returns to Oz POV</td>
+<td>$23.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids, OnlyFans</td>
+<td>30</td>
+<td>$720</td>
+<td>$461</td>
+<td>$15.35</td>
+<td>231</td>
+<td>$1.99</td>
+<td>$14</td>
+<td>n/a</td>
+<td>$345</td>
+<td>2025-11-14</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Therapist Turns You Into a Feeder Part 3</td>
+<td>$29.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>23</td>
+<td>$704</td>
+<td>$444</td>
+<td>$19.30</td>
+<td>226</td>
+<td>$1.96</td>
+<td>$18</td>
+<td>$18</td>
+<td>$444</td>
+<td>2025-11-19</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Hungry Girlfriend Ignores You</td>
+<td>$15.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>38</td>
+<td>$670</td>
+<td>$453</td>
+<td>$11.93</td>
+<td>258</td>
+<td>$1.76</td>
+<td>$19</td>
+<td>n/a</td>
+<td>$453</td>
+<td>2025-10-18</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>SSBBW Burps and Farts While Stuffing</td>
+<td>$34.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>29</td>
+<td>$1,044</td>
+<td>$665</td>
+<td>$22.93</td>
+<td>443</td>
+<td>$1.50</td>
+<td>$21</td>
+<td>n/a</td>
+<td>$665</td>
+<td>2025-04-16</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>SSBBW Squashes You Under Ass and Feet</td>
+<td>$17.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>27</td>
+<td>$489</td>
+<td>$306</td>
+<td>$11.35</td>
+<td>328</td>
+<td>$0.93</td>
+<td>$22</td>
+<td>$11</td>
+<td>$306</td>
+<td>2025-08-09</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Fitting My Fat Body</td>
+<td>$27.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>15</td>
+<td>$420</td>
+<td>$272</td>
+<td>$18.14</td>
+<td>292</td>
+<td>$0.93</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$272</td>
+<td>2025-09-14</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Neighbor Gets Bred</td>
+<td>$20.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>27</td>
+<td>$567</td>
+<td>$340</td>
+<td>$12.59</td>
+<td>388</td>
+<td>$0.88</td>
+<td>$25</td>
+<td>n/a</td>
+<td>$340</td>
+<td>2025-06-10</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Stuffing Until I&#x27;m Stuck</td>
+<td>$28.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>17</td>
+<td>$493</td>
+<td>$320</td>
+<td>$18.83</td>
+<td>448</td>
+<td>$0.71</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$320</td>
+<td>2025-04-11</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Boyfriend Gets Vored</td>
+<td>$21.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>18</td>
+<td>$412</td>
+<td>$284</td>
+<td>$15.77</td>
+<td>557</td>
+<td>$0.51</td>
+<td>$16</td>
+<td>n/a</td>
+<td>$284</td>
+<td>2024-12-23</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Wife Wants to Stop Gaining the Reboot</td>
+<td>$21.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>19</td>
+<td>$418</td>
+<td>$251</td>
+<td>$13.19</td>
+<td>498</td>
+<td>$0.50</td>
+<td>$40</td>
+<td>$13</td>
+<td>$251</td>
+<td>2025-02-20</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>After-Gym Stuffing</td>
+<td>$19.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>17</td>
+<td>$353</td>
+<td>$230</td>
+<td>$13.52</td>
+<td>480</td>
+<td>$0.48</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$230</td>
+<td>2025-03-10</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Work Meeting Masturbation</td>
+<td>$21.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>14</td>
+<td>$308</td>
+<td>$185</td>
+<td>$13.19</td>
+<td>436</td>
+<td>$0.42</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$185</td>
+<td>2025-04-23</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Smoking a cigarette in an outgrown shirt</td>
+<td>$18.99</td>
+<td>Clips4Sale, Curvage, ModelCentro</td>
+<td>C4S, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>12</td>
+<td>$228</td>
+<td>$145</td>
+<td>$12.05</td>
+<td>341</td>
+<td>$0.42</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$145</td>
+<td>2025-07-27</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Stuffing and Makeout POV</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>18</td>
+<td>$458</td>
+<td>$302</td>
+<td>$16.79</td>
+<td>732</td>
+<td>$0.41</td>
+<td>$15</td>
+<td>n/a</td>
+<td>$302</td>
+<td>2024-07-01</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Pantyhose Pussy Licking and Toe Sucking</td>
+<td>$21.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>10</td>
+<td>$220</td>
+<td>$132</td>
+<td>$13.19</td>
+<td>321</td>
+<td>$0.41</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$132</td>
+<td>2025-08-16</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Gaining for Daddy</td>
+<td>$23.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>13</td>
+<td>$293</td>
+<td>$200</td>
+<td>$15.39</td>
+<td>501</td>
+<td>$0.40</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$200</td>
+<td>2025-02-17</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Stuffing My Face With Pizza</td>
+<td>$14.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, MC Clipstore</td>
+<td>ManyVids, OnlyFans</td>
+<td>25</td>
+<td>$903</td>
+<td>$719</td>
+<td>$28.77</td>
+<td>2078</td>
+<td>$0.35</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$9</td>
+<td>2020-10-24</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>SSBBW Ex Wants to Get Pregnant</td>
+<td>$13.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>25</td>
+<td>$350</td>
+<td>$210</td>
+<td>$8.39</td>
+<td>614</td>
+<td>$0.34</td>
+<td>$25</td>
+<td>n/a</td>
+<td>$210</td>
+<td>2024-10-27</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>SSBBW Smokes After Thanksgiving Stuffing</td>
+<td>$29.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>9</td>
+<td>$270</td>
+<td>$183</td>
+<td>$20.35</td>
+<td>581</td>
+<td>$0.32</td>
+<td>$22</td>
+<td>n/a</td>
+<td>$183</td>
+<td>2024-11-29</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Therapist Turns You Into a Feeder Part 2</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>8</td>
+<td>$205</td>
+<td>$138</td>
+<td>$17.19</td>
+<td>432</td>
+<td>$0.32</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$138</td>
+<td>2025-04-27</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Mutual Gaining Fantasy</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>11</td>
+<td>$276</td>
+<td>$176</td>
+<td>$16.04</td>
+<td>575</td>
+<td>$0.31</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$176</td>
+<td>2024-12-05</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>SSBBW Rips Leggings and Fucks Pussy</td>
+<td>$19.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>12</td>
+<td>$240</td>
+<td>$144</td>
+<td>$11.99</td>
+<td>488</td>
+<td>$0.29</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$144</td>
+<td>2025-03-02</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Room Service Stuffing</td>
+<td>$26.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>OnlyFans</td>
+<td>1</td>
+<td>$30</td>
+<td>$24</td>
+<td>$24.00</td>
+<td>88</td>
+<td>$0.27</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2026-04-06</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Worship My Sweaty Fat</td>
+<td>$24.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>10</td>
+<td>$250</td>
+<td>$150</td>
+<td>$14.99</td>
+<td>576</td>
+<td>$0.26</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$150</td>
+<td>2024-12-04</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Resist Temptation or Get Swallowed</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>9</td>
+<td>$232</td>
+<td>$151</td>
+<td>$16.75</td>
+<td>594</td>
+<td>$0.25</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$151</td>
+<td>2024-11-16</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Cum for My Fat Part 2</td>
+<td>$17.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>13</td>
+<td>$230</td>
+<td>$138</td>
+<td>$10.61</td>
+<td>569</td>
+<td>$0.24</td>
+<td>$11</td>
+<td>$11</td>
+<td>$138</td>
+<td>2024-12-11</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Dripping Wet Strip Tease</td>
+<td>$21.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale</td>
+<td>8</td>
+<td>$176</td>
+<td>$106</td>
+<td>$13.19</td>
+<td>476</td>
+<td>$0.22</td>
+<td>$13</td>
+<td>$13</td>
+<td>$106</td>
+<td>2025-03-14</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Hotel Concierge Fucking POV</td>
+<td>$17.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>15</td>
+<td>$270</td>
+<td>$162</td>
+<td>$10.79</td>
+<td>723</td>
+<td>$0.22</td>
+<td>$11</td>
+<td>n/a</td>
+<td>$162</td>
+<td>2024-07-10</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>SSBBW Girlfriend Grows into 14-foot Giantess</td>
+<td>$21.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>10</td>
+<td>$220</td>
+<td>$135</td>
+<td>$13.49</td>
+<td>616</td>
+<td>$0.22</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$135</td>
+<td>2024-10-25</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Worship My Sweaty Ass</td>
+<td>$20.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>13</td>
+<td>$273</td>
+<td>$164</td>
+<td>$12.59</td>
+<td>802</td>
+<td>$0.20</td>
+<td>$25</td>
+<td>n/a</td>
+<td>$164</td>
+<td>2024-04-22</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Friends With Benefits</td>
+<td>$16.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, MC Clipstore</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>18</td>
+<td>$300</td>
+<td>$183</td>
+<td>$10.18</td>
+<td>958</td>
+<td>$0.19</td>
+<td>$10</td>
+<td>$10</td>
+<td>$183</td>
+<td>2023-11-18</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Anniversary Fuck POV</td>
+<td>$19.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>11</td>
+<td>$220</td>
+<td>$132</td>
+<td>$11.99</td>
+<td>708</td>
+<td>$0.19</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$132</td>
+<td>2024-07-25</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Your Wife Accidentally Gains</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>10</td>
+<td>$225</td>
+<td>$139</td>
+<td>$13.88</td>
+<td>788</td>
+<td>$0.18</td>
+<td>$30</td>
+<td>n/a</td>
+<td>$139</td>
+<td>2024-05-06</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Magical Belly Growth and Riding POV</td>
+<td>$22.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>11</td>
+<td>$253</td>
+<td>$152</td>
+<td>$13.79</td>
+<td>824</td>
+<td>$0.18</td>
+<td>$14</td>
+<td>n/a</td>
+<td>$152</td>
+<td>2024-03-31</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Measurements and Weigh-In</td>
+<td>$34.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>4</td>
+<td>$142</td>
+<td>$101</td>
+<td>$25.13</td>
+<td>562</td>
+<td>$0.18</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$101</td>
+<td>2024-12-18</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Squirting on the First Date</td>
+<td>$26.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>9</td>
+<td>$228</td>
+<td>$137</td>
+<td>$15.19</td>
+<td>814</td>
+<td>$0.17</td>
+<td>$16</td>
+<td>n/a</td>
+<td>$137</td>
+<td>2024-04-10</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Voyeur Watches Me Get Ready</td>
+<td>$21.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale, ManyVids</td>
+<td>6</td>
+<td>$127</td>
+<td>$76</td>
+<td>$12.69</td>
+<td>490</td>
+<td>$0.16</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$76</td>
+<td>2025-02-28</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Chair Breaking Under Huge SSBBW</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>11</td>
+<td>$264</td>
+<td>$165</td>
+<td>$15.04</td>
+<td>1108</td>
+<td>$0.15</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$165</td>
+<td>2023-06-21</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Fresh Squeezed Fruit Crush</td>
+<td>$21.99</td>
+<td>Clips4Sale, Curvage, ModelCentro</td>
+<td>C4S, Curvage</td>
+<td>Clips4Sale</td>
+<td>6</td>
+<td>$132</td>
+<td>$79</td>
+<td>$13.19</td>
+<td>590</td>
+<td>$0.13</td>
+<td>$13</td>
+<td>n/a</td>
+<td>$79</td>
+<td>2024-11-20</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Impregnation Fantasy Chat</td>
+<td>$14.99</td>
+<td>Clips4Sale, Curvage, ModelCentro</td>
+<td>C4S, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>10</td>
+<td>$144</td>
+<td>$92</td>
+<td>$9.17</td>
+<td>722</td>
+<td>$0.13</td>
+<td>$10</td>
+<td>$10</td>
+<td>$92</td>
+<td>2024-07-11</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Your Therapist Turns You Into a Feeder Part 1</td>
+<td>$24.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale</td>
+<td>7</td>
+<td>$175</td>
+<td>$105</td>
+<td>$14.99</td>
+<td>778</td>
+<td>$0.13</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$105</td>
+<td>2024-05-16</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Your Fave Hookup Got Fat</td>
+<td>$20.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>8</td>
+<td>$153</td>
+<td>$101</td>
+<td>$12.67</td>
+<td>784</td>
+<td>$0.13</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$101</td>
+<td>2024-05-10</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Belly Worship to Keep Your Job</td>
+<td>$15.99</td>
+<td>Clips4Sale, Curvage, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>9</td>
+<td>$148</td>
+<td>$91</td>
+<td>$10.09</td>
+<td>715</td>
+<td>$0.13</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$91</td>
+<td>2024-07-18</td>
+<td>Mostly aligned</td>
+</tr>
+<tr>
+<td>Cum for My Fat</td>
+<td>$16.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids</td>
+<td>Clips4Sale</td>
+<td>7</td>
+<td>$119</td>
+<td>$71</td>
+<td>$10.19</td>
+<td>597</td>
+<td>$0.12</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$71</td>
+<td>2024-11-13</td>
+<td>Partial coverage</td>
+</tr>
+<tr>
+<td>Horny SSBBW Succubus Grows for Your Cum POV</td>
+<td>$18.99</td>
+<td>Clips4Sale, Curvage, ManyVids</td>
+<td>C4S, ManyVids, Curvage</td>
+<td>Clips4Sale, Curvage</td>
+<td>8</td>
+<td>$136</td>
+<td>$90</td>
+<td>$11.26</td>
+<td>845</td>
+<td>$0.11</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>$90</td>
+<td>2024-03-10</td>
+<td>Price spread</td>
+</tr>
+<tr>
+<td>Fat Dom GF Makes you Clean Sweaty Ass and Pussy</td>
+<td>$15.99</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>C4S, ManyVids, MC Clipstore</td>
+<td>Clips4Sale, ManyVids, ModelCentro</td>
+<td>12</td>
+<td>$188</td>
+<td>$114</td>
+<td>$9.47</td>
+<td>1157</td>
+<td>$0.10</td>
+<td>$18</td>
+<td>$8</td>
+<td>$114</td>
+<td>2023-05-03</td>
+<td>Price spread</td>
+</tr>
+</tbody></table></div></details></article><article class="data-card"><h3>OF PPV Efficiency</h3><p class="muted">Native OF message pricing scored by purchase rate and estimated net per viewed message.</p><details id="pricing-of-ppv-table" class="data-preview"><summary>Preview table (47 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/pricing_of_ppv_efficiency.csv">Open CSV</a></div><p class="muted preview-note">Showing 47 of 47 rows here.</p><div class="table-wrap"><table class="wide">
+<thead><tr>
+<th>Message</th>
+<th>Type</th>
+<th>Date</th>
+<th>Tier</th>
+<th>Purchases</th>
+<th>Sent</th>
+<th>Viewed</th>
+<th>Purchase Rate</th>
+<th>Gross</th>
+<th>Est. Net</th>
+<th>Net/Viewed</th>
+<th>Net/1k Viewed</th>
+</tr></thead><tbody>
+<tr>
+<td>In town from college, you go to visit your best friend at his house. He isn&#x27;t home yet, but his mom is... After sussing out your attraction to fat women, she decides to show you just how to please one. Teasing you with her gorgeous soft bod</td>
+<td>group</td>
+<td>2026-05-22</td>
+<td>$27.99</td>
+<td>69</td>
+<td>7421</td>
+<td>2304</td>
+<td>3.0%</td>
+<td>$1,931.31</td>
+<td>$1,545.05</td>
+<td>$0.67</td>
+<td>$670.59</td>
+</tr>
+<tr>
+<td>Woke up starving but everything is closed! Good thing my roommate has a ton of leftovers in the fridge. 👀 I plan to only take a few bites, but quickly lose control devouring everything in sight! Suddenly her alarm goes off, I try to cover u</td>
+<td>group</td>
+<td>2026-06-28</td>
+<td>$36.99</td>
+<td>21</td>
+<td>7583</td>
+<td>1246</td>
+<td>1.7%</td>
+<td>$776.79</td>
+<td>$621.43</td>
+<td>$0.50</td>
+<td>$498.74</td>
+</tr>
+<tr>
+<td>I have no self control when it comes to pizza, taking bite after bite. I&#x27;m such a greedy pig and nothing makes me hotter! You&#x27;ll want to unlock this to see how hard I cum while stuffing my face 🥵🍕</td>
+<td>group</td>
+<td>2026-04-21</td>
+<td>$36.99</td>
+<td>24</td>
+<td>7332</td>
+<td>2684</td>
+<td>0.9%</td>
+<td>$887.76</td>
+<td>$710.21</td>
+<td>$0.26</td>
+<td>$264.61</td>
+</tr>
+<tr>
+<td>You surprised your girlfriend with her favorite treats and it turned out just how you planned - with her face and pussy stuffed 🧁🥵</td>
+<td>group</td>
+<td>2026-06-11</td>
+<td>$20.99</td>
+<td>25</td>
+<td>7514</td>
+<td>1953</td>
+<td>1.3%</td>
+<td>$524.75</td>
+<td>$419.80</td>
+<td>$0.21</td>
+<td>$214.95</td>
+</tr>
+<tr>
+<td>Budget cuts are coming, but the HR manager offers to help protect your job... As long as you take care of her needs. 🤤 You&#x27;re mine now, and you&#x27;re gonna feed me, fuck me, and worship me every day if you want to keep that paycheck. Unlock th</td>
+<td>group</td>
+<td>2026-03-05</td>
+<td>$19.99</td>
+<td>36</td>
+<td>7117</td>
+<td>2975</td>
+<td>1.2%</td>
+<td>$719.64</td>
+<td>$575.71</td>
+<td>$0.19</td>
+<td>$193.52</td>
+</tr>
+<tr>
+<td>Your gaining girlfriend has gotten so fucking fat, stretching and expanding her stomach to stuff more and more. She&#x27;s knows how much you love big fat women, and she&#x27;s determined to make it to 600lbs all for you! 🍪😍</td>
+<td>group</td>
+<td>2026-05-05</td>
+<td>$19.99</td>
+<td>29</td>
+<td>7361</td>
+<td>2514</td>
+<td>1.1%</td>
+<td>$579.71</td>
+<td>$463.77</td>
+<td>$0.18</td>
+<td>$184.47</td>
+</tr>
+<tr>
+<td>You&#x27;ve been spotted by a massive gassy giantess, and there&#x27;s nowhere for you to run. Will her burps and farts knock you out before she swallows you whole? You&#x27;ll have to unlock to find out! 💨😘</td>
+<td>group</td>
+<td>2026-01-30</td>
+<td>$24.99</td>
+<td>22</td>
+<td>7080</td>
+<td>2795</td>
+<td>0.8%</td>
+<td>$549.78</td>
+<td>$439.82</td>
+<td>$0.16</td>
+<td>$157.36</td>
+</tr>
+<tr>
+<td>I thought these diet pills would solve everything, but it all went wrong! 😳 I grew so quick and got wedged in the car, by then it was too late... Unlock if you wanna see me expand until I pop! 🍗🎈</td>
+<td>group</td>
+<td>2026-02-22</td>
+<td>$14.99</td>
+<td>36</td>
+<td>7083</td>
+<td>2796</td>
+<td>1.3%</td>
+<td>$539.64</td>
+<td>$431.71</td>
+<td>$0.15</td>
+<td>$154.40</td>
+</tr>
+<tr>
+<td>I love how much I&#x27;ve gained over the years, and I thought you might want to hear how it&#x27;s impacted the way I exercise. Hang out with me while I smoke and chat about moving in a massive 530lb body! 🏋🏻‍♀️💪</td>
+<td>group</td>
+<td>2026-04-06</td>
+<td>$27.99</td>
+<td>16</td>
+<td>7324</td>
+<td>2811</td>
+<td>0.6%</td>
+<td>$447.84</td>
+<td>$358.27</td>
+<td>$0.13</td>
+<td>$127.45</td>
+</tr>
+<tr>
+<td>I love sharing my weight gain journey with you, so you&#x27;re getting an even closer look at my daily diet with a kitchen tour! Chat with me about how my daily diet has evolved with my growth while I smoke, snack, and show off my well-stocked c</td>
+<td>group</td>
+<td>2026-04-28</td>
+<td>$27.99</td>
+<td>14</td>
+<td>7365</td>
+<td>2630</td>
+<td>0.5%</td>
+<td>$391.86</td>
+<td>$313.49</td>
+<td>$0.12</td>
+<td>$119.20</td>
+</tr>
+<tr>
+<td>You&#x27;re feast for two turned into a stuffing all for your girlfriend! You can tell all that food really did a number on her stomach when you start to hear it gurgling. First the burps start erupting, but she can&#x27;t hold back her farts as she</td>
+<td>group</td>
+<td>2026-03-11</td>
+<td>$19.99</td>
+<td>20</td>
+<td>7238</td>
+<td>2943</td>
+<td>0.7%</td>
+<td>$399.80</td>
+<td>$319.84</td>
+<td>$0.11</td>
+<td>$108.68</td>
+</tr>
+<tr>
+<td>Straight from the bowl to your tongue. Clean up toilet slut 👅</td>
+<td>direct</td>
+<td>2026-03-11</td>
+<td>$100.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$100.00</td>
+<td>$80.00</td>
+<td>$80.00</td>
+<td>$80,000.00</td>
+</tr>
+<tr>
+<td>You have been such a good boy, I love to see you beg for me.</td>
+<td>direct</td>
+<td>2026-03-11</td>
+<td>$85.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$85.00</td>
+<td>$68.00</td>
+<td>$68.00</td>
+<td>$68,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 36849649720</td>
+<td>direct</td>
+<td>2026-03-10</td>
+<td>$70.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$70.00</td>
+<td>$56.00</td>
+<td>$56.00</td>
+<td>$56,000.00</td>
+</tr>
+<tr>
+<td>Yes that’s suchhh a good boy. You belong only to me, you exist to worship my fat, swallow those big stinky logs, and drink from my dripping pussy. Imagine if I even let you stick your cock into my stinky dirty asshole. Coating it completely</td>
+<td>direct</td>
+<td>2026-03-11</td>
+<td>$60.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$60.00</td>
+<td>$48.00</td>
+<td>$48.00</td>
+<td>$48,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 39435921652</td>
+<td>direct</td>
+<td>2026-04-30</td>
+<td>$40.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$40.00</td>
+<td>$32.00</td>
+<td>$32.00</td>
+<td>$32,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 39433209237</td>
+<td>direct</td>
+<td>2026-04-30</td>
+<td>$40.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$40.00</td>
+<td>$32.00</td>
+<td>$32.00</td>
+<td>$32,000.00</td>
+</tr>
+<tr>
+<td>Every second of your day is spent day dreaming of my holes spread wide and ready to pummel you with farts, and fill you with all the stinky fudge and sweet juices. No matter what you’re doing, your goddess is the top of your mind aren’t I?</td>
+<td>direct</td>
+<td>2026-03-11</td>
+<td>$35.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$35.00</td>
+<td>$28.00</td>
+<td>$28.00</td>
+<td>$28,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 36846236309</td>
+<td>direct</td>
+<td>2026-03-10</td>
+<td>$35.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$35.00</td>
+<td>$28.00</td>
+<td>$28.00</td>
+<td>$28,000.00</td>
+</tr>
+<tr>
+<td>Mmm you&#x27;ll lose it watching this one, Josué.. those tiny shorts barely cover me while I stuff myself like a greedy goddess.. My belly just keeps growing with every bite</td>
+<td>direct</td>
+<td>2026-04-06</td>
+<td>$30.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$30.00</td>
+<td>$24.00</td>
+<td>$24.00</td>
+<td>$24,000.00</td>
+</tr>
+<tr>
+<td>This one&#x27;s all about me giving in to that greedy side.. room service, strappy lingerie, my belly jiggling while I can&#x27;t stop stuffing myself.. You&#x27;d love watching me lose control like this</td>
+<td>direct</td>
+<td>2026-04-06</td>
+<td>$30.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$30.00</td>
+<td>$24.00</td>
+<td>$24.00</td>
+<td>$24,000.00</td>
+</tr>
+<tr>
+<td>Maybe something more like this? 🥵</td>
+<td>direct</td>
+<td>2026-04-22</td>
+<td>$25.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$25.00</td>
+<td>$20.00</td>
+<td>$20.00</td>
+<td>$20,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 36848874574</td>
+<td>direct</td>
+<td>2026-03-10</td>
+<td>$25.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$25.00</td>
+<td>$20.00</td>
+<td>$20.00</td>
+<td>$20,000.00</td>
+</tr>
+<tr>
+<td>Fuuuck yes, you&#x27;ll make your goddess very happy with you. I would turn you into my throne, let you dine on me and feel the power of all 530lbs of me. Could you handle that? 😈</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$22.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$22.00</td>
+<td>$17.60</td>
+<td>$17.60</td>
+<td>$17,600.00</td>
+</tr>
+<tr>
+<td>Mmmm I was hoping you&#x27;d say that! Cause I recorded one right up close that I think you&#x27;d love 🥵</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$22.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$22.00</td>
+<td>$17.60</td>
+<td>$17.60</td>
+<td>$17,600.00</td>
+</tr>
+<tr>
+<td>I wanted to show you how good the view would be 😈</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$22.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$22.00</td>
+<td>$17.60</td>
+<td>$17.60</td>
+<td>$17,600.00</td>
+</tr>
+<tr>
+<td>Can you handle that? 😈</td>
+<td>direct</td>
+<td>2026-05-06</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$20.00</td>
+<td>$16.00</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>I’d keep blasting you with fucking farts baby while you lick that puckering hole just like this 🤤</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$20.00</td>
+<td>$16.00</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 39431304991</td>
+<td>direct</td>
+<td>2026-04-30</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$20.00</td>
+<td>$16.00</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>Oh it totally is 😏 you&#x27;ll lose it seeing where I started.. these pics are from way before I grew into the greedy goddess I am now 💜 wanna see the difference?</td>
+<td>direct</td>
+<td>2026-04-06</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$20.00</td>
+<td>$16.00</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 36880948785</td>
+<td>direct</td>
+<td>2026-03-10</td>
+<td>$20.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$20.00</td>
+<td>$16.00</td>
+<td>$16.00</td>
+<td>$16,000.00</td>
+</tr>
+<tr>
+<td>Funny how you’re begging for your life and reaching for your cock at the same time 🤭 I shove you slowly down my throat, the light disappearing as you go deeper and deeper. I can taste the fear and arousal in your sweat and it’s fucking deli</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$19.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$19.00</td>
+<td>$15.20</td>
+<td>$15.20</td>
+<td>$15,200.00</td>
+</tr>
+<tr>
+<td>I loooove having my ass eaten 😈 I&#x27;d have it spread nice and wide for you just like this... 🥵</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$19.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$19.00</td>
+<td>$15.20</td>
+<td>$15.20</td>
+<td>$15,200.00</td>
+</tr>
+<tr>
+<td>Yesss baby 🥵 Look how fucking delicious my spread ass looks. I&#x27;m gonna bury your face with it 😏</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$19.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$19.00</td>
+<td>$15.20</td>
+<td>$15.20</td>
+<td>$15,200.00</td>
+</tr>
+<tr>
+<td>I just want to be a cum filled slut for you baby, imagine us fucking like this.. have you seen it? 😈</td>
+<td>direct</td>
+<td>2026-03-30</td>
+<td>$17.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$17.00</td>
+<td>$13.60</td>
+<td>$13.60</td>
+<td>$13,600.00</td>
+</tr>
+<tr>
+<td>Maybe you could start eating that fat ass for me and encourage all those farts come to the surface? 🥵</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$15.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$15.00</td>
+<td>$12.00</td>
+<td>$12.00</td>
+<td>$12,000.00</td>
+</tr>
+<tr>
+<td>OnlyFans message 39484540697</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$15.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$15.00</td>
+<td>$12.00</td>
+<td>$12.00</td>
+<td>$12,000.00</td>
+</tr>
+<tr>
+<td>I want you to start with these nudes, open them up and tell me exactly how you would please your goddess 🥵</td>
+<td>direct</td>
+<td>2026-05-02</td>
+<td>$14.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$14.00</td>
+<td>$11.20</td>
+<td>$11.20</td>
+<td>$11,200.00</td>
+</tr>
+<tr>
+<td>Wanna see how good I look with my legs spread for you? 😈</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$12.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$12.00</td>
+<td>$9.60</td>
+<td>$9.60</td>
+<td>$9,600.00</td>
+</tr>
+<tr>
+<td>Mmm I couldn&#x27;t resist showing you just how massive she really is.. My belly spilling forward while my tits hang heavy, leopard print straining to contain me 😈</td>
+<td>direct</td>
+<td>2026-04-21</td>
+<td>$10.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$10.00</td>
+<td>$8.00</td>
+<td>$8.00</td>
+<td>$8,000.00</td>
+</tr>
+<tr>
+<td>You&#x27;re too sweet.. ok wait.. You&#x27;ve gotta see this one. I got way too turned on after that chat and ended up showing a lot more skin than I meant to 😏</td>
+<td>direct</td>
+<td>2026-04-06</td>
+<td>$10.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$10.00</td>
+<td>$8.00</td>
+<td>$8.00</td>
+<td>$8,000.00</td>
+</tr>
+<tr>
+<td>This thong&#x27;s fighting for its life trying to cover me 🤭 wanna see how much I&#x27;m spilling out of it, John?</td>
+<td>direct</td>
+<td>2026-03-29</td>
+<td>$10.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$10.00</td>
+<td>$8.00</td>
+<td>$8.00</td>
+<td>$8,000.00</td>
+</tr>
+<tr>
+<td>Wanna see how good it looks with those panties peeled off? 😏</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$7.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$7.00</td>
+<td>$5.60</td>
+<td>$5.60</td>
+<td>$5,600.00</td>
+</tr>
+<tr>
+<td>I want you between these cheeks so bad 🤤 Wanna peel these panties off of me?</td>
+<td>direct</td>
+<td>2026-05-01</td>
+<td>$7.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$7.00</td>
+<td>$5.60</td>
+<td>$5.60</td>
+<td>$5,600.00</td>
+</tr>
+<tr>
+<td>You&#x27;re definitely into dark, gritty shit huh 😈 wait baby.. I need you dripping for this one. My fat tits are out, nipples hard, belly soft and heavy.. stroke while you unlock it for me 😏</td>
+<td>direct</td>
+<td>2026-03-29</td>
+<td>$7.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$7.00</td>
+<td>$5.60</td>
+<td>$5.60</td>
+<td>$5,600.00</td>
+</tr>
+<tr>
+<td>That sounds so hot baby.. Wait before we go deeper, I want you to see how I look with a donut in my mouth and my bra struggling to hold me 😈 you&#x27;ll lose it when you see my belly.</td>
+<td>direct</td>
+<td>2026-03-29</td>
+<td>$5.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$5.00</td>
+<td>$4.00</td>
+<td>$4.00</td>
+<td>$4,000.00</td>
+</tr>
+<tr>
+<td>Hey Parker! I&#x27;ve got your video ready for you, I hope you enjoy! 💜</td>
+<td>direct</td>
+<td>2026-06-09</td>
+<td>$3.00</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>100.0%</td>
+<td>$3.00</td>
+<td>$2.40</td>
+<td>$2.40</td>
+<td>$2,400.00</td>
+</tr>
+</tbody></table></div></details></article><article class="data-card"><h3>Content Price Matrix</h3><p class="muted">All master-catalog videos by platform price, with photosets excluded. Needs-review rows are visible here but do not feed trusted sales leaderboards.</p><details id="content-price-table" class="data-preview"><summary>Preview table (291 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/content_price_matrix.csv">Open CSV</a></div><p class="muted preview-note">Showing 60 of 291 rows here; open the CSV for the remaining 231 rows.</p><div class="table-wrap"><table class="wide">
 <thead><tr>
 <th>Content</th>
 <th>Release Date</th>
@@ -9705,6 +12149,10 @@
 <th>Confidence</th>
 <th>Promo Angle</th>
 <th>Price Plan</th>
+<th>Price Tier</th>
+<th>Test Type</th>
+<th>Hypothesis</th>
+<th>Success Metric</th>
 <th>Notes</th>
 <th>Source</th>
 </tr></thead><tbody>
@@ -9726,6 +12174,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -9752,6 +12204,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -9772,6 +12228,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -9798,6 +12258,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -9818,6 +12282,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -9844,6 +12312,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -9864,6 +12336,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -9890,6 +12366,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -9910,6 +12390,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -9936,6 +12420,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -9956,6 +12444,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -9982,6 +12474,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10002,6 +12498,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10028,6 +12528,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10048,6 +12552,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10074,6 +12582,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10094,6 +12606,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10120,6 +12636,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10140,6 +12660,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10166,6 +12690,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10186,6 +12714,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10212,6 +12744,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10232,6 +12768,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10258,6 +12798,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10278,6 +12822,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10304,6 +12852,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10324,6 +12876,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10350,6 +12906,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10370,6 +12930,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10396,6 +12960,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10416,6 +12984,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10442,6 +13014,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10462,6 +13038,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10488,6 +13068,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10508,6 +13092,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10534,6 +13122,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10554,6 +13146,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10580,6 +13176,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10600,6 +13200,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10626,6 +13230,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10646,6 +13254,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10672,6 +13284,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10692,6 +13308,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10718,6 +13338,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10738,6 +13362,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10764,6 +13392,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10784,6 +13416,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10810,6 +13446,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10830,6 +13470,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10856,6 +13500,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10876,6 +13524,10 @@
 <td>0.0</td>
 <td>C4S date added</td>
 <td>medium</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10902,6 +13554,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10922,6 +13578,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10948,6 +13608,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -10968,6 +13632,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -10994,6 +13662,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -11014,6 +13686,10 @@
 <td>0.0</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -11040,6 +13716,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 <tr>
@@ -11060,6 +13740,10 @@
 <td>0.01</td>
 <td>master content release date</td>
 <td>high</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -11086,6 +13770,10 @@
 <td></td>
 <td></td>
 <td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td>content_group_summary</td>
 </tr>
 </tbody></table></div></details></article><article class="data-card"><h3>Planned Releases</h3><p class="muted">Editable upcoming schedule rows copied from planned_releases.csv during refresh.</p><details id="planned-releases-table" class="data-preview"><summary>Preview table (0 rows)</summary><div class="data-table-actions"><a class="csv-link liquid" data-liquid href="data/planned_releases.csv">Open CSV</a></div><p class="muted preview-note">Showing 0 of 0 rows here.</p><div class="table-wrap"><table class="wide">
@@ -11097,6 +13785,10 @@
 <th>Target Platforms</th>
 <th>Promo Angle</th>
 <th>Price Plan</th>
+<th>Price Tier</th>
+<th>Test Type</th>
+<th>Hypothesis</th>
+<th>Success Metric</th>
 <th>Notes</th>
 <th>Source</th>
 </tr></thead><tbody>
@@ -13017,6 +15709,7 @@
     <a class="tab-item focus-ring" aria-current="page" href="#overview"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Home</span></a>
     <a class="tab-item focus-ring" href="#priorities"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg><span>Actions</span></a>
     <a class="tab-item focus-ring" href="#content"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg><span>Content</span></a>
+    <a class="tab-item focus-ring" href="#pricing"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg><span>Pricing</span></a>
     <a class="tab-item focus-ring" href="#calendar"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg><span>Cal</span></a>
     <a class="tab-item focus-ring" href="#data"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg><span>Data</span></a>
     <a class="tab-item focus-ring" href="#audit"><svg class="lucide-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Audit</span></a>
