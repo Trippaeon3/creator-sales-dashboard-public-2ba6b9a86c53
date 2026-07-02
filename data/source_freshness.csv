@@ -1,5 +1,5 @@
 platform,source_file,report_type,imported_at,rows_seen,rows_inserted,status,notes
-Clips4Sale,2026-07-02_13-15-11_statistics_sales_track-sales-this_month.csv,sales_views,2026-07-02T13:15:51,2,2,,
+Clips4Sale,2026-07-02_15-51-00_title_summary_2026-06-26_to_2026-07-02_Sales_Summary_by_Title_26-06-2026_to_02-07-2026.csv,title_summary,2026-07-02T15:54:55,47,47,,
 Curvage,2026-07-02_13-15-56_curvage_manual_earnings (27).csv,sales,2026-07-02T13:15:56,74,5,ok,
 ManyVids,2026-07-02_13-16-52_manyvids_recent_sales_View-my-earnings_recentSalesBody.csv,recent_sales,2026-07-02T13:17:12,300,0,ok,
 OnlyFans,2026-07-02_14-21-00_supercreator_creators-revenue-2026-06-25_to_2026-07-02.xlsx,sales,2026-07-02T14:21:01,8,3,ok,
