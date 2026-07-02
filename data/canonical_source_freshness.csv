@@ -2,5 +2,5 @@ platform,source_file,report_type,imported_at,rows_seen,rows_inserted,status,note
 Clips4Sale,2026-07-02_13-15-13_statistics_transactions_track-transactions-this_month.csv,transactions,2026-07-02T13:15:51,21,9,,
 Curvage,2026-07-02_13-15-56_curvage_manual_earnings (27).csv,sales,2026-07-02T13:15:56,74,5,ok,
 ManyVids,2026-07-02_13-16-52_manyvids_recent_sales_View-my-earnings_recentSalesBody.csv,recent_sales,2026-07-02T13:17:12,300,0,ok,
-OnlyFans,2026-07-02_13-17-56_supercreator_accounts_1_export_1_Download_Desktop_App_team-members-sales-2026-06-25_to_2026-07-02.xlsx,sales,2026-07-02T13:22:11,19,8,ok,
+OnlyFans,2026-07-02_14-21-00_supercreator_creators-revenue-2026-06-25_to_2026-07-02.xlsx,sales,2026-07-02T14:21:01,8,3,ok,
 ModelCentro,2026-07-02_13-24-23_modelcentro_transactions.csv,transactions,2026-07-02T13:24:29,150,8,ok,
