@@ -1,6 +1,6 @@
 platform,source_file,report_type,imported_at,rows_seen,rows_inserted,status,notes
 Clips4Sale,2026-07-05_07-38-27_statistics_sales_track-sales-this_month.csv,sales_views,2026-07-05T15:38:30,5,2,,
-Curvage,2026-07-05_15-38-39_curvage_manual_earnings (32).csv,sales,2026-07-05T15:40:52,0,0,ok,
-ManyVids,2026-07-04_07-57-02_manyvids_recent_sales_View-my-earnings_recentSalesBody.csv,recent_sales,2026-07-04T07:58:24,300,0,ok,
-OnlyFans,2026-07-04_19-56-53_onlyfans_native_posts_pdf_Statistics — OnlyFans.json,post_statistics,2026-07-04T19:58:49,111,111,ok,
+Curvage,20260705T201118Z_curvage_daily_purchases_chrome.csv,daily_sales,2026-07-05T16:13:05,8,8,ok,
+ManyVids,20260705T200823Z_manyvids_recent_sales_chrome.csv,recent_sales,2026-07-05T16:10:16,300,4,ok,
+OnlyFans,team-members-2026-06-28_to_2026-07-05-2026-06-28_to_2026-07-05.csv,chats,2026-07-05T16:09:16,3,0,ok,
 ModelCentro,2026-07-05_15-50-54_modelcentro_transactions.csv,transactions,2026-07-05T15:52:47,150,3,ok,
