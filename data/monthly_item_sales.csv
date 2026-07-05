@@ -1,8 +1,8 @@
 period,platform,report_type,segment,item_label,rows,gross_amount,net_amount,first_date,latest_date
-2026-07,Clips4Sale,transactions,purchased-clip,C4S clip sale (title unavailable),50,1173.02,703.81,2026-07-01,2026-07-04
+2026-07,Clips4Sale,transactions,purchased-clip,C4S clip sale (title unavailable),59,1402.93,841.76,2026-07-01,2026-07-05
 2026-07,Curvage,daily_sales,,Curvage daily purchases,4,864.71,477.42,2026-07-01,2026-07-04
-2026-07,ModelCentro,transactions,Rebill,Full site access!,13,259.87,175.37,2026-07-01,2026-07-04
-2026-07,ModelCentro,transactions,Join,Full site access!,7,139.93,94.43,2026-07-01,2026-07-04
+2026-07,ModelCentro,transactions,Rebill,Full site access!,15,299.85,202.35,2026-07-01,2026-07-05
+2026-07,ModelCentro,transactions,Join,Full site access!,8,159.92,107.92,2026-07-01,2026-07-05
 2026-07,ModelCentro,transactions,Tips,ModelCentro tips,1,50.0,33.75,2026-07-03,2026-07-03
 2026-07,ModelCentro,transactions,Rebill,3 Month Membership,1,50.0,33.75,2026-07-04,2026-07-04
 2026-07,ModelCentro,transactions,Rebill,1 Month Membership,2,39.98,26.98,2026-07-01,2026-07-01
