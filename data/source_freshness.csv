@@ -2,5 +2,5 @@ platform,source_file,report_type,imported_at,rows_seen,rows_inserted,status,note
 Clips4Sale,2026-07-06_07-33-21_statistics_sales_track-sales-this_month.csv,sales_views,2026-07-06T07:36:18,6,2,,
 Curvage,2026-07-06_07-36-22_curvage_manual_earnings (34).csv,sales,2026-07-06T07:38:17,78,3,ok,
 ManyVids,2026-07-06_14-32-25_manyvids_table_3.csv,recent_sales,2026-07-06T14:35:42,300,9,ok,
-OnlyFans,2026-07-06_14-37-11_supercreator_accounts_1_export_1_Download_Desktop_App_team-members-2026-06-29_to_2026-07-06-2026-06-29_to_2026-07-06.csv,chats,2026-07-06T14:50:14,3,0,ok,
+OnlyFans,2026-07-06_18-31-08_onlyfans_native_statement_pdf_Statements — OnlyFans.json,sales,2026-07-06T18:33:45,8,8,ok,Native OnlyFans statement PDF parsed to daily gross/net aggregates; buyer identifiers are not retained.
 ModelCentro,2026-07-06_14-51-12_modelcentro_transactions.csv,transactions,2026-07-06T14:53:27,150,12,ok,
