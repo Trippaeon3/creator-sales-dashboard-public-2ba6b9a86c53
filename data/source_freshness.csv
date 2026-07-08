@@ -2,5 +2,5 @@ platform,source_file,report_type,imported_at,rows_seen,rows_inserted,status,note
 Clips4Sale,2026-07-08_07-33-08_statistics_sales_track-sales-this_month.csv,sales_views,2026-07-08T07:36:50,8,2,,
 Curvage,2026-07-08_07-36-57_curvage_manual_earnings (36).csv,sales,2026-07-08T07:39:48,86,3,ok,
 ManyVids,2026-07-08_07-42-06_manyvids_recent_sales_View-my-earnings_recentSalesBody.csv,recent_sales,2026-07-08T07:44:34,300,1,ok,
-OnlyFans,2026-07-07_135543_supercreator_creators-2026-06-30_to_2026-07-07-2026-06-30_to_2026-07-07.csv,sales,2026-07-07T14:00:46,1,1,ok,Fallback: Supercreator Creators table Earnings allocated evenly across the filename date range because the total_gross workbook is unavailable.
+OnlyFans,2026-07-08_14-10-46_supercreator_accounts_2_Export_Download_Desktop_App_team-members-2026-07-01_to_2026-07-08-2026-07-01_to_2026-07-08.csv,chats,2026-07-08T16:04:34,3,3,ok,
 ModelCentro,2026-07-08_07-49-31_modelcentro_transactions.csv,transactions,2026-07-08T14:07:38,150,4,ok,
