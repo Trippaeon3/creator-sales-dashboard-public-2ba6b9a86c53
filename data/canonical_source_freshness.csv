@@ -1,6 +1,6 @@
 platform,source_file,report_type,imported_at,rows_seen,rows_inserted,status,notes
 Clips4Sale,track-transactions-this_month (1).csv,transactions,2026-07-20T11:39:00,131,43,,
-Curvage,2026-07-21_07-40-32_curvage_manual_earnings (51).csv,sales,2026-07-21T07:42:34,96,10,ok,
+Curvage,2026-07-22_00-58-51_curvage_manual_earnings (52).csv,sales,2026-07-22T01:03:53,97,4,ok,
 ManyVids,20260720_171433_manyvids_recent_sales_chrome.csv,recent_sales,2026-07-20T13:14:50,300,27,ok,
 OnlyFans,creators-revenue-2026-06-20_to_2026-07-21.xlsx,sales,2026-07-20T13:23:43,31,19,ok,
 ModelCentro,20260720_172514_modelcentro_transactions_chrome.csv,transactions,2026-07-20T13:25:25,150,105,ok,
